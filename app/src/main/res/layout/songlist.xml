@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <View
+            android:id="@+id/list_column_v"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+        </View>
+
+        <ImageView
+            android:id="@+id/simple_cover_Iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/linearLayout"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/list_column_v"
+            android:src="@mipmap/a2" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/simple_cover_Iv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/simple_name_Tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:textColor="#50c0a0"
+                android:text="Something just like this" />
+            <TextView
+                android:id="@+id/simple_edit_Tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:textColor="#000000"
+                android:text="Cold Player/The Chainsmokers" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/simple_more_iv"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/songlist_1" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

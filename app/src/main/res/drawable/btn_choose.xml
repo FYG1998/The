@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- 单击按钮显示的颜色
+	 第一行表示点击时显示的图片,第二行表示初始状态显示的图片
+	 -->
+	<item android:state_pressed="true" android:drawable="@color/bt_true"/>
+	<item android:drawable="@android:color/white"/>
+
+</selector>

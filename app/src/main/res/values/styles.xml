@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:actionBarStyle">@style/actionbar_def_style</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="actionbar_def_style" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- 在样式里面直接替换掉actionbar的背景，避免在有的窗口进入慢时导致进入时显示系统默认的actionbar -->
+        <item name="android:background">@drawable/actionbar_bottom_bg</item>
+        <!-- 在样式里面去掉acionbar的应用图标和标题 -->
+        <item name="android:displayOptions">useLogo</item>
+        <item name="android:fitsSystemWindows">true</item>
+
+    </style>
+
+
+
+
+    <!-- dialog bg 背景  样式 。。。-->
+    <!-- parent="android:style/Theme.Dialog"  继承dialog样式 -->
+    <style name="style_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:scrollHorizontally">true</item>
+        <!--//进入时的动画-->
+        <item name="android:windowEnterAnimation">@anim/dialog_style_enter</item>
+        <!--//退出时的动画-->
+        <item name="android:windowExitAnimation">@anim/dialog_style_exit</item>
+
+    </style>
+
+  <!--  &lt;!&ndash;dialog 弹窗动画&ndash;&gt;
+    <style name="mystyle" parent="android:Animation">
+        &lt;!&ndash;//进入时的动画&ndash;&gt;
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
+        &lt;!&ndash;//退出时的动画&ndash;&gt;
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>-->
+
+
+
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">#474747</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

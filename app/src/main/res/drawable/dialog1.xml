@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:Android="http://schemas.android.com/apk/res/android">
+
+	<!-- 单击按钮显示的颜色
+	 单击按钮显示的颜色
+	 第一行表示点击时显示的图片,第二行表示初始状态显示的图片
+
+	 圆角
+	 -->
+
+	<item Android:state_pressed="true">
+		<shape Android:shape="rectangle">
+			<solid Android:color="#ff05ed" />
+			<corners Android:radius="50dp" />
+		</shape>
+	</item>
+	<item>
+		<shape Android:shape="rectangle">
+			<solid Android:color="#ff388ef4" />
+			<corners Android:radius="50dp" />
+		</shape>
+	</item>
+</selector>
