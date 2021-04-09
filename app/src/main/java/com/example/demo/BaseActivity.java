@@ -56,12 +56,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
     //状态栏沉浸
      public  void setTranslucent(Activity mContext) {
 
