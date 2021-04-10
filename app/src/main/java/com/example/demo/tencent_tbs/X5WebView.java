@@ -63,7 +63,7 @@ public class X5WebView extends WebView {
 		// settings 的设计
 	}
 
-	@Override
+/*	@Override
 	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
 		boolean ret = super.drawChild(canvas, child, drawingTime);
 		canvas.save();
@@ -86,7 +86,7 @@ public class X5WebView extends WebView {
 		canvas.drawText(Build.MODEL, 10, 200, paint);
 		canvas.restore();
 		return ret;
-	}
+	}*/
 
 	public X5WebView(Context arg0) {
 		super(arg0);

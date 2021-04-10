@@ -58,6 +58,8 @@
     <string name="commit_question">问题反馈</string>
     <string name="share_friends">推荐给好基友</string>
     <string name="contact_me">联系我</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

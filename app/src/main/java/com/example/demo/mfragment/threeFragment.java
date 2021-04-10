@@ -539,8 +539,6 @@ public class threeFragment extends Fragment {
                                 for (int i = 0; i < json_list.length(); i++) {
                                     Map<String ,Object> map=new HashMap<String, Object>();
 
-
-                                    Log.e("tty", String.valueOf(json_list.length()));
                                     JSONObject json_listobj = json_list.getJSONObject(i);  //把集合[]json 转换 数组 {}
                                     String json_title = json_listobj.getString("title"); //获取歌曲 title
                                     String json_mid = json_listobj.getString("mid"); //获取歌曲 mid
