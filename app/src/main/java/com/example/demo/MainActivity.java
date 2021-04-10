@@ -30,6 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import static com.example.demo.tools.URLinfo.setImgurl;
 
@@ -52,7 +53,7 @@ public class MainActivity extends BaseActivity {
         if(fileIsExists(imgPath)){  //判断文件是否存在
             imageView .setImageBitmap(bitmap); //设置Bitmap
         }else {
-            imageView.setImageDrawable(getResources().getDrawable((R.mipmap.splash))); //不存在加载原先设置
+            imageView.setImageDrawable( ResourcesCompat.getDrawable(getResources(), R.drawable.splash, null)); //不存在加载原先设置
         }
 
         Guidechart(); // 获取导播图网址

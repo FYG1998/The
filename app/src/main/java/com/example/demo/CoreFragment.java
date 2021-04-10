@@ -2,11 +2,11 @@ package com.example.demo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import devlight.io.library.ntb.NavigationTabBar;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -19,13 +19,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-
 import com.example.demo.mfragment.fiveFragment;
 import com.example.demo.mfragment.fourFragment;
 import com.example.demo.mfragment.oneFragment;
 import com.example.demo.mfragment.threeFragment;
 import com.example.demo.mfragment.twoFragment;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -67,7 +65,6 @@ public class CoreFragment extends BaseActivity {
         list.add(fragment5);
 
 
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -87,23 +84,21 @@ public class CoreFragment extends BaseActivity {
         final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb_horizontal);
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
         models.add(new NavigationTabBar.Model.Builder(
-                getResources().getDrawable(R.drawable.ic_first), Color.parseColor(colors[0]))
-                .selectedIcon(getResources().getDrawable(R.drawable.ic_sixth)).title("Heart").build() );
+                ResourcesCompat.getDrawable(getResources(), R.drawable.ic_first,null), Color.parseColor(colors[0]))
+                .selectedIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_sixth,null)).title("Heart").build() );
         models.add(new NavigationTabBar.Model.Builder(
-                getResources().getDrawable(R.drawable.ic_second),
+                ResourcesCompat.getDrawable(getResources(),R.drawable.ic_second,null),
                 Color.parseColor(colors[1]))//.selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
                 .title("Cup").build() );
         models.add(new NavigationTabBar.Model.Builder(
-                getResources().getDrawable(R.drawable.ic_third), Color.parseColor(colors[2]))
-                .selectedIcon(getResources().getDrawable(R.drawable.ic_seventh))
+                ResourcesCompat.getDrawable(getResources(),R.drawable.ic_third,null), Color.parseColor(colors[2]))
+                .selectedIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_seventh,null))
                 .title("Diploma").build() );
-        models.add(new NavigationTabBar.Model.Builder(
-                getResources().getDrawable(R.drawable.ic_fourth),
-                Color.parseColor(colors[3]))// .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
+        models.add(new NavigationTabBar.Model.Builder(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_fourth,null), Color.parseColor(colors[3]))
                 .title("Flag").build() );
         models.add(new NavigationTabBar.Model.Builder(
-                getResources().getDrawable(R.drawable.ic_fifth), Color.parseColor(colors[4]))
-                .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth)).title("Medal").build() );
+                ResourcesCompat.getDrawable(getResources(),R.drawable.ic_fifth,null), Color.parseColor(colors[4]))
+                .selectedIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_eighth,null)).title("Medal").build() );
 
         navigationTabBar.setModels(models); //加载地图bar
         navigationTabBar.setViewPager(viewPager, 2); //设置主页 index
