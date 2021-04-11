@@ -24,7 +24,8 @@
             android:resizeableActivity="true" />
         <activity
             android:name=".activity.VideoPlayActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:resizeableActivity="true"/>
         <activity android:name=".tencent_tbs.FilechooserActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

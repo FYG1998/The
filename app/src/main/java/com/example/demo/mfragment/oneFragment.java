@@ -22,6 +22,8 @@ import android.widget.Toolbar;
 import com.example.demo.R;
 import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.bitmap;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.tencent.smtt.sdk.QbSdk;
 
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +46,7 @@ public class oneFragment extends Fragment {
 
      Button button;
      ImageView imageView;
-     String albummid ="http://pic39.nipic.com/20140226/18071023_164300608000_2.jpg";
+     String albummid ="http://ww4.sinaimg.cn/large/610dc034jw1f6ipaai7wgj20dw0kugp4.jpg";
 
 
 
@@ -58,6 +60,14 @@ public class oneFragment extends Fragment {
         btimg();
 
 
+        FloatingActionButton fab = mRootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
 
         return mRootView;
@@ -83,7 +93,7 @@ public class oneFragment extends Fragment {
 
 
                         String urlpath = URLinfo.getImgurl();
-                       Bitmap bitmap= getInternetPicture(urlpath);
+                       Bitmap bitmap= getInternetPicture(albummid);
                        //imageView.setImageBitmap(bitmap);
 
 

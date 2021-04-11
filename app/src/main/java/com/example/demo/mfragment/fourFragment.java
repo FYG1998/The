@@ -37,7 +37,7 @@ public class fourFragment extends Fragment {
     private class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 
 
-        private final String[] mTitles = {"page1","page2"};
+        private final String[] mTitles = {"page1"};
 
         public TabFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);

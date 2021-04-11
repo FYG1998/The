@@ -3,6 +3,9 @@ package com.example.demo.mfragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -24,7 +27,6 @@ import com.example.demo.tools.QQUtil;
 
 public class fiveFragment extends Fragment {
 
-    View mRootView;
     RelativeLayout relativeLayout;
     RelativeLayout relativeLayout2;
     RelativeLayout relativeLayout_exit_login;
@@ -38,16 +40,9 @@ public class fiveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        mRootView = inflater.inflate(R.layout.fragment_five, container, false);
+        View view = inflater.inflate(R.layout.fragment_five, container, false);
 
-        relativeLayout=mRootView.findViewById(R.id.tbsfile);
-        relativeLayout2=mRootView.findViewById(R.id.qqtz);
-        relativeLayout_exit_login = mRootView.findViewById(R.id.exit_login);
-        relativeLayout_path =mRootView.findViewById(R.id.path);
-        relativeLayout_blame=mRootView.findViewById(R.id.blame);
-        web =  mRootView.findViewById(R.id.webBrowser);
-        Setting=mRootView.findViewById(R.id.Setting);
-        h =mRootView.findViewById(R.id.h);
+
 
         openfile();
         Test();
@@ -60,8 +55,21 @@ public class fiveFragment extends Fragment {
 
 
 
-        return mRootView;
+        initView();
+        initData();
+
+        return view;
     }
+
+    private void initView() {
+
+    }
+
+    private void initData() {
+
+    }
+
+
 
     public void hh()
     {
@@ -128,9 +136,6 @@ public class fiveFragment extends Fragment {
         });
     }
 
-
-
-
     public void exit()
     {
         relativeLayout_exit_login.setOnClickListener(new View.OnClickListener() {
@@ -141,8 +146,6 @@ public class fiveFragment extends Fragment {
         });
 
     }
-
-
 
     public void path()
     {
@@ -182,7 +185,6 @@ public class fiveFragment extends Fragment {
         }) ;
 
     }
-
 
     public  void Setting()
     {

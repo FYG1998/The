@@ -1,10 +1,7 @@
 package com.example.demo.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.example.demo.BaseActivity;
 import com.example.demo.R;

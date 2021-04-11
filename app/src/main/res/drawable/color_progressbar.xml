@@ -3,15 +3,15 @@
 
     <!-- 设置背景色（白色） -->
     <item android:id="@android:id/background">
-    <shape>   
-        <corners android:radius="3dip" />   
-        <gradient android:startColor="#ffedeff2"   
-                android:centerColor="#ffedeff2"   
-                android:centerY="0.75"   
-                android:endColor="#ffedeff2"   
-                android:angle="270"   
-        />   
-    </shape> 
+    <shape>
+        <corners android:radius="3dip" />
+        <gradient android:startColor="#ffedeff2"
+                android:centerColor="#ffedeff2"
+                android:centerY="0.75"
+                android:endColor="#ffedeff2"
+                android:angle="270"
+        />
+    </shape>
     </item>
 
     <!-- 设置进度条颜色（蓝色） -->

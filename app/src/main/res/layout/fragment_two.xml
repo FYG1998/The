@@ -7,8 +7,17 @@
     android:orientation="vertical"
     tools:context=".mfragment.twoFragment">
 
+    <View
+        android:id="@+id/img_head"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <LinearLayout
-        android:layout_marginTop="45dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F6F6F6"
@@ -33,6 +42,7 @@
                 android:ems="10"
                 android:singleLine="true"
                 android:textSize="35px"
+                android:textColor="@color/text_color"
                 android:hint="请输入视频网址...">
             </EditText>
 

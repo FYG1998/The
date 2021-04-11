@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.demo.R;
 import com.example.demo.activity.VideoActivity;
 import com.example.demo.activity.VideoPlayActivity;
@@ -37,16 +34,12 @@ public class twoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_two, container, false);
-
 
         mUrl =	view.findViewById(R.id.editUrl1);
         mGo = view.findViewById(R.id.btnGo1);
         textView = view.findViewById(R.id.showtext);
         x5webView = view.findViewById(R.id.webView1);
-
-
 
         initBtnListenser();
 
@@ -54,24 +47,8 @@ public class twoFragment extends Fragment {
     }
 
 
-
-  /*  *//**
-     * 直接调用播放视频
-     *  videoUrl 视频地址
-     *//*
-    private void startPlay(String videoUrl){
-        //判断当前是否可用
-        if(TbsVideo.canUseTbsPlayer(getContext())){
-            //播放视频
-            TbsVideo.openVideo(getContext(), videoUrl);
-        }
-    }*/
-
-
-
     private void initBtnListenser()
     {
-
         mGo.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -80,10 +57,6 @@ public class twoFragment extends Fragment {
                 String url = api + mUrl.getText().toString();
               //  Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
                // textView.setText(url);
-
-
-
-
 
 
                 //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667

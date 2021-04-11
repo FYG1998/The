@@ -45,7 +45,7 @@ public class SPDataUtils {
         spInfo info = null;
         SharedPreferences sp = context.getSharedPreferences(mFileName,context.MODE_PRIVATE);
         String uname = sp.getString("uname",null);
-        String upass = sp.getString("upass",null);
+        String upass = sp.getString("upass","1000");
 
         info = new spInfo();
         info.setUname(uname);

@@ -53,7 +53,7 @@ public class BaseActivityTwo extends AppCompatActivity {
 
 
     /**
-     * sometime you want to define back event
+     * 定义返回事件
      */
     protected void setBackBtn() {
         if (back != null) {

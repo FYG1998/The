@@ -12,11 +12,9 @@ import com.example.demo.utils.SPDataUtils;
 
 
 public class SettingSavePage extends BaseActivity {
-
+    private Context context;
     private EditText editText;
     private Button button;
-
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

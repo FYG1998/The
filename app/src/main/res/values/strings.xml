@@ -2,10 +2,15 @@
     <string name="app_name">The</string>
 
 
-    <!--关于相关-->
+
+
+
+
+
+    <!--关于String -->
     <string name="app_version">Version %1$s</string>
-    <string name="about_drysister">关于DrySister</string>
-    <string name="about_drysister_detail">
+    <string name="about_App">关于App</string>
+    <string name="about_app_detail">
         此Demo，是小编写的Android基础入门学习实战项目，资源来源与网络，
         \n\n博客园地址：https://www.cnblogs.com/xfweb/
         \n\n前期代码实现基本功能，后面可能只说下遇到的问题以及难点。后期会慢慢增加，
@@ -29,6 +34,11 @@
         \n.....
         \n https://github.com/FYG1998/Demo
     </string>
+    <string name="Quotations">
+        桌面上放着JAVA从菜鸟到鸵鸟，C++从入门到放弃，MySQL从删库到跑路，
+        \n哦还有一盆半死不活的绿萝，那是对防辐射的坚定信仰!!
+        \n我想我也应该有自己的信仰了，奥力给
+    </string>
     <string name="about_open_source">用到的开源库(闲了再补充协议)</string>
     <string name="about_open_source_detail">
         com.squareup.okhttp3:okhttp:4.9.0
@@ -41,11 +51,14 @@
         \n com.r0adkll:slidableactivity:2.1.0
         \n https://x5.tencent.com/
     </string>
-    <string name="Quotations">
-        桌面上放着JAVA从菜鸟到鸵鸟，C++从入门到放弃，MySQL从删库到跑路，
-        \n哦还有一盆半死不活的绿萝，那是对防辐射的坚定信仰!!
-        \n我想我也应该有自己的信仰了，奥力给
-    </string>
+
+
+
+
+
+
+
+
 
 
     <!--设置相关-->
