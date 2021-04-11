@@ -91,7 +91,7 @@ public class ImgFragment extends Fragment {
                             JSONObject json = new JSONObject(jsondta);
                             JSONArray json_list = json.getJSONArray("results");
 
-                            Log.e("ttyy", json_list.toString());
+
 
                             for (int i = 0; i < json_list.length(); i++) {
 
@@ -99,7 +99,7 @@ public class ImgFragment extends Fragment {
                                 JSONObject json_listobj = json_list.getJSONObject(i);
                                 String json_img_url = json_listobj.getString("url");
 
-                                Log.e("ttyy", json_img_url);
+
 
                                 fruitList.add(new Fruit(json_img_url) );
                             }

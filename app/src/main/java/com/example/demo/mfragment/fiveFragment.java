@@ -18,6 +18,7 @@ import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
 import com.example.demo.activity.SettingActivity;
+import com.example.demo.activity.SettingSavePage;
 import com.example.demo.tencent_tbs.FilechooserActivity;
 import com.example.demo.tools.QQUtil;
 
@@ -31,6 +32,7 @@ public class fiveFragment extends Fragment {
     RelativeLayout relativeLayout_blame;
     RelativeLayout web;
     RelativeLayout Setting;
+    RelativeLayout h;
 
 
     @Override
@@ -45,6 +47,7 @@ public class fiveFragment extends Fragment {
         relativeLayout_blame=mRootView.findViewById(R.id.blame);
         web =  mRootView.findViewById(R.id.webBrowser);
         Setting=mRootView.findViewById(R.id.Setting);
+        h =mRootView.findViewById(R.id.h);
 
         openfile();
         Test();
@@ -53,10 +56,26 @@ public class fiveFragment extends Fragment {
         Blame();
         click();
         Setting();
+        hh();
 
 
 
         return mRootView;
+    }
+
+    public void hh()
+    {
+        h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), SettingSavePage.class);
+                startActivity(intent);
+
+
+
+
+            }
+        });
     }
 
     public void Blame()

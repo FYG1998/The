@@ -213,7 +213,7 @@
                 android:background="#EEEEEE" />
 
             <RelativeLayout
-                android:id="@+id/rl_skin"
+                android:id="@+id/h"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingLeft="30dp"
@@ -232,7 +232,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img_skin"
-                    android:text="换肤"
+                    android:text="mSharedPreferences"
                     android:textColor="#000000" />
 
                 <ImageView

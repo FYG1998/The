@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.mCallback;
 import com.example.demo.tools.mOKHttp;
+import com.example.demo.tools.spInfo;
+import com.example.demo.utils.SPDataUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,6 +47,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        context =this;
 
         imageView=findViewById(R.id.imageview);
         String imgPath = Environment.getExternalStorageDirectory().getPath() + "/A_Test/b";
@@ -59,12 +62,19 @@ public class MainActivity extends BaseActivity {
         Guidechart(); // 获取导播图网址
         getAsync1();
 
-      /*  //创建子线程 延续
+        spInfo info = SPDataUtils.getspInfo(context);
+        final int s = Integer.parseInt(info.getUpass());
+        Log.e("ttyy", String.valueOf(s));
+
+        //创建子线程 延续
         Thread myThread = new Thread() {
             @Override
             public void run() {
+
+
+
                 try {
-                    sleep(2000);//使程序休眠一秒
+                    sleep(s);//使程序休眠一秒
                     mIntent(CoreFragment.class); //intent跳转
                     finish();//关闭当前活动
                 } catch (Exception e) {
@@ -72,10 +82,10 @@ public class MainActivity extends BaseActivity {
                 }
             }
         };
-        myThread.start();//启动线程*/
+        myThread.start();//启动线程
 
 
-        //方法二
+ /*       //方法二
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -83,7 +93,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 1000);
+        }, 1000);*/
 
 
     }

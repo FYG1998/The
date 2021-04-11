@@ -101,7 +101,7 @@ public class CoreFragment extends BaseActivity {
                 .selectedIcon(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_eighth,null)).title("Medal").build() );
 
         navigationTabBar.setModels(models); //加载地图bar
-        navigationTabBar.setViewPager(viewPager, 3); //设置主页 index
+        navigationTabBar.setViewPager(viewPager, 2); //设置主页 index
     }
 
     //动态访问权限弹窗
