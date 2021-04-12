@@ -55,20 +55,12 @@ public class twoFragment extends Fragment {
             public void onClick(View v) {
 
                 String url = api + mUrl.getText().toString();
-              //  Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
-               // textView.setText(url);
-
 
                 //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667
                 Intent intent =new Intent(getActivity(), VideoActivity.class); //启动
                 intent.putExtra("url", url);
                 startActivity(intent);
 
-
-           /*     x5webView.loadUrl(url);
-                getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
-                x5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
-                x5webView.setWebChromeClient(new WebChromeClient());*/
             }
         });
 
@@ -76,7 +68,6 @@ public class twoFragment extends Fragment {
 
         //setOnFocusChangeListener  焦点事件
         mUrl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -133,11 +124,7 @@ public class twoFragment extends Fragment {
 
             }
         });
-
-
-
-
-
+        
 
     }
 

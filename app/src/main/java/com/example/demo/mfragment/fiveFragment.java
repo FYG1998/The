@@ -43,6 +43,15 @@ public class fiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_five, container, false);
 
 
+        relativeLayout=view.findViewById(R.id.tbsfile);
+        relativeLayout2=view.findViewById(R.id.qqtz);
+        relativeLayout_exit_login = view.findViewById(R.id.exit_login);
+        relativeLayout_path =view.findViewById(R.id.path);
+        relativeLayout_blame=view.findViewById(R.id.blame);
+        web =  view.findViewById(R.id.webBrowser);
+        Setting=view.findViewById(R.id.Setting);
+        h =view.findViewById(R.id.h);
+
 
         openfile();
         Test();
