@@ -113,7 +113,7 @@
             android:orientation="vertical" >
 
             <com.example.demo.tencent_tbs.X5WebView
-                android:id="@+id/webView1"
+                android:id="@+id/webViewBrowsermusic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />

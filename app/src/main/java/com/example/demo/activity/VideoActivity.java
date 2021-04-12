@@ -32,6 +32,7 @@ public class VideoActivity extends BaseActivity {
         Intent intent = getIntent();
         String name = "http://111.231.191.26/See%20You%20Again.mp4";  //测试视频url
 
+
         String videoUrl =  intent.getStringExtra("url");
         //横屏播放
         if (x5webView.getX5WebViewExtension() != null) {

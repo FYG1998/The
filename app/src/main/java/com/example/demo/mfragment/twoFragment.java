@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,29 +26,47 @@ import com.example.demo.activity.VideoPlayActivity;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.sdk.TbsVideo;
 import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
+import static com.example.demo.activity.Browser.MSG_OPEN_TEST_URL;
 
 
 public class twoFragment extends Fragment {
 
+    private Context context;
+    String music = "https://music.heiya123.com/";  //测试视频url
     private EditText mUrl;
     private Button mGo;
     private String api ="https://vip.bljiex.com/?v=";
     private TextView textView;
-    private X5WebView x5webView;
+    private X5WebView mx5webViewmusic;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_two, container, false);
 
+        context = getActivity();
         mUrl =	view.findViewById(R.id.editUrl1);
         mGo = view.findViewById(R.id.btnGo1);
         textView = view.findViewById(R.id.showtext);
-        x5webView = view.findViewById(R.id.webView1);
+        mx5webViewmusic = view.findViewById(R.id.webViewBrowsermusic);
 
         initBtnListenser();
 
+
+        mx5webViewmusic.loadUrl(music);
+       // getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        mx5webViewmusic.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
+        mx5webViewmusic.setWebChromeClient(new WebChromeClient());
+
+
+
         return view;
     }
+
+
 
 
     private void initBtnListenser()
@@ -124,7 +146,7 @@ public class twoFragment extends Fragment {
 
             }
         });
-        
+
 
     }
 
