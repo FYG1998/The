@@ -35,33 +35,19 @@ import static com.example.demo.activity.Browser.MSG_OPEN_TEST_URL;
 
 public class twoFragment extends Fragment {
 
-    private Context context;
-    String music = "https://music.heiya123.com/";  //测试视频url
-    private EditText mUrl;
-    private Button mGo;
-    private String api ="https://vip.bljiex.com/?v=";
-    private TextView textView;
+
+    String music = "https://music.heiya123.com/";
     private X5WebView mx5webViewmusic;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_two, container, false);
 
-        context = getActivity();
-        mUrl =	view.findViewById(R.id.editUrl1);
-        mGo = view.findViewById(R.id.btnGo1);
-        textView = view.findViewById(R.id.showtext);
+
         mx5webViewmusic = view.findViewById(R.id.webViewBrowsermusic);
-
-        initBtnListenser();
-
-
         mx5webViewmusic.loadUrl(music);
-       // getWindow().setFormat(PixelFormat.TRANSLUCENT);
         mx5webViewmusic.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
         mx5webViewmusic.setWebChromeClient(new WebChromeClient());
-
-
 
         return view;
     }
@@ -69,86 +55,6 @@ public class twoFragment extends Fragment {
 
 
 
-    private void initBtnListenser()
-    {
-        mGo.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                String url = api + mUrl.getText().toString();
-
-                //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667
-                Intent intent =new Intent(getActivity(), VideoActivity.class); //启动
-                intent.putExtra("url", url);
-                startActivity(intent);
-
-            }
-        });
-
-
-
-        //setOnFocusChangeListener  焦点事件
-        mUrl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    mGo.setVisibility(View.VISIBLE);
-
-
-                } else {
-                    mGo.setVisibility(View.GONE);
-
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-
-        });
-
-
-
-        //文本变化监听器addTextChangedListener中TextWatcher方法三个方法意义
-        mUrl.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
-                String url = null;
-
-                if (mUrl.getText() != null)
-                {
-                    url = mUrl.getText().toString();
-                }
-
-                if (url == null || mUrl.getText().toString().equalsIgnoreCase(""))
-                //equalsIgnoreCase() 方法用于将字符串与指定的对象比较，不考虑大小写。如果给定对象与字符串相等，则返回 true；否则返回 false。
-                {
-                    mGo.setText("请输入网址");
-                    mGo.setTextColor(0X6F0F0F0F);
-                }
-                else
-                {
-                    mGo.setText("进入");
-                    mGo.setTextColor(0X6F0000CD);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-
-
-    }
 
 
 
