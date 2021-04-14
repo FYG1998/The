@@ -35,6 +35,17 @@ public class SPDataUtils {
     }
 
 
+
+    public static boolean saveUserInfo(Context context, boolean b){
+        boolean flag= false;
+        SharedPreferences sp =context.getSharedPreferences(mFileName ,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("switch",b);
+        editor.commit();
+        flag =  true;
+        return  flag;
+    }
+
     /**
      * 通过实体类获取信息
      * 获取SharedPreferences info
@@ -46,10 +57,12 @@ public class SPDataUtils {
         SharedPreferences sp = context.getSharedPreferences(mFileName,context.MODE_PRIVATE);
         String uname = sp.getString("uname",null);
         String upass = sp.getString("upass","1000");
+        Boolean b =sp.getBoolean("switch",true);
 
         info = new spInfo();
         info.setUname(uname);
         info.setUpass(upass);
+        info.setMboolean(b);
 
         return info;
     }

@@ -24,7 +24,7 @@
           android:focusableInTouchMode="true"
           android:orientation="horizontal" >
          <EditText
-             android:id="@+id/editUrl1"
+             android:id="@+id/editUrlone"
              android:layout_width="fill_parent"
              android:layout_height="wrap_content"
              android:layout_marginLeft="10dp"

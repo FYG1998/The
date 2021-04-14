@@ -4,8 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -22,7 +20,7 @@ import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
 import com.example.demo.activity.SettingActivity;
 import com.example.demo.activity.SettingSavePage;
-import com.example.demo.tencent_tbs.FilechooserActivity;
+import com.example.demo.activity.FilechooserActivity;
 import com.example.demo.tools.QQUtil;
 
 public class fiveFragment extends Fragment {
@@ -175,6 +173,11 @@ public class fiveFragment extends Fragment {
                 window.setAttributes(lp);  //将属性设置给窗体
                 window.setWindowAnimations(R.style.style_dialog);  //添加动画
                 dialog.show();//显示对话框
+
+
+
+
+
 
             }
         });

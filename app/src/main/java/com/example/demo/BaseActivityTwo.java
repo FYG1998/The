@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class BaseActivityTwo extends AppCompatActivity {
 
+    public static Context mContext;
     private TextView title;
     private ImageView back;
     private LinearLayout rootLayout;
@@ -26,6 +29,7 @@ public class BaseActivityTwo extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mContext = this;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -34,6 +38,11 @@ public class BaseActivityTwo extends AppCompatActivity {
         super.setContentView(R.layout.activity_include);
         initToolbar();
 
+    }
+
+    //封装一个Toast类//继承BaseActivity 直接调用 showTost(string)
+    public void showToast(String msg){
+        Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
     }
 
     private void initToolbar() {

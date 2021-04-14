@@ -70,9 +70,6 @@ public class MainActivity extends BaseActivity {
         Thread myThread = new Thread() {
             @Override
             public void run() {
-
-
-
                 try {
                     sleep(s);//使程序休眠一秒
                     mIntent(CoreFragment.class); //intent跳转

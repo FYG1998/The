@@ -8,6 +8,7 @@ public class spInfo {
     private String uname;
     private String upass;
 
+
     public spInfo() {
 
     }
@@ -32,4 +33,23 @@ public class spInfo {
     public void setUpass(String upass) {
         this.upass = upass;
     }
+
+
+
+    //-------------------------------------------
+
+    private Boolean mboolean;
+    public Boolean getMboolean() {
+        return mboolean;
+    }
+
+    public void setMboolean(Boolean mboolean) {
+        this.mboolean = mboolean;
+    }
+
+    public spInfo(Boolean mboolean){
+        this.mboolean=mboolean;
+    }
+
+
 }

@@ -4,11 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.AbsoluteLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.demo.R;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
@@ -17,6 +21,7 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 public class X5WebView extends WebView {
 	TextView title;
+
 	private WebViewClient client = new WebViewClient() {
 		/**
 		 * 防止加载网页时调起系统浏览器
@@ -39,7 +44,7 @@ public class X5WebView extends WebView {
 
 	private void initWebViewSettings() {
 		WebSettings webSetting = this.getSettings();
-		webSetting.setJavaScriptEnabled(true);
+		webSetting.setJavaScriptEnabled(true);  //开启js脚本支持
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);
 		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);

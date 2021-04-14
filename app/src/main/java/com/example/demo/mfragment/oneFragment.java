@@ -73,7 +73,7 @@ public class oneFragment extends Fragment {
         btimg();
 
 
-        mUrl =	mRootView.findViewById(R.id.editUrl1);
+        mUrl =	mRootView.findViewById(R.id.editUrlone);
         mGo = mRootView.findViewById(R.id.btnGo1);
         textView = mRootView.findViewById(R.id.showtext);
         initBtnListenser();

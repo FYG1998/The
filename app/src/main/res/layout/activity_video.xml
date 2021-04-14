@@ -7,9 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.VideoActivity">
 
+    <RelativeLayout
+        android:id="@+id/rl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <com.example.demo.tencent_tbs.X5WebView
         android:id="@+id/x5_webview_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
