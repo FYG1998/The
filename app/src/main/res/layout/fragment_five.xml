@@ -182,7 +182,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_collect" />
+                    android:src="@mipmap/declare" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -220,7 +220,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/debug" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -259,7 +259,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/about" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -299,7 +299,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/wenjian" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -337,7 +337,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/qun" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -376,7 +376,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/xiazai" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -415,7 +415,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/liulanqi" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -456,7 +456,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_skin" />
+                    android:src="@mipmap/set" />
 
                 <TextView
                     android:layout_width="wrap_content"

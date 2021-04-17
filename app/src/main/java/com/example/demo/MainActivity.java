@@ -159,6 +159,7 @@ public class MainActivity extends BaseActivity {
                         {
                             String data =matcher.group(1);
                             URLinfo.setmTextnotice(data);
+                            Log.d("TAG", data);
                         }
 
                     }

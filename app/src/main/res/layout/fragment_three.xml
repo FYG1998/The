@@ -35,8 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="13dp"
             android:src="@mipmap/search_love" />
         </RelativeLayout>
@@ -116,15 +116,16 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:id="@+id/but_notice">
 
         <ImageView
             android:id="@+id/im"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@mipmap/notice" />
+            android:background="@mipmap/laba" />
 
         <View
             android:layout_width="match_parent"

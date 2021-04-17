@@ -77,6 +77,7 @@ public class threeFragment extends Fragment {
     private EditText editText;
     private ImageButton imageButton;
     private ImageView imageView_cancel;
+    private RelativeLayout but_notice;
 
     private ListView mListView;
     private View inflate;
@@ -103,6 +104,7 @@ public class threeFragment extends Fragment {
         textView=(TextView) mRootView.findViewById(R.id.text_notice);
         mListView=(ListView)mRootView.findViewById(R.id.fragment_list);//实例化listview 组件
         imageView_cancel = (ImageView) mRootView.findViewById(R.id.cancel);
+        but_notice = (RelativeLayout)mRootView.findViewById(R.id.but_notice);
 
     }
 
@@ -158,9 +160,6 @@ public class threeFragment extends Fragment {
 
             }
         });
-
-
-
 
 
         //imageButton 事件
@@ -228,6 +227,23 @@ public class threeFragment extends Fragment {
             }
         });
 
+        but_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext(),R.style.style_dialog);
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_notice , null);
+                dialog.setContentView(view); //将布局设置给Dialog
+
+                Window window = dialog.getWindow();
+                window.setGravity( Gravity.BOTTOM); //设置Dialog从窗体底部弹出
+                WindowManager.LayoutParams lp = window.getAttributes();//获得窗体的属性
+                lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                window.setAttributes(lp);  //将属性设置给窗体
+                window.setWindowAnimations(R.style.style_dialog);  //添加动画
+                dialog.show();//显示对话框
+            }
+        });
 
 
 
