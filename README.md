@@ -6,7 +6,11 @@ Java 写的Android app
 
 2021-04-17 FYG add 
 
-'"
+Android - java -APP 框架结构说明
+
+
+
+
 -- undefined
     |-- AndroidManifest.xml         app清单文件
     |-- assets                      存放本地html 文件
@@ -175,3 +179,4 @@ Java 写的Android app
         |-- xml 
             |-- mpath.xml                                              文件路径好像不合适没完善
             |-- network_security_config.xml                            明文流量问题，就是http与https，访问https要加这个
+
