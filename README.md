@@ -4,8 +4,8 @@ Java 写的Android app
 
     Android - java -APP 框架结构说明  
 
-
-  -- undefined
+  
+    -- undefined
       |-- AndroidManifest.xml         app清单文件
       |-- assets                      存放本地html 文件
       |   |-- webpage
