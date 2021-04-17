@@ -98,7 +98,7 @@ Java 写的Android app
           |   |-- shape_bg_about_text_purple.xml
           |   |-- shape_bg_about_text_yellow.xml
           |   |-- test.jpg
-          |-- layout                                                             界面xml                                                      
+          |-- layout                                                             界面xml      有几个xml没用到后期慢慢完善                                                
           |   |-- activity_about.xml
           |   |-- activity_browser.xml
           |   |-- activity_corefragment.xml
