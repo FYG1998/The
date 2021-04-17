@@ -63,6 +63,7 @@ public class Browser extends Activity {
     private EditText mUrl;
 
     private static final String mHomeUrl = "https://fyg1998.github.io/indextools.html";
+
     private static final String TAG = "SdkDemo";
     private static final int MAX_LENGTH = 14;
     private boolean mNeedTestPage = false;
