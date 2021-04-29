@@ -108,7 +108,7 @@ public class oneFragment extends Fragment {
 
         Banner banner = (Banner) mRootView.findViewById(R.id.banner);
         //设置轮播的动画效果,里面有很多种特效,可以都看看效果。
-        banner.setBannerAnimation(Transformer.Accordion);
+        banner.setBannerAnimation(Transformer.CubeOut);
         //设置轮播间隔时间
         banner.setDelayTime(3000);
         //设置图片加载器
