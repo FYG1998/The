@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Outline;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.example.demo.R;
 import com.example.demo.activity.VideoActivity;
 import com.example.demo.tools.URLinfo;
@@ -33,6 +36,12 @@ import com.example.demo.tools.bitmap;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.tencent.smtt.sdk.QbSdk;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
+
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -46,6 +55,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class oneFragment extends Fragment {
@@ -89,8 +100,62 @@ public class oneFragment extends Fragment {
         });
 
 
+        List images = new ArrayList();
+        images.add("http://kwimg2.kuwo.cn/star/upload/66/85/1575256374021_.jpg");
+        images.add("http://kwimg2.kuwo.cn/star/upload/71/68/1575818166158_.jpg");
+        images.add("http://kwimg1.kuwo.cn/star/upload/68/54/1575429173078_.jpg");
+
+
+        Banner banner = (Banner) mRootView.findViewById(R.id.banner);
+        //设置轮播的动画效果,里面有很多种特效,可以都看看效果。
+        banner.setBannerAnimation(Transformer.Accordion);
+        //设置轮播间隔时间
+        banner.setDelayTime(3000);
+        //设置图片加载器
+        banner.setImageLoader(new fiveFragment.GlideImageLoader());
+        //设置指示器的位置，小点点，居中显示
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        //设置图片集合
+        banner.setImages(images);
+        //banner设置方法全部调用完毕时最后调用
+        banner.start();
+
+        //增加点击事件
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                // Toast.makeText(MainActivity.this, "position"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        banner.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 30);
+            }
+        });
+
+        banner.setClipToOutline(true);
+
+
+
         return mRootView;
     }
+
+
+
+    public class GlideImageLoader extends ImageLoader {
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            //Glide 加载图片简单用法
+            Glide
+                    .with(context)
+                    .load(path)
+                    .centerCrop()
+                    .into(imageView);
+        }
+    }
+
 
     public void btimg()
     {

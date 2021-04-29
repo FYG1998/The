@@ -1,14 +1,10 @@
 package com.example.demo.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-
 import com.example.demo.BaseActivityTwo;
-import com.example.demo.MainActivity;
 import com.example.demo.R;
 import com.example.demo.tools.spInfo;
 import com.example.demo.utils.SPDataUtils;

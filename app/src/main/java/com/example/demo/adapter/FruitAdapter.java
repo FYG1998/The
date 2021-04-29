@@ -11,9 +11,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.demo.R;
 import com.example.demo.activity.PictureDetailActivity;
 import com.example.demo.tools.Fruit;
-
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 

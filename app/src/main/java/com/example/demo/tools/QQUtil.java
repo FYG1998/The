@@ -4,15 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-/**
- * Created by zia on 2018/12/16.
- */
+
 public class QQUtil {
     /****************
      *
-     * 发起添加群流程。群号：joinQQGroup(728248900) 的 key 为： Oo7Jsgqio1N3n50qJcLYX50EODExfbQk
-     * 调用 joinQQGroup(Oo7Jsgqio1N3n50qJcLYX50EODExfbQk) 即可发起手Q客户端申请加群 joinQQGroup(728248900)
-     *
+     * 由官网生成 :https://qun.qq.com/join.html
      * @param key 由官网生成的key
      * @return 返回true表示呼起手Q成功，返回false表示呼起失败
      ******************/

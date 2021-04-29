@@ -3,8 +3,6 @@ package com.example.demo.tools;
 public class URLinfo {
 
 
-
-
     public  static  final String NoticeUrl="http://note.youdao.com/yws/public/note/723e22f9069aa34fe0a1f0b552d7f172";
     //public  static String musiclisturl="http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=";
     public  static String musiclisturl1="http://c.y.qq.com/soso/fcgi-bin/client_search_cp?new_json=1&p=1&n=60&w=";
