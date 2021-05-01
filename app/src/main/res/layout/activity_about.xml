@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/img_logo" />
 
             <View
-                android:id="@+id/divider_light_first"
+                android:id="@+id/divider_view"
                 android:layout_width="0dp"
                 android:layout_height="1px"
                 android:layout_marginTop="16dp"
@@ -52,7 +52,7 @@
                 android:textColor="@color/text_color"
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider_light_first" />
+                app:layout_constraintTop_toBottomOf="@+id/divider_view" />
 
 
             <TextView

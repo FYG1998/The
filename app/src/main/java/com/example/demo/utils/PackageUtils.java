@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 /**
  * 描述：应用包相关的工具类
  *
- * @author CoderPig on 2018/02/28 18:01.
+ * @author Fyg add 2021.2
  */
 
 public class PackageUtils {

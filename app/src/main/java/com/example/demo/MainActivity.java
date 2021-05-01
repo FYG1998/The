@@ -1,37 +1,24 @@
 package com.example.demo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.mCallback;
 import com.example.demo.tools.mOKHttp;
-import com.example.demo.tools.spInfo;
+import com.example.demo.model.spInfo;
 import com.example.demo.utils.SPDataUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import static com.example.demo.tools.URLinfo.setImgurl;
@@ -63,8 +50,7 @@ public class MainActivity extends BaseActivity {
         getAsync1();
 
         spInfo info = SPDataUtils.getspInfo(context);
-        final int s = Integer.parseInt(info.getUpass());
-        Log.e("ttyy", String.valueOf(s));
+        final int s = Integer.parseInt(info.getTime());
 
         //创建子线程 延续
         Thread myThread = new Thread() {

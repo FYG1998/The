@@ -7,9 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Outline;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
@@ -22,12 +20,9 @@ import android.view.ViewOutlineProvider;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 import com.bumptech.glide.Glide;
 import com.example.demo.R;
 import com.example.demo.activity.VideoActivity;
@@ -35,18 +30,12 @@ import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.bitmap;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.tencent.smtt.sdk.QbSdk;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
-
-
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +43,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,7 +100,7 @@ public class oneFragment extends Fragment {
         //设置轮播间隔时间
         banner.setDelayTime(3000);
         //设置图片加载器
-        banner.setImageLoader(new fiveFragment.GlideImageLoader());
+        banner.setImageLoader(new oneFragment.GlideImageLoader());
         //设置指示器的位置，小点点，居中显示
         banner.setIndicatorGravity(BannerConfig.CENTER);
         //设置图片集合
@@ -144,7 +132,7 @@ public class oneFragment extends Fragment {
 
 
 
-    public class GlideImageLoader extends ImageLoader {
+    public  class GlideImageLoader extends ImageLoader {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
             //Glide 加载图片简单用法

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.SettingSavePage">
+    tools:context=".activity.TestFactory">
 
 
     <ImageView
@@ -26,46 +26,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:text="SharedPreferences" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="SharedPreferences Test Save Path"
-            android:textColor="#000000"/>
+            android:text="Hsl Communication" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
-            android:text="导播图Time/s" />
-        <EditText
-            android:id="@+id/edpath"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:singleLine="true" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+            android:text="Hsl Mqtt Service 测试" />
 
         <Button
-            android:id="@+id/btn_save"
-            android:layout_width="wrap_content"
+            android:id="@+id/hslmqtt"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_btn"
-            android:text="保存设置" />
-
-
-
+            android:text="进入" />
     </LinearLayout>
 
 </LinearLayout>

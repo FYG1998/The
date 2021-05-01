@@ -27,6 +27,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation files('libs\\tbs_sdk_thirdapp_v4.3.0.39_43939_sharewithdownloadwithfile_withoutGame_obfs_20200713_223411.jar')
+    implementation files('libs\\HslCommunication-2.0.2.jar')
+    implementation files('libs\\HslCommunication-2.0.2-javadoc.jar')
+
+
+
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -55,5 +60,6 @@ dependencies {
 
     //Banner轮播图
     implementation 'com.youth.banner:banner:1.4.10'
+
 
 }

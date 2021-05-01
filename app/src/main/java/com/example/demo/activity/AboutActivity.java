@@ -8,7 +8,7 @@ import com.example.demo.R;
 import com.example.demo.utils.PackageUtils;
 
 /**
- * About page
+ * 关于app
  */
 
 public class AboutActivity extends BaseActivityTwo {
@@ -23,11 +23,18 @@ public class AboutActivity extends BaseActivityTwo {
         setContentView(R.layout.activity_about);
         context = this;
 
+        initView();
+        initData();
+    }
+
+    private void initView() {
+
         setTitle("Aboute");  // BaseActivityTwo 定义的 标题名称
         setBackBtn(); //继承BaseActivityTwo里定义的 返回事件
-
-
         tv_app_version = findViewById(R.id.tv_app_version);
+    }
+
+    private void initData() {
 
         String version = PackageUtils.packageName(context);
         if(version != null) {
@@ -35,16 +42,6 @@ public class AboutActivity extends BaseActivityTwo {
             tv_app_version.setText(msg);
         }
     }
-
-    private void initData() {
-
-    }
-    private void initView() {
-
-    }
-
-
-
 
 
 }

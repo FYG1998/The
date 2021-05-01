@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mfragment.fiveFragment">
-
 
 
     <ScrollView
@@ -25,18 +24,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
-
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-
-            />
-
-
 
         <LinearLayout
 
@@ -157,7 +144,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100+"
+                        android:text="99+"
                         android:textColor="#000000" />
 
                     <TextView
@@ -170,13 +157,6 @@
             </LinearLayout>
         </LinearLayout>
 
-                   <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="#EEEEEE" />
-
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -185,7 +165,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/blame"
+                android:id="@+id/aboutapp"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingLeft="30dp"
@@ -193,7 +173,7 @@
                 android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_collect"
+                    android:id="@+id/img_aboutapp"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
@@ -204,8 +184,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_collect"
-                    android:text="免费声明"
+                    android:layout_toRightOf="@+id/img_aboutapp"
+                    android:text="关于App"
                     android:textColor="#000000" />
 
                 <ImageView
@@ -215,7 +195,6 @@
                     android:layout_centerVertical="true"
                     android:src="@mipmap/icon_left_arrow" />
             </RelativeLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -224,14 +203,15 @@
                 android:background="#EEEEEE" />
 
             <RelativeLayout
-                android:id="@+id/h"
+                android:id="@+id/de"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingLeft="30dp"
-                android:paddingRight="30dp">
+                android:paddingRight="30dp"
+                android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_skin"
+                    android:id="@+id/img_de"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
@@ -242,8 +222,45 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_skin"
-                    android:text="mSharedPreferences"
+                    android:layout_toRightOf="@+id/img_de"
+                    android:text="Text"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_left_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@color/heavy_divider"/>
+
+            <RelativeLayout
+                android:id="@+id/webbrowser"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:background="@drawable/btn_choose2">
+
+                <ImageView
+                    android:id="@+id/img_webbrowser"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/liulanqi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/img_webbrowser"
+                    android:text="Browser"
                     android:textColor="#000000" />
 
                 <ImageView
@@ -260,47 +277,6 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#EEEEEE" />
-
-            <RelativeLayout
-                android:id="@+id/exit_login"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:background="@drawable/btn_choose2">
-
-                <ImageView
-                    android:id="@+id/img_logout"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/about" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logout"
-                    android:text="退出登录"
-                    android:textColor="#ffff0000" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_left_arrow" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="#EEEEEE" />
-
-
             <RelativeLayout
                 android:id="@+id/tbsfile"
                 android:layout_width="match_parent"
@@ -310,18 +286,18 @@
                 android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_logoutfile"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:id="@+id/img_tbsfile"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/wenjian" />
+                    android:src="@mipmap/wenjianjia" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logoutfile"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toRightOf="@+id/img_tbsfile"
                     android:text="TBS File"
                     android:textColor="#000000" />
 
@@ -340,7 +316,7 @@
                 android:layout_marginRight="15dp"
                 android:background="#EEEEEE" />
             <RelativeLayout
-                android:id="@+id/qqtz"
+                android:id="@+id/qqgropu"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingLeft="30dp"
@@ -348,7 +324,7 @@
                 android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_logoutfile1"
+                    android:id="@+id/img_qqgropu"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
@@ -359,7 +335,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logoutfile1"
+                    android:layout_toRightOf="@+id/img_qqgropu"
                     android:text="加入反馈QQ群"
                     android:textColor="#000000" />
 
@@ -371,6 +347,43 @@
                     android:src="@mipmap/icon_left_arrow" />
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#EEEEEE" />
+            <RelativeLayout
+                android:id="@+id/factorymodel"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:background="@drawable/btn_choose2">
+
+                <ImageView
+                    android:id="@+id/img_factorymodel"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/android" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/img_factorymodel"
+                    android:text="Factory Model"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_left_arrow" />
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -379,7 +392,7 @@
                 android:layout_marginRight="15dp"
                 android:background="#EEEEEE" />
             <RelativeLayout
-                android:id="@+id/path"
+                android:id="@+id/downloadpath"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingLeft="30dp"
@@ -387,7 +400,7 @@
                 android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_logoutfile2"
+                    android:id="@+id/img_downloadpath"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
@@ -398,7 +411,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logoutfile2"
+                    android:layout_toRightOf="@+id/img_downloadpath"
                     android:text="下载路径"
                     android:textColor="#000000" />
 
@@ -410,54 +423,12 @@
                     android:src="@mipmap/icon_left_arrow" />
             </RelativeLayout>
 
-
             <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="#EEEEEE" />
-            <RelativeLayout
-                android:id="@+id/webBrowser"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:background="@drawable/btn_choose2">
-
-                <ImageView
-                    android:id="@+id/img_logoutfile3"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/liulanqi" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logoutfile3"
-                    android:text="Browser"
-                    android:textColor="#000000" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/icon_left_arrow" />
-            </RelativeLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@color/heavy_divider"/>
 
 
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="#EEEEEE" />
             <RelativeLayout
                 android:id="@+id/Setting"
                 android:layout_width="match_parent"
@@ -467,7 +438,7 @@
                 android:background="@drawable/btn_choose2">
 
                 <ImageView
-                    android:id="@+id/img_logoutfile4"
+                    android:id="@+id/img_setting"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_centerVertical="true"
@@ -478,7 +449,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_logoutfile4"
+                    android:layout_toRightOf="@+id/img_setting"
                     android:text="settting"
                     android:textColor="#000000" />
 
@@ -491,6 +462,43 @@
             </RelativeLayout>
 
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#EEEEEE" />
+            <RelativeLayout
+                android:id="@+id/exitlogin"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:background="@drawable/btn_choose2">
+
+                <ImageView
+                    android:id="@+id/img_exitlogin"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/about" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/img_exitlogin"
+                    android:text="退出登录"
+                    android:textColor="#ffff0000" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_left_arrow" />
+            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>

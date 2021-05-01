@@ -1,23 +1,23 @@
-package com.example.demo.tools;
+package com.example.demo.model;
 
 /**
  *  SharedPrefenrences 实体类
  */
 
 public class spInfo {
-    private String uname;
-    private String upass;
+
 
 
     public spInfo() {
 
     }
 
+
     public spInfo(String uname, String upass) {
         this.uname = uname;
         this.upass = upass;
     }
-
+    private String uname;
     public String getUname() {
         return uname;
     }
@@ -26,6 +26,7 @@ public class spInfo {
         this.uname = uname;
     }
 
+    private String upass;
     public String getUpass() {
         return upass;
     }
@@ -36,9 +37,24 @@ public class spInfo {
 
 
 
-    //-------------------------------------------
+    //-----------------导播图time
+    private String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+
+    //------------------switch 开关
+
 
     private Boolean mboolean;
+
+
     public Boolean getMboolean() {
         return mboolean;
     }
@@ -47,9 +63,8 @@ public class spInfo {
         this.mboolean = mboolean;
     }
 
-    public spInfo(Boolean mboolean){
-        this.mboolean=mboolean;
-    }
+
+
 
 
 }

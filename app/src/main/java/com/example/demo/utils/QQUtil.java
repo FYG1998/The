@@ -1,4 +1,4 @@
-package com.example.demo.tools;
+package com.example.demo.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,12 +6,11 @@ import android.net.Uri;
 
 
 public class QQUtil {
-    /****************
-     *
+    /*
      * 由官网生成 :https://qun.qq.com/join.html
      * @param key 由官网生成的key
      * @return 返回true表示呼起手Q成功，返回false表示呼起失败
-     ******************/
+   */
     public static boolean joinQQGroup(String key, Context context) {
         Intent intent = new Intent();
         intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26jump_from%3Dwebapi%26k%3D" + key));

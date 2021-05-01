@@ -2,11 +2,6 @@
     <string name="app_name">The</string>
 
 
-
-
-
-
-
     <!--关于String -->
     <string name="app_version">Version %1$s</string>
     <string name="about_App">关于App</string>
@@ -51,14 +46,6 @@
         \n com.r0adkll:slidableactivity:2.1.0
         \n https://x5.tencent.com/
     </string>
-
-
-
-
-
-
-
-
 
 
     <!--设置相关-->

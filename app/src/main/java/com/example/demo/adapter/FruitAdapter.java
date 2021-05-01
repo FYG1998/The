@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo.R;
-import com.example.demo.activity.PictureDetailActivity;
+import com.example.demo.activity.PictureDetail;
 import com.example.demo.tools.Fruit;
 import java.util.List;
 import androidx.annotation.NonNull;
@@ -65,7 +65,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             fruitImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, PictureDetailActivity.class);
+                    Intent intent = new Intent(mContext, PictureDetail.class);
                     intent.putExtra("pic_url", data.getImageId());
                     mContext.startActivity(intent);
                 }

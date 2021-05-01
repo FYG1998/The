@@ -7,7 +7,7 @@ import com.example.demo.BaseActivity;
 import com.example.demo.R;
 import com.r0adkll.slidr.Slidr;
 
-public class PictureDetailActivity extends BaseActivity {
+public class PictureDetail extends BaseActivity {
 
 
     private ImageView img_picture;
@@ -19,20 +19,20 @@ public class PictureDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_picturedetail);
 
         Slidr.attach(this);  //右滑框架
-
-        initData();
         initView();
+        initData();
+
     }
 
     private void initData() {
         picUrl = getIntent().getStringExtra("pic_url");
+        if(picUrl != null) {
+            Glide.with(this).load(picUrl).into(img_picture);
+        }
     }
 
     private void initView() {
         img_picture = findViewById(R.id.img_picture);
-        if(picUrl != null) {
-            Glide.with(this).load(picUrl).into(img_picture);
-        }
     }
 
 

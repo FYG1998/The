@@ -17,6 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!--
+    TabLayout 顶部 ViewPager+FragmentPagerAdapter实现Tab
+    -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablelayout_img"
         android:layout_width="match_parent"
@@ -31,15 +34,9 @@
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="#474747" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablelayout_img" />
-
+    <!--
+    viewPage 切换页
+    -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/t_page"
         android:layout_width="wrap_content"
@@ -47,7 +44,7 @@
         android:background="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintTop_toBottomOf="@+id/tablelayout_img"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 
