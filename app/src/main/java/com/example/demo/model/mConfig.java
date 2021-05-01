@@ -1,4 +1,4 @@
-package com.example.demo.tools;
+package com.example.demo.model;
 
 import java.util.List;
 import java.util.Map;

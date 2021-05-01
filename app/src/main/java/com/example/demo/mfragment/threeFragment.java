@@ -2,22 +2,16 @@ package com.example.demo.mfragment;
 
 import android.app.Dialog;
 import android.app.DownloadManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
 import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,30 +30,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.demo.BaseActivity;
 import com.example.demo.R;
 import com.example.demo.activity.VideoPlayActivity;
-import com.example.demo.adapter.MvAdapter;
-import com.example.demo.adapter.mAdapter;
-import com.example.demo.tools.SongData;
+import com.example.demo.adapter.MvListBaseAdapter;
 import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.mCallback;
-import com.example.demo.tools.mConfig;
+import com.example.demo.model.mConfig;
 import com.example.demo.tools.mOKHttp;
-import com.example.demo.tools.playUrl;
-
+import com.example.demo.utils.playUrl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +57,7 @@ import static com.example.demo.tools.mFileTool.saveIO;
 
 public class threeFragment extends Fragment {
 
-    protected View mRootView;
+    protected View view;
     private TextView textView;
     private EditText editText;
     private ImageButton imageButton;
@@ -84,27 +69,27 @@ public class threeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView= inflater.inflate(R.layout.fragment_three, container, false);
+        view= inflater.inflate(R.layout.fragment_three, container, false);
 
-        initView(mRootView);
+        initView(view);
         mImg(); //down img
         initBtnListenser();
 
         if(URLinfo.mTextnotice!="My Text Notice"){ textView.setText(URLinfo.getmTextnotice()); } //跑马灯判断
         mtv_List2("我们不一样");
 
-        return mRootView;
+        return view;
     }
 
 
     //在Fragment中实例化控件
-    void initView(View mRootView){
-        editText=(EditText)mRootView.findViewById(R.id.et_search);
-        imageButton=(ImageButton) mRootView.findViewById(R.id.go);
-        textView=(TextView) mRootView.findViewById(R.id.text_notice);
-        mListView=(ListView)mRootView.findViewById(R.id.fragment_list);//实例化listview 组件
-        imageView_cancel = (ImageView) mRootView.findViewById(R.id.cancel);
-        but_notice = (RelativeLayout)mRootView.findViewById(R.id.but_notice);
+    void initView(View view){
+        editText=(EditText)view.findViewById(R.id.et_search);
+        imageButton=(ImageButton) view.findViewById(R.id.go);
+        textView=(TextView) view.findViewById(R.id.text_notice);
+        mListView=(ListView)view.findViewById(R.id.fragment_list);//实例化listview 组件
+        imageView_cancel = (ImageView) view.findViewById(R.id.cancel);
+        but_notice = (RelativeLayout)view.findViewById(R.id.but_notice);
 
     }
 
@@ -147,7 +132,7 @@ public class threeFragment extends Fragment {
 
 
                 List<Map<String, Object>> list; //定义list
-                list = MvAdapter.getLits();  //接受数据
+                list = MvListBaseAdapter.getLits();  //接受数据
                 Map map = list.get(position);
                 String mvid = (String) map.get("mvmid");
                 String name = (String) map.get("name");
@@ -252,7 +237,7 @@ public class threeFragment extends Fragment {
 
     }
 
-    //列表list
+   /* //列表list
     public void mlist(){
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -324,7 +309,7 @@ public class threeFragment extends Fragment {
             }
         });
 
-    }
+    }*/
 
 
     //mv download
@@ -489,7 +474,7 @@ public class threeFragment extends Fragment {
                                 Log.e("map", list.toString());
 
 
-                                MvAdapter adapter = new MvAdapter(getContext());
+                                MvListBaseAdapter adapter = new MvListBaseAdapter(getContext());
                                 adapter.setList(list);
 
                                         /*SimpleAdapter adapter = new SimpleAdapter(
@@ -582,7 +567,7 @@ public class threeFragment extends Fragment {
                                 Log.e("map", list.toString());
 
 
-                                MvAdapter adapter = new MvAdapter(getContext());
+                                MvListBaseAdapter adapter = new MvListBaseAdapter(getContext());
                                 adapter.setList(list);
 
                                         /*SimpleAdapter adapter = new SimpleAdapter(

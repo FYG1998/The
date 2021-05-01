@@ -1,8 +1,11 @@
+/*
 package com.example.demo.tools;
 
+*/
 /**
  * Created by
- */
+ *//*
+
 
 public class SongData {
     private String Songname;
@@ -115,3 +118,4 @@ public class SongData {
         this.media_mid = media_mid;
     }
 }
+*/

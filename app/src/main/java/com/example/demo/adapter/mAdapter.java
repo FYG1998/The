@@ -1,3 +1,4 @@
+/*
 package com.example.demo.adapter;
 
 import android.content.Context;
@@ -12,7 +13,11 @@ import com.example.demo.tools.SongData;
 import java.util.List;
 import java.util.Map;
 
-//自定义的list 图文适配器
+*/
+/**
+ * BaseAdapter
+ * 自定义的list 图文适配器
+ *//*
 
 
 
@@ -65,3 +70,4 @@ public class mAdapter extends BaseAdapter {
         return convertView;
     }
 }
+*/

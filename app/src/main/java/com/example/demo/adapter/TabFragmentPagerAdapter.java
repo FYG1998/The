@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private final String[] mTitles = {"page1"};  // Tab 集合
+    private final String[] mTitles = {"Tab"};  // Tab 集合
 
     public TabFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

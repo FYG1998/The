@@ -1,5 +1,5 @@
 
-package com.example.demo.tools;
+package com.example.demo.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,22 +14,29 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class i extends androidx.appcompat.widget.AppCompatImageView {
+
+/**
+ * 圆角图片
+ */
+
+
+
+
+public class RoundPic extends androidx.appcompat.widget.AppCompatImageView {
     private Paint mPaint;
     private int mRadius;
     private float mScale;
 
-    public i(Context context) {
+    public RoundPic(Context context) {
         super(context);
     }
 
-    public i(Context context, AttributeSet attributeSet) {
+    public RoundPic(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }
 
-    public i(Context context, AttributeSet attributeSet, int n2) {
+    public RoundPic(Context context, AttributeSet attributeSet, int n2) {
         super(context, attributeSet, n2);
     }
 

@@ -135,7 +135,7 @@
 
       <!--  android:focusableInTouchMode="false"
       如果设置该属性为false，则无法将焦点移到当前控件-->
-        <com.example.demo.tools.TextNotice
+        <com.example.demo.utils.TextNotice
             android:id="@+id/text_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

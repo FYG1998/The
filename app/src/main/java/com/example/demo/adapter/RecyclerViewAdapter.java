@@ -15,12 +15,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> {
+/**
+ * RecyclerView 布局适配器
+ */
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private List<Fruit> mFruitList;
     private static Context mContext;
 
-    public FruitAdapter(Context mContext,  List<Fruit> fruitList) {
+    public RecyclerViewAdapter(Context mContext, List<Fruit> fruitList) {
         this.mContext = mContext;
         mFruitList = fruitList;
     }
@@ -41,12 +45,9 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
     }
 
-
     public int getItemCount() {
         return mFruitList.size();
     }
-
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView  fruitImage;
@@ -56,8 +57,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
 
         }
-
-
 
         void bind(final Fruit data) {
          //  Glide.with(mContext).load("http://ww1.sinaimg.cn/large/610dc034jw1f6e1f1qmg3j20u00u0djp.jpg").apply(new RequestOptions().centerCrop()).into(fruitImage);

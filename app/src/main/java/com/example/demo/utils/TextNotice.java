@@ -1,4 +1,4 @@
-package com.example.demo.tools;
+package com.example.demo.utils;
 
 
 import android.annotation.SuppressLint;
@@ -6,9 +6,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-//自定义的TextNotice /*com.example.demo.TextNotice*/ 实现textview跑马灯效果
-//参考博客：  https://blog.csdn.net/qq_27061049/article/details/86501026
-//xml 引用 即可   <com.example.demo.tools.TextNotice
+/**
+ *自定义的TextNotice com.example.demo.TextNotice实现textview跑马灯效果
+ * 参考博客：  https://blog.csdn.net/qq_27061049/article/details/86501026xml
+ * 引用 即可   <com.example.demo.utils.TextNotice
+ *
+ */
+
 
 @SuppressLint("AppCompatCustomView")
 public class TextNotice extends TextView {
@@ -43,7 +47,7 @@ public class TextNotice extends TextView {
 
 
 //  XML 的引用
-/*     <com.example.demo.tools.TextNotice
+/*    <com.example.demo.utils.TextNotice
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:id="@+id/text_id"

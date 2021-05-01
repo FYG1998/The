@@ -1,6 +1,11 @@
-package com.example.demo.tools;
+package com.example.demo.utils;
 
 import android.util.Log;
+
+import com.example.demo.tools.mCallback;
+import com.example.demo.model.mConfig;
+import com.example.demo.tools.mOKHttp;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,11 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 拼接地址获取腾讯qq音乐 mv 地址
+ */
+
+
 public class playUrl {
 
     public static void play( final String id)
     {
-
         String a = "http://u.y.qq.com/cgi-bin/musicu.fcg?g_tk=5381&uin=2501256238&ct=23&cv=0&format=json&data={\"getMVInfo\":{\"module\":\"video.VideoDataServer\",\"method\":\"get_video_info_batch\",\"param\":{\"vidlist\":[\"";
         String b = "\"],\"required\":[\"vid\",\"sid\",\"gmid\",\"type\",\"name\",\"cover_pic\",\"video_switch\",\"msg\"],\"from\":\"h5.mvplay\"}},\"getMVUrl\":{\"module\":\"gosrf.Stream.MvUrlProxy\",\"method\":\"GetMvUrls\",\"param\":{\"vids\":[\"";
         String c = "\"],\"from\":\"h5.mvplay\"},\"request_typet\":10001}}";

@@ -13,10 +13,14 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Map;
 
-//自定义的list 适配器
 
+/**
+ * BaseAdapter 实现简单的List的设配器
+ *
+ * //自定义的list 适配器
+ */
 
-public class MvAdapter extends BaseAdapter {
+public class MvListBaseAdapter extends BaseAdapter {
 
     static List<Map<String, Object>> list;
     LayoutInflater inflater;
@@ -24,7 +28,7 @@ public class MvAdapter extends BaseAdapter {
 
 
     //上下文
-    public MvAdapter(Context context){
+    public MvListBaseAdapter(Context context){
         this.inflater = LayoutInflater.from(context);
         this.context=context;
 

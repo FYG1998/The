@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.demo.BaseActivity;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
-import com.example.demo.tools.mConfig;
+import com.example.demo.model.mConfig;
 import com.tencent.smtt.sdk.WebChromeClient;
 import java.util.List;
 import java.util.Map;

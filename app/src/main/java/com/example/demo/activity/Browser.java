@@ -238,7 +238,7 @@ public class Browser extends Activity {
                                                         int which) {
                                         Toast.makeText(
                                                 Browser.this,
-                                                "fake message: i'll download...",
+                                                "fake message: ii'll download...",
                                                 1000).show();
                                     }
                                 })

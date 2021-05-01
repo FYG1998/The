@@ -1,37 +1,33 @@
 package com.example.demo.mfragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.demo.R;
-import com.example.demo.adapter.FruitAdapter;
-import com.example.demo.adapter.MvAdapter;
+import com.example.demo.adapter.RecyclerViewAdapter;
 import com.example.demo.tools.Fruit;
-import com.example.demo.tools.URLinfo;
 import com.example.demo.tools.mCallback;
 import com.example.demo.tools.mOKHttp;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ * 可以通过LayoutManager实现各种不同的排列方式的布局
+ */
+
 //https://www.jianshu.com/p/b4bb52cdbeb7    RecyclerView
 
 public class ImgFragment extends Fragment {
-
 
     private RecyclerView recyclerView;
     private List<Fruit> fruitList = new ArrayList<>();
@@ -50,27 +46,20 @@ public class ImgFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_img, container, false);
-        inutView(view);
+
+        recyclerView = view.findViewById(R.id.fragment_img_imgid);
+        // initFruits();
+
+        imglist(200,3);
         return  view;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-       // initFruits();
-
-        imglist(200,4);
-
-
-
-    }
-
-    private void inutView(View view) {
-        recyclerView = view.findViewById(R.id.fragment_img_imgid);
-    }
-
-
+    /**
+     *  获取数据
+     * @param count
+     * @param page
+     */
     public  void imglist(int count,int page){
 
         final String misuelist= "http://gank.io/api/data/福利/" + count + "/" + "/" +page;
@@ -82,16 +71,12 @@ public class ImgFragment extends Fragment {
                     @Override
                     public void run() {
 
-
                         String jsondta = res;
-
 
                         if(jsondta!=null){
                         try {
                             JSONObject json = new JSONObject(jsondta);
                             JSONArray json_list = json.getJSONArray("results");
-
-
 
                             for (int i = 0; i < json_list.length(); i++) {
 
@@ -99,14 +84,12 @@ public class ImgFragment extends Fragment {
                                 JSONObject json_listobj = json_list.getJSONObject(i);
                                 String json_img_url = json_listobj.getString("url");
 
-
-
                                 fruitList.add(new Fruit(json_img_url) );
                             }
 
                             GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
                             recyclerView.setLayoutManager(layoutManager);
-                            FruitAdapter adapter = new FruitAdapter(getActivity(),fruitList);
+                            RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),fruitList);
                             recyclerView.setAdapter(adapter);
 
 
@@ -114,15 +97,7 @@ public class ImgFragment extends Fragment {
                         catch (JSONException e) { e.printStackTrace(); }
 
 
-
                     }
-
-
-
-
-
-
-
 
                     }
                 });
