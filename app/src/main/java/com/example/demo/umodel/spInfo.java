@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.umodel;
 
 /**
  *  SharedPrefenrences 实体类

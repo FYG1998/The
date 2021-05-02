@@ -1,4 +1,3 @@
-
 package com.example.demo.utils;
 
 import android.annotation.SuppressLint;
@@ -15,13 +14,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
-
 /**
  * 圆角图片
  */
-
-
-
 
 public class RoundPic extends androidx.appcompat.widget.AppCompatImageView {
     private Paint mPaint;

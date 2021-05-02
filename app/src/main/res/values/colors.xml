@@ -2,11 +2,8 @@
 <resources>
 
     <!--公共color-->
-    <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
-
-
-
+    <color name="white">#FFFFFF</color>
 
 
 <!--   About page color    -->
@@ -16,6 +13,13 @@
 
 
 <!--   //////////    -->
+    <color name="style_binakuang_blue">#03A9F4</color>
+    <color name="style_binakuang_white">#ffffff</color>
+
+
+
+
+
 
     <color name="teal_200">#FF03DAC5</color>
 
@@ -28,13 +32,13 @@
     <color name="spinner_bg">#333244</color>
 
     <color name="colorAccent">#03A9F4</color>
-    <color name="sourceColor">#03A9F4</color>
+
     <color name="subDecoration">#d6151515</color>
     <color name="textColor">#be101010</color>
     <color name="downloadColor">#1A7BAC</color>
     <color name="addFavorite">#d93c5b</color>
     <color name="red">#d93c5b</color>
-    <color name="textWhite">#ffffff</color>
+
     <color name="grey">#99CCCCCC</color>
     <color name="textBlack">#E21F1F1F</color>
     <color name="textBlack_light">#E2313131</color>

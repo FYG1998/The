@@ -1,4 +1,4 @@
-package com.example.demo.tools;
+package com.example.demo.umodel;
 
 public class URLinfo {
 
@@ -14,7 +14,6 @@ public class URLinfo {
 
 
     public  static String mTextnotice=" My Text Notice";//公告语
-
 
 
     //region Notice 获取

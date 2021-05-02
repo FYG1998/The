@@ -57,14 +57,14 @@
             android:id="@+id/nuttonsend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_btn"
+            android:background="@drawable/style_fill_blue"
             android:text="sent"/>
 
         <Button
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_btn"
+            android:background="@drawable/style_fill_blue"
             android:text="关闭连接"/>
 
     </LinearLayout>

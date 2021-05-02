@@ -6,7 +6,7 @@
     tools:context=".mfragment.ImgFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-           android:id="@+id/fragment_img_imgid"
+           android:id="@+id/fragment_recyclerview"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:background="@color/white" />

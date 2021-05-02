@@ -2,14 +2,12 @@ package com.example.demo.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.example.demo.model.spInfo;
-
+import com.example.demo.umodel.spInfo;
 
 /**
  * 2021/04/11
  * SharedPreferences 轻量级存储，保存一些Setting info 与 user token
  */
-
 
 public class SPDataUtils {
 

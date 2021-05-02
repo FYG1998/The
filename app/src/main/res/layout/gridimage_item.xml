@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardView_android"
@@ -12,7 +11,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/fruit_image"
+        android:id="@+id/GridImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"/>

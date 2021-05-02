@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo.R;
 import com.example.demo.activity.PictureDetail;
-import com.example.demo.tools.Fruit;
+import com.example.demo.umodel.ImgModel;
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,47 +21,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<Fruit> mFruitList;
+    private List<ImgModel> imglistmodel;
     private static Context mContext;
 
-    public RecyclerViewAdapter(Context mContext, List<Fruit> fruitList) {
+    public RecyclerViewAdapter(Context mContext, List<ImgModel> imglist) {
         this.mContext = mContext;
-        mFruitList = fruitList;
+        imglistmodel = imglist;
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
-    }
-
-    public void onBindViewHolder(ViewHolder holder, int position) {
-
-     /*   Fruit fruit = mFruitList.get(position);
-        holder.fruitImage.setImageResource(fruit.getImageId());*/
-        holder.bind(mFruitList.get(position));
-
-    }
-
-    public int getItemCount() {
-        return mFruitList.size();
-    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView  fruitImage;
+        ImageView  GridImageView;
 
         public ViewHolder(View view) {
             super(view);
-            fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+            GridImageView = (ImageView) view.findViewById(R.id.GridImage);
 
         }
 
-        void bind(final Fruit data) {
-         //  Glide.with(mContext).load("http://ww1.sinaimg.cn/large/610dc034jw1f6e1f1qmg3j20u00u0djp.jpg").apply(new RequestOptions().centerCrop()).into(fruitImage);
-            Glide.with(mContext).load(data.getImageId()).apply(new RequestOptions().centerCrop()).into(fruitImage);
-            fruitImage.setOnClickListener(new View.OnClickListener() {
+        void bind(final ImgModel data) {
+            // Glide.with(mContext).load("http://ww1.sinaimg.cn/large/610dc034jw1f6e1f1qmg3j20u00u0djp.jpg").apply(new RequestOptions().centerCrop()).into(GridImage);
+            Glide.with(mContext).load(data.getImageId()).apply(new RequestOptions().centerCrop()).into(GridImageView);
+            GridImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, PictureDetail.class);
@@ -69,11 +50,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mContext.startActivity(intent);
                 }
             });
-
         }
+    }
 
+
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gridimage_item, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        holder.bind(imglistmodel.get(position));
 
     }
+
+    public int getItemCount() {
+        return imglistmodel.size();
+    }
+
+
 
 
 }

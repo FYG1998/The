@@ -74,7 +74,6 @@ public class BaseActivityTwo extends AppCompatActivity {
                 }
             });
         } else {
-           //Logger.t(TAG).e("back is null ,please check out");
         }
 
     }

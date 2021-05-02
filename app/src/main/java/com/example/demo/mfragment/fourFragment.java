@@ -10,6 +10,13 @@ import com.example.demo.R;
 import com.example.demo.adapter.TabFragmentPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+
+/**
+ *  原理 ：
+ *   碎片 fourFragment 图层上---->新建 TabFragment+viewpage 设配器  又在此图层 增加  ImgFragment RecyclerView 网格图层
+ *
+ */
+
 public class fourFragment extends Fragment {
 
     private TabLayout tabLayout;

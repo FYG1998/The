@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
-import com.example.demo.model.spInfo;
+import com.example.demo.umodel.spInfo;
 import com.example.demo.utils.SPDataUtils;
 
 public class SettingActivity extends BaseActivityTwo {

@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SettingActivity"
-    android:background="@color/textWhite">
-
-
-
+    android:background="#FFFFFF">
 
     <View
         android:id="@+id/divider_heavy_second1"
@@ -27,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
-        android:text="@string/just_load_in_wifi"
+        android:text="Switch"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider_heavy_second1" />
@@ -106,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="保存"
-        android:background="@drawable/shape_btn"
+        android:background="@drawable/style_fill_blue"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/divider_heavy_second3"
         app:layout_constraintEnd_toEndOf="parent"

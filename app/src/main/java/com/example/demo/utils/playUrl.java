@@ -2,9 +2,9 @@ package com.example.demo.utils;
 
 import android.util.Log;
 
-import com.example.demo.tools.mCallback;
-import com.example.demo.model.mConfig;
-import com.example.demo.tools.mOKHttp;
+import com.example.demo.umodel.mCallback;
+import com.example.demo.umodel.mConfig;
+import com.example.demo.umodel.mOKHttp;
 
 import org.json.JSONArray;
 import org.json.JSONException;

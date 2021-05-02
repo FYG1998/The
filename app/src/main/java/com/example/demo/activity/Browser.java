@@ -2,7 +2,6 @@ package com.example.demo.activity;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -32,7 +31,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.demo.BaseActivity;
+import com.example.demo.CoreFragment;
 import com.example.demo.R;
+import com.example.demo.mfragment.fiveFragment;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
@@ -63,20 +64,14 @@ public class Browser extends Activity {
     private EditText mUrl;
 
     private static final String mHomeUrl = "https://fyg1998.github.io/indextools.html";
-
     private static final String TAG = "SdkDemo";
     private static final int MAX_LENGTH = 14;
     private boolean mNeedTestPage = false;
-
     private final int disable = 120;
     private final int enable = 255;
-
     private ProgressBar mPageLoadingProgressBar = null;
-
     private ValueCallback<Uri> uploadFile;
-
     private URL mIntentUrl;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -435,7 +430,12 @@ public class Browser extends Activity {
         mExit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process.killProcess(Process.myPid());
+
+                //Process.killProcess(Process.myPid());  //杀掉进程
+
+               // 清除堆栈里所有的Activity
+                Intent intent = new Intent(Browser.this, CoreFragment.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }

@@ -26,8 +26,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.demo.R;
 import com.example.demo.activity.VideoActivity;
-import com.example.demo.tools.URLinfo;
-import com.example.demo.tools.bitmap;
+import com.example.demo.umodel.URLinfo;
+import com.example.demo.umodel.bitmap;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.youth.banner.Banner;
@@ -49,54 +49,55 @@ import java.util.List;
 
 public class oneFragment extends Fragment {
 
-     View mRootView;
-
-     Button button;
-     ImageView imageView;
-     String albummid ="http://ww4.sinaimg.cn/large/610dc034jw1f6ipaai7wgj20dw0kugp4.jpg";
-
-
+    private Button button;
+    private ImageView imageView;
     private EditText mUrl;
     private Button mGo;
-    private String api ="https://vip.bljiex.com/?v=";
     private TextView textView;
+    private FloatingActionButton fab;
+    private List images;
+    private Banner banner;
 
+
+    private String api ="https://vip.bljiex.com/?v=";
+    private String albummid ="http://ww4.sinaimg.cn/large/610dc034jw1f6ipaai7wgj20dw0kugp4.jpg";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.fragment_one, container, false);
 
-        mRootView =inflater.inflate(R.layout.fragment_one, container, false);
+        initView(view);
+        initData();
 
-        imageView=mRootView.findViewById(R.id.img);
-        button = mRootView.findViewById(R.id.buimg);
-        btimg();
+        return view;
+    }
 
+    private void initView(View view) {
 
-        mUrl =	mRootView.findViewById(R.id.editUrlone);
-        mGo = mRootView.findViewById(R.id.btnGo1);
-        textView = mRootView.findViewById(R.id.showtext);
-        initBtnListenser();
-
-
-        FloatingActionButton fab = mRootView.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-
-        List images = new ArrayList();
+        images = new ArrayList();
         images.add("http://kwimg2.kuwo.cn/star/upload/66/85/1575256374021_.jpg");
         images.add("http://kwimg2.kuwo.cn/star/upload/71/68/1575818166158_.jpg");
         images.add("http://kwimg1.kuwo.cn/star/upload/68/54/1575429173078_.jpg");
 
+        imageView=view.findViewById(R.id.img);
+        button = view.findViewById(R.id.buimg);
+        mUrl =	view.findViewById(R.id.editUrlone);
+        mGo = view.findViewById(R.id.btnGo1);
+        textView = view.findViewById(R.id.showtext);
+        fab = view.findViewById(R.id.fab);
+        banner = (Banner) view.findViewById(R.id.banner);
+    }
 
-        Banner banner = (Banner) mRootView.findViewById(R.id.banner);
+    private void initData() {
+        lunbotu();
+        btimg();
+        initBtnListenser();
+
+    }
+
+    private void lunbotu() {
         //设置轮播的动画效果,里面有很多种特效,可以都看看效果。
-        banner.setBannerAnimation(Transformer.CubeOut);
+        banner.setBannerAnimation(Transformer.Default);
         //设置轮播间隔时间
         banner.setDelayTime(3000);
         //设置图片加载器
@@ -107,29 +108,8 @@ public class oneFragment extends Fragment {
         banner.setImages(images);
         //banner设置方法全部调用完毕时最后调用
         banner.start();
-
-        //增加点击事件
-        banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int position) {
-                // Toast.makeText(MainActivity.this, "position"+position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        banner.setOutlineProvider(new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 30);
-            }
-        });
-
         banner.setClipToOutline(true);
-
-
-
-        return mRootView;
     }
-
 
 
     public  class GlideImageLoader extends ImageLoader {
@@ -143,6 +123,149 @@ public class oneFragment extends Fragment {
                     .into(imageView);
         }
     }
+
+
+    /**
+     *  按钮事件list
+     */
+    private void initBtnListenser()
+    {
+        // FloatingActionButton 浮动操作按钮 事件
+        fab.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(getContext(), "What is Action", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
+            }
+        });
+
+        //Banner  点击事件
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                 Toast.makeText(getContext(),"position"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Banner给任意view设置圆角outline.setRoundRect()方法实现
+        banner.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 30);
+            }
+        });
+
+
+        //
+        mGo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String url = api + mUrl.getText().toString();
+
+                //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667
+                Intent intent =new Intent(getActivity(), VideoActivity.class); //启动
+                intent.putExtra("url", url);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+        //setOnFocusChangeListener  焦点事件
+        mUrl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mGo.setVisibility(View.VISIBLE);
+
+
+                } else {
+                    mGo.setVisibility(View.GONE);
+
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+
+        });
+
+
+
+        //文本变化监听器addTextChangedListener中TextWatcher方法三个方法意义
+        mUrl.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                String url = null;
+
+                if (mUrl.getText() != null)
+                {
+                    url = mUrl.getText().toString();
+                }
+
+                if (url == null || mUrl.getText().toString().equalsIgnoreCase(""))
+                //equalsIgnoreCase() 方法用于将字符串与指定的对象比较，不考虑大小写。如果给定对象与字符串相等，则返回 true；否则返回 false。
+                {
+                    mGo.setText("请输入网址");
+                    mGo.setTextColor(0X6F0F0F0F);
+                }
+                else
+                {
+                    mGo.setText("进入");
+                    mGo.setTextColor(0X6F0000CD);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public void btimg()
@@ -189,8 +312,6 @@ public class oneFragment extends Fragment {
         });
     }
 
-
-
     public static void getalbummidim(String albummid, @NotNull final ImageView imageView) {
         //final String url = "http://y.gtimg.cn/music/photo_new/T002R90x90M000" + albummid + ".jpg?max_age=2592000";
         //Log.d("调试输出", url);
@@ -200,8 +321,6 @@ public class oneFragment extends Fragment {
 
     }
 
-
-    //公告栏文字  http 获取
 
     public void GetNetIp(String UrlPath) {
 
@@ -311,8 +430,6 @@ public class oneFragment extends Fragment {
     }
 
 
-
-
     /**
      * 线程 ;安卓中的网络访问要在子线程中访问 UI只能在主线程程中更新
      */
@@ -342,87 +459,6 @@ public class oneFragment extends Fragment {
 
 
 
-
-    private void initBtnListenser()
-    {
-        mGo.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                String url = api + mUrl.getText().toString();
-
-                //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667
-                Intent intent =new Intent(getActivity(), VideoActivity.class); //启动
-                intent.putExtra("url", url);
-                startActivity(intent);
-
-            }
-        });
-
-
-
-        //setOnFocusChangeListener  焦点事件
-        mUrl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    mGo.setVisibility(View.VISIBLE);
-
-
-                } else {
-                    mGo.setVisibility(View.GONE);
-
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-
-        });
-
-
-
-        //文本变化监听器addTextChangedListener中TextWatcher方法三个方法意义
-        mUrl.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
-                String url = null;
-
-                if (mUrl.getText() != null)
-                {
-                    url = mUrl.getText().toString();
-                }
-
-                if (url == null || mUrl.getText().toString().equalsIgnoreCase(""))
-                //equalsIgnoreCase() 方法用于将字符串与指定的对象比较，不考虑大小写。如果给定对象与字符串相等，则返回 true；否则返回 false。
-                {
-                    mGo.setText("请输入网址");
-                    mGo.setTextColor(0X6F0F0F0F);
-                }
-                else
-                {
-                    mGo.setText("进入");
-                    mGo.setTextColor(0X6F0000CD);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-
-
-    }
 
 
 

@@ -1,16 +1,16 @@
-package com.example.demo.tools;
+package com.example.demo.umodel;
 
-public class Fruit {
+public class ImgModel {
 
     private String imageId;
 
-
-    public Fruit( String imageId){
+    public ImgModel(String imageId){
         this.imageId = imageId;
-
     }
 
     public String getImageId() {
         return imageId;
     }
+
+
 }

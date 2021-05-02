@@ -1,4 +1,4 @@
-package com.example.demo.tools;
+package com.example.demo.umodel;
 
 public interface mCallback {
 

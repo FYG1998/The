@@ -1,22 +1,17 @@
 package com.example.demo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import devlight.io.library.ntb.NavigationTabBar;
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.example.demo.mfragment.fiveFragment;
@@ -24,14 +19,10 @@ import com.example.demo.mfragment.fourFragment;
 import com.example.demo.mfragment.oneFragment;
 import com.example.demo.mfragment.threeFragment;
 import com.example.demo.mfragment.twoFragment;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.List;
-import static com.example.demo.tools.mFileTool.mFileCreate;
+import static com.example.demo.umodel.mFileTool.mFileCreate;
 
 public class CoreFragment extends BaseActivity {
 
