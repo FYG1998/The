@@ -8,17 +8,23 @@
     <string name="about_app_detail">
          胡乱写的Android App,毕业以后工作主要是C# 语言方面的编程，学过Java，平时没事干就随便敲两行代码
         \n\n博客地址：https://fyg1998.github.io/
-        \n\n想起什么写什么，看见什么功能有意思也就模仿着写一写，
+        \n\n想起什么写什么，看见什么功能有意思就写的Demo试一试，
         \n欢迎加QQ群：728248900 进行反馈，
     </string>
     <string name="about_me">关于我</string>
     <string name="about_me_detail">
          学过java，会点C#，
-        \n
+   <!--     \n
         \n毕业后工作 MES 开发，这份工作历历在目，第一次去上班看见同事坐在电脑旁，看着黑底白字的代码感觉好厉害哦，脑海里浮现出这就是程序猿，码农，哈哈哈哈
         \n工作也挺艰辛的，真的什么都不会，什么逻辑啊，他们的叫法说法根本就听不懂，给个文档让自己看，确实也累
         \n工作中也认识了聊的开的同事，不会的问题我也经常请教他们，工作一年后感觉太封闭了，而且工资低，干腻了，种种原因最后就选择离开了
-        \nGitHub：https://github.com/FYG1998/
+        \nGitHub：https://github.com/FYG1998/-->
+
+        \n 这不是个 Bug——这是一个未注明的功能特征。(Anonymous)
+        \n没有需求或设计，编程就是一种将bug添加到一个空文本文件里的艺术。(Louis Srygley)
+        \n烂代码并不烂，只是被误解了。(Anonymous Code Behaviorist)
+        \n有两种方法能写出没有错误的程序；但只有第三种好用。(Alan J. Perlis)
+        \n小心上面代码中的 Bug；我只知道这些代码是正确的，但没有试过。(Donald Knuth)
 
     </string>
     <string name="Quotations">
@@ -54,6 +60,46 @@
          \n
          \n //Banner轮播图
          \n  com.youth.banner:banner:1.4.10
+
+    </string>
+
+
+    <string name="mqttclienttext">
+
+      \n      C# :
+     \n     private static MqttServer mqttServer;
+      \n    public static void mpush()
+       \n   {
+       \n       try
+       \n       {
+        \n          mqttServer = new MqttServer();
+        \n          mqttServer.OnClientApplicationMessageReceive += MqttServer_OnClientApplicationMessageReceive;
+      \n            mqttServer.ServerStart(9012);
+      \n        }
+      \n        catch (Exception ex)
+      \n        {
+ \n
+      \n        }
+ \n
+      \n    }
+ \n
+   \n       private static void MqttServer_OnClientApplicationMessageReceive(MqttSession session, MqttClientApplicationMessage message)
+        {
+ \n
+    \n          if (session.Protocol == "HUSL")
+    \n          {
+     \n             // 当前的会话是同步通信的情况
+     \n             if (message.Topic == "A")
+     \n             {
+   \n                   // 回传一条数据信息
+ \n                     mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes(json));
+    \n              }
+    \n              else {
+    \n                  mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes("error"));
+    \n              }
+
+    \n          }
+    \n      }
 
     </string>
 

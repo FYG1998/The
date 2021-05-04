@@ -27,16 +27,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.demo.CoreFragment;
 import com.example.demo.R;
-import com.example.demo.activity.VideoPlayActivity;
+import com.example.demo.activity.MvVideo;
 import com.example.demo.adapter.MvListBaseAdapter;
 import com.example.demo.umodel.URLinfo;
 import com.example.demo.umodel.mCallback;
@@ -55,7 +53,6 @@ import java.util.Map;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 import static com.example.demo.umodel.mFileTool.saveBit;
-import static com.example.demo.umodel.mFileTool.saveIO;
 import static com.example.demo.umodel.mFileTool.saveIO1;
 
 
@@ -95,7 +92,7 @@ public class threeFragment extends Fragment {
         mImg(); //下载图片
         initBtnListenser();
         if(URLinfo.mTextnotice!="My Text Notice"){ textView.setText(URLinfo.getmTextnotice()); } //跑马灯判断
-        mtv_List2("我们不一样");
+        mtv_List2("抖音");
     }
 
 
@@ -268,7 +265,7 @@ public class threeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(getActivity(),VideoPlayActivity.class); //启动
+                Intent intent =new Intent(getActivity(), MvVideo.class); //启动
                 startActivity(intent);
 
                 dialog.dismiss();
@@ -388,6 +385,7 @@ public class threeFragment extends Fragment {
 
     //获取mv list的方法
     public  void mtv_List2(String t){
+
         final String misuelist=URLinfo.musiclisturl1 + t + URLinfo.musiclisturl2;
 
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {

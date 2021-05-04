@@ -9,14 +9,18 @@ import com.example.demo.BaseActivity;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.example.demo.umodel.mConfig;
+import com.tencent.smtt.export.external.TbsCoreSettings;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebChromeClient;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 // MV　video
 
-public class VideoPlayActivity extends BaseActivity {
+public class MvVideo extends BaseActivity {
 
 
     private X5WebView x5webView;
@@ -24,10 +28,9 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_videoplay);
+        setContentView(R.layout.activity_mvvideo);
 
        // String videoUrl = "http://111.231.191.26/See%20You%20Again.mp4";  //测试视频地址
-
 
         list = mConfig.getMvurllist();
         int i = list.size()-1;
@@ -44,8 +47,8 @@ public class VideoPlayActivity extends BaseActivity {
 
         x5webView = findViewById(R.id.x5_webview);
 
-     /*      //横屏播放
-      if (x5webView.getX5WebViewExtension() != null) {
+           //横屏播放
+/*      if (x5webView.getX5WebViewExtension() != null) {
             //Toast.makeText(this, "开启X5全屏播放模式", Toast.LENGTH_LONG).show();
             Bundle data = new Bundle();
             data.putBoolean("standardFullScreen", false);// true表示标准全屏，false表示X5全屏；不设置默认false，
@@ -60,8 +63,6 @@ public class VideoPlayActivity extends BaseActivity {
             x5webView.setWebChromeClient(new WebChromeClient());
 
         }*/
-
-
 
 
         x5webView.loadUrl(videoUrl);

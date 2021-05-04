@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.VideoPlayActivity">
+    tools:context=".activity.MvVideo">
 
     <com.example.demo.tencent_tbs.X5WebView
         android:id="@+id/x5_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:hapticFeedbackEnabled="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

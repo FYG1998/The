@@ -35,23 +35,31 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         context =this;
+        ininView();
+        initData();
+    }
 
+    private void ininView() {
         imageView=findViewById(R.id.imageview);
         String imgPath = Environment.getExternalStorageDirectory().getPath() + "/A_Test/b";
-
         Bitmap bitmap = getLoacalBitmap(imgPath);   //从本地取图片(在cdcard中获取)
         if(fileIsExists(imgPath)){  //判断文件是否存在
             imageView .setImageBitmap(bitmap); //设置Bitmap
         }else {
             imageView.setImageDrawable( ResourcesCompat.getDrawable(getResources(), R.drawable.splash, null)); //不存在加载原先设置
         }
+    }
 
+    private void initData() {
         Guidechart(); // 获取导播图网址
         getAsync1();
+        msleep();
+    }
 
+    // 使程序休眠几秒后跳转
+    private void msleep(){
         spInfo info = SPDataUtils.getspInfo(context);
         final int s = Integer.parseInt(info.getTime());
-
         //创建子线程 延续
         Thread myThread = new Thread() {
             @Override
@@ -77,10 +85,7 @@ public class MainActivity extends BaseActivity {
                 finish();
             }
         }, 1000);*/
-
-
     }
-
 
     //获取导播图网址
     public  void Guidechart(){

@@ -24,7 +24,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:resizeableActivity="true" />
         <activity
-            android:name=".activity.VideoPlayActivity"
+            android:name=".activity.MvVideo"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:resizeableActivity="true" />
         <activity android:name=".activity.FileChooser" />
@@ -38,6 +38,7 @@
         <activity
             android:name=".CoreFragment"
             android:windowSoftInputMode="stateVisible|adjustPan" /> <!-- ......>>>>>>>>>>>>>>>>>>> -->
+
         <!-- ................xml  mpath.储存问题................... -->
         <provider
             android:name="androidx.core.content.FileProvider"

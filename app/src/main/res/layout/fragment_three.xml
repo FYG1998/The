@@ -34,11 +34,12 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">·
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="13dp"
-            android:src="@mipmap/search_love" />
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/search_love" />
         </RelativeLayout>
 
         <RelativeLayout

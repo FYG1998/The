@@ -7,10 +7,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
+
 import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
+import com.example.demo.tencent_tbs.X5WebView;
 import com.example.demo.umodel.spInfo;
 import com.example.demo.utils.SPDataUtils;
+
+import org.w3c.dom.Text;
 
 public class SettingActivity extends BaseActivityTwo {
 
@@ -19,6 +24,7 @@ public class SettingActivity extends BaseActivityTwo {
     private Switch mSwitch;
     private Button button1,button2,button3  ;
     private EditText editTexttime ;
+    private TextView texttbsstate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +50,16 @@ public class SettingActivity extends BaseActivityTwo {
         button3 = findViewById(R.id.button3);
         editTexttime = findViewById(R.id.editTexttime);
         editTexttime.setText(info.getTime()) ;
+        texttbsstate = findViewById(R.id.tbs_state);
+
 
     }
 
     private void initData() {
 
+        //初始化tbs state
+        X5WebView x5WebView = new X5WebView(this);
+        if(x5WebView.getX5WebViewExtension() != null){ texttbsstate.setText("ture");}
         initBtnListenser();
     }
 
