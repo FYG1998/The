@@ -14,12 +14,10 @@ import com.tencent.smtt.sdk.TbsReaderView;
 
 import java.io.File;
 
-// 视频video
 
 public class VideoActivity extends BaseActivityTwo {
 
 
-    // 测试 播放视频
 
     private X5WebView x5webView;
     private RelativeLayout rlRoot;

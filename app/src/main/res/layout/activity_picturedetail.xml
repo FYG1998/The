@@ -8,8 +8,6 @@
     android:background="@color/black"
     tools:context=".activity.PictureDetail">
 
-
-
     <ImageView
         android:id="@+id/img_picture"
         android:layout_width="match_parent"

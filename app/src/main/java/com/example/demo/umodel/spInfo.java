@@ -6,17 +6,14 @@ package com.example.demo.umodel;
 
 public class spInfo {
 
-
-
     public spInfo() {
-
     }
-
-
     public spInfo(String uname, String upass) {
         this.uname = uname;
         this.upass = upass;
     }
+
+
     private String uname;
     public String getUname() {
         return uname;
@@ -62,6 +59,42 @@ public class spInfo {
     public void setMboolean(Boolean mboolean) {
         this.mboolean = mboolean;
     }
+
+    //------------------hsl mqtt
+
+    public String getIpaddress() {
+        return ipaddress;
+    }
+
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getSendtext() {
+        return sendtext;
+    }
+
+    public void setSendtext(String sendtext) {
+        this.sendtext = sendtext;
+    }
+
+    private String ipaddress,port,topic,sendtext;
 
 
 

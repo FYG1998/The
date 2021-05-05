@@ -14,7 +14,7 @@
     <string name="about_me">关于我</string>
     <string name="about_me_detail">
          学过java，会点C#，
-   <!--     \n
+        <!--     \n
         \n毕业后工作 MES 开发，这份工作历历在目，第一次去上班看见同事坐在电脑旁，看着黑底白字的代码感觉好厉害哦，脑海里浮现出这就是程序猿，码农，哈哈哈哈
         \n工作也挺艰辛的，真的什么都不会，什么逻辑啊，他们的叫法说法根本就听不懂，给个文档让自己看，确实也累
         \n工作中也认识了聊的开的同事，不会的问题我也经常请教他们，工作一年后感觉太封闭了，而且工资低，干腻了，种种原因最后就选择离开了
@@ -65,46 +65,49 @@
 
 
     <string name="mqttclienttext">
-
-      \n      C# :
-     \n     private static MqttServer mqttServer;
-      \n    public static void mpush()
+       \n      C# 写法 :
+       \n     private static MqttServer mqttServer;
+       \n    public static void mpush()
        \n   {
        \n       try
        \n       {
         \n          mqttServer = new MqttServer();
         \n          mqttServer.OnClientApplicationMessageReceive += MqttServer_OnClientApplicationMessageReceive;
-      \n            mqttServer.ServerStart(9012);
-      \n        }
-      \n        catch (Exception ex)
-      \n        {
- \n
-      \n        }
- \n
-      \n    }
- \n
-   \n       private static void MqttServer_OnClientApplicationMessageReceive(MqttSession session, MqttClientApplicationMessage message)
+       \n            mqttServer.ServerStart(9012);
+       \n        }
+       \n        catch (Exception ex)
+       \n        {
+       \n
+       \n        }
+        \n
+        \n    }
+        \n
+        \n       private static void MqttServer_OnClientApplicationMessageReceive(MqttSession session, MqttClientApplicationMessage message)
         {
- \n
-    \n          if (session.Protocol == "HUSL")
-    \n          {
-     \n             // 当前的会话是同步通信的情况
-     \n             if (message.Topic == "A")
-     \n             {
-   \n                   // 回传一条数据信息
- \n                     mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes(json));
-    \n              }
-    \n              else {
-    \n                  mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes("error"));
-    \n              }
-
-    \n          }
-    \n      }
+        \n
+        \n          if (session.Protocol == "HUSL")
+        \n          {
+        \n             // 当前的会话是同步通信的情况
+        \n             if (message.Topic == "A")
+       \n             {
+       \n                   // 回传一条数据信息
+       \n                     mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes(json));
+       \n              }
+       \n              else {
+       \n                  mqttServer.PublishTopicPayload(session, "B", Encoding.UTF8.GetBytes("error"));
+       \n              }
+       \n          }
+       \n      }
 
     </string>
 
 
-
+   <!--网格-->
+    <string-array name="index_titles">
+        <item>浏览器demo</item>
+        <item>全屏播放</item>
+        <item>文件选择器</item>
+    </string-array>
 
 
 </resources>

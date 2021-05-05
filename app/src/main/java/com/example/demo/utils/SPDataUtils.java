@@ -11,6 +11,8 @@ import com.example.demo.umodel.spInfo;
 
 public class SPDataUtils {
 
+   private static boolean flag= false;
+
     /**
      *  save user password
      * @param context 上下文
@@ -21,14 +23,11 @@ public class SPDataUtils {
      */
     public static boolean saveUserInfo(Context context,String mfilename,String uname, String upass){
         String mFileName = mfilename;
-        boolean flag= false;
         SharedPreferences sp =context.getSharedPreferences(mFileName ,context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("uname",uname);
         editor.putString("upass",upass);
-
-        editor.commit();
-        flag =  true;
+        flag =  editor.commit();
         return  flag;
     }
 
@@ -42,12 +41,10 @@ public class SPDataUtils {
 
     public static boolean saveUserInfo(Context context,String mfilename, boolean b){
         String mFileName = mfilename;
-        boolean flag= false;
         SharedPreferences sp =context.getSharedPreferences(mFileName ,context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("switch",b);
-        editor.commit();
-        flag =  true;
+        flag =  editor.commit();
         return  flag;
     }
 
@@ -61,21 +58,34 @@ public class SPDataUtils {
      */
     public static boolean saveUserInfo(Context context, String mfilename, String time){
         String mFileName = mfilename;
-        boolean flag= false;
         SharedPreferences sp =context.getSharedPreferences(mFileName ,context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("daobotutime",time);
-
-        editor.commit();
-        flag =  true;
+        flag =  editor.commit(); //返回的Boolean值，是否保存成功
         return  flag;
     }
+
+    public static boolean saveHslClientMqtt(Context context ,String mfilename,String ipaddress ,String port,String topic,String send){
+
+        SharedPreferences sp =context.getSharedPreferences(mfilename ,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("ipaddress",ipaddress);
+        editor.putString("port",port);
+        editor.putString("topic",topic);
+        editor.putString("sendtext",send);
+        flag =  editor.commit(); //返回的Boolean值，是否保存成功
+        return flag;
+    }
+
+
+
 
     public static spInfo getspInfo(Context context) {
         spInfo info = null;
         SharedPreferences sp_user_password = context.getSharedPreferences("userinfo",context.MODE_PRIVATE);
         SharedPreferences sp_switch = context.getSharedPreferences("switch",context.MODE_PRIVATE);
         SharedPreferences sp_daobotutime = context.getSharedPreferences("mtime",context.MODE_PRIVATE);
+        SharedPreferences sp_hslmqtt = context.getSharedPreferences("savehslmqtt",context.MODE_PRIVATE);
 
 
         String uname = sp_user_password.getString("uname","admin");
@@ -83,11 +93,25 @@ public class SPDataUtils {
         Boolean b =sp_switch.getBoolean("switch",true);
         String time = sp_daobotutime.getString("daobotutime","2000");
 
+        String ipaddress = sp_hslmqtt.getString("ipaddress",null);
+        String port = sp_hslmqtt.getString("port",null);
+        String topic = sp_hslmqtt.getString("topic",null);
+        String sendtext = sp_hslmqtt.getString("sendtext",null);
+
+
+
         info = new spInfo();
         info.setUname(uname);
         info.setUpass(upass);
         info.setMboolean(b);
         info.setTime(time);
+
+        info.setIpaddress(ipaddress);
+        info.setPort(port);
+        info.setTopic(topic);
+        info.setSendtext(sendtext);
+
+
 
         return info;
     }

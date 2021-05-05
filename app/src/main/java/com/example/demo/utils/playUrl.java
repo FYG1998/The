@@ -67,7 +67,7 @@ public class playUrl {
                 }
 
 
-                Log.e("tttt",sites.toString());
+                Log.e("调试",sites.toString());
                 mConfig.setMvurllist(sites);
 
 

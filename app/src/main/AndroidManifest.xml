@@ -11,7 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.HslClientMqtt"></activity>
+        <activity android:name=".activity.PublicBrowse"></activity>
+        <activity
+            android:name=".aatest.TestHslClientMqttShow"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensor" />
+        <!--
+        android:screenOrientation="sensor"  根據物理方向傳感器確定方向. 取決於用戶手持的方向
+        android:configChanges="orientation|screenSize|keyboardHidden"  支持横竖屏
+        -->
+        <activity
+            android:name=".aatest.HslClientMqtt"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensor" />
         <activity android:name=".activity.TestFactory" />
         <activity android:name=".activity.PictureDetail" />
         <activity android:name=".activity.SettingActivity" />
@@ -38,7 +50,6 @@
         <activity
             android:name=".CoreFragment"
             android:windowSoftInputMode="stateVisible|adjustPan" /> <!-- ......>>>>>>>>>>>>>>>>>>> -->
-
         <!-- ................xml  mpath.储存问题................... -->
         <provider
             android:name="androidx.core.content.FileProvider"

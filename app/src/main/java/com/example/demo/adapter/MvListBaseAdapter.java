@@ -34,7 +34,8 @@ public class MvListBaseAdapter extends BaseAdapter {
 
     }
 
-    //传出数据
+    //region 其他地方获取mv 数据就分开写了
+    //传出数据 其他地方获取mv 数据就分开写了
     public void setList(List<Map<String , Object>> list ){
         this.list =list;
     }
@@ -45,6 +46,7 @@ public class MvListBaseAdapter extends BaseAdapter {
         return list;
     }
 
+    //endregion
 
     @Override
     public int getCount() {
@@ -64,11 +66,11 @@ public class MvListBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-      View view = inflater.inflate(R.layout.item_list , null);
+      convertView = inflater.inflate(R.layout.item_list , null);
 
-      TextView name = view.findViewById(R.id.name);
-      TextView mvid = view.findViewById(R.id.mid);
-      ImageView pmid_img = view.findViewById(R.id.pmid_img);
+      TextView name = convertView.findViewById(R.id.name);
+      TextView mvid = convertView.findViewById(R.id.mid);
+      ImageView pmid_img = convertView.findViewById(R.id.pmid_img);
 
 
       Map map = list.get(position);
@@ -78,6 +80,6 @@ public class MvListBaseAdapter extends BaseAdapter {
       String imd2 = ".jpg?max_age=2592000";
       Picasso.with(context).load(imd1 + map.get("pmid_img")+imd2).into(pmid_img);
 
-        return view;
+        return convertView;
     }
 }

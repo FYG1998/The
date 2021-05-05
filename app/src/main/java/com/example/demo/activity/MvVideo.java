@@ -9,11 +9,7 @@ import com.example.demo.BaseActivity;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.example.demo.umodel.mConfig;
-import com.tencent.smtt.export.external.TbsCoreSettings;
-import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebChromeClient;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,12 +39,12 @@ public class MvVideo extends BaseActivity {
         String mUrl=intent.getStringExtra("mUrl");
 
 
-        Log.e("mUrl",videoUrl);
+        Log.e("调试",videoUrl);
 
         x5webView = findViewById(R.id.x5_webview);
 
            //横屏播放
-/*      if (x5webView.getX5WebViewExtension() != null) {
+      if (x5webView.getX5WebViewExtension() != null) {
             //Toast.makeText(this, "开启X5全屏播放模式", Toast.LENGTH_LONG).show();
             Bundle data = new Bundle();
             data.putBoolean("standardFullScreen", false);// true表示标准全屏，false表示X5全屏；不设置默认false，
@@ -62,15 +58,17 @@ public class MvVideo extends BaseActivity {
             x5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
             x5webView.setWebChromeClient(new WebChromeClient());
 
-        }*/
+        }
+
+      else {
 
 
-        x5webView.loadUrl(videoUrl);
-        getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        x5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
-        x5webView.setWebChromeClient(new WebChromeClient());
+          x5webView.loadUrl(videoUrl);
+          getWindow().setFormat(PixelFormat.TRANSLUCENT);
+          x5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
+          x5webView.setWebChromeClient(new WebChromeClient());
 
-
+      }
 
     }
 }

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsDownloader;
+import com.tencent.smtt.sdk.TbsListener;
 
 import java.util.HashMap;
 
@@ -18,6 +20,8 @@ public class APPAplication extends Application {
 		super.onCreate();
 		context = this;
 
+
+
 		initData();
 		initView();
 
@@ -28,7 +32,6 @@ public class APPAplication extends Application {
 	}
 
 	private void initView() {
-
 		//搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
 		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
@@ -46,9 +49,9 @@ public class APPAplication extends Application {
 
 			}
 		};
+		Log.e("调试", cb.toString());
 		//x5内核初始化接口
-		QbSdk.initX5Environment(getContext(),  cb);
-
+		QbSdk.initX5Environment(this,  cb);
 
 	}
 

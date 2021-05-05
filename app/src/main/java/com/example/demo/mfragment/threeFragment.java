@@ -1,18 +1,23 @@
 package com.example.demo.mfragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -41,9 +46,11 @@ import com.example.demo.umodel.mCallback;
 import com.example.demo.umodel.mConfig;
 import com.example.demo.umodel.mOKHttp;
 import com.example.demo.utils.playUrl;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -68,19 +75,19 @@ public class threeFragment extends Fragment {
     private View inflate;
 
     //在Fragment中实例化控件
-    void initView(View view){
-        editText=(EditText)view.findViewById(R.id.et_search);
-        btngo=(Button) view.findViewById(R.id.go);
-        textView=(TextView) view.findViewById(R.id.text_notice);
-        mListView=(ListView)view.findViewById(R.id.fragment_list);//实例化listview 组件
+    void initView(View view) {
+        editText = (EditText) view.findViewById(R.id.et_search);
+        btngo = (Button) view.findViewById(R.id.go);
+        textView = (TextView) view.findViewById(R.id.text_notice);
+        mListView = (ListView) view.findViewById(R.id.fragment_list);//实例化listview 组件
         imageView_cancel = (ImageView) view.findViewById(R.id.cancel);
-        but_notice = (RelativeLayout)view.findViewById(R.id.but_notice);
+        but_notice = (RelativeLayout) view.findViewById(R.id.but_notice);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.fragment_three, container, false);
+        view = inflater.inflate(R.layout.fragment_three, container, false);
 
         initView(view);
         initData();
@@ -91,15 +98,13 @@ public class threeFragment extends Fragment {
 
         mImg(); //下载图片
         initBtnListenser();
-        if(URLinfo.mTextnotice!="My Text Notice"){ textView.setText(URLinfo.getmTextnotice()); } //跑马灯判断
+        textView.setText(URLinfo.getmTextnotice()); //notice
         mtv_List2("抖音");
     }
 
 
-
-
     //获取导播图
-    public  void mImg() {
+    public void mImg() {
         //第一步获取okHttpClient对象
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
@@ -116,6 +121,7 @@ public class threeFragment extends Fragment {
             public void onFailure(Call call, IOException e) {
 
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
@@ -128,7 +134,7 @@ public class threeFragment extends Fragment {
     }
 
     //点击事件  Listenser
-    public void initBtnListenser(){
+    public void initBtnListenser() {
         //点击 mv list 条目的事件
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //listview
             @Override
@@ -156,11 +162,10 @@ public class threeFragment extends Fragment {
                 v.requestFocus();
                 v.setFocusableInTouchMode(false);
 
-                if(!(TextUtils.isEmpty(editText.getText().toString()))){
+                if (!(TextUtils.isEmpty(editText.getText().toString()))) {
                     mv_List();
-                }
-                else {
-                    Toast.makeText(getActivity(), "搜索关键子不能为空",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "搜索关键字不能为空", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -173,8 +178,8 @@ public class threeFragment extends Fragment {
             @Override
             //v 发生变化的视图    hasFocus:用来判断视图是否获得了焦点
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    InputMethodManager imm =  ((InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE));
+                if (!hasFocus) {
+                    InputMethodManager imm = ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE));
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
 
@@ -192,7 +197,7 @@ public class threeFragment extends Fragment {
                     case EditorInfo.IME_ACTION_SEARCH:
 
                         mv_List();
-                        InputMethodManager imm =  ((InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE));
+                        InputMethodManager imm = ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE));
                         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                         break;
@@ -207,7 +212,6 @@ public class threeFragment extends Fragment {
         });
 
 
-
         imageView_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,11 +223,11 @@ public class threeFragment extends Fragment {
         but_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(getContext(),R.style.style_dialog);
-                View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_notice , null);
+                Dialog dialog = new Dialog(getContext(), R.style.style_dialog);
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_notice, null);
                 dialog.setContentView(view); //将布局设置给Dialog
                 Window window = dialog.getWindow();
-                window.setGravity( Gravity.BOTTOM); //设置Dialog从窗体底部弹出
+                window.setGravity(Gravity.BOTTOM); //设置Dialog从窗体底部弹出
                 WindowManager.LayoutParams lp = window.getAttributes();//获得窗体的属性
                 lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
                 lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -237,11 +241,10 @@ public class threeFragment extends Fragment {
     }
 
 
-
-    public void show_dialog(String name){
+    public void show_dialog(String name) {
         final String pathname = name;
 
-        final Dialog dialog = new Dialog(getContext(),R.style.style_dialog);
+        final Dialog dialog = new Dialog(getContext(), R.style.style_dialog);
         inflate = LayoutInflater.from(getContext()).inflate(R.layout.dialog, null);
         dialog.setContentView(inflate); //将布局设置给Dialog
 
@@ -251,7 +254,7 @@ public class threeFragment extends Fragment {
 
 
         Window window = dialog.getWindow();
-        window.setGravity( Gravity.BOTTOM); //设置Dialog从窗体底部弹出
+        window.setGravity(Gravity.BOTTOM); //设置Dialog从窗体底部弹出
         WindowManager.LayoutParams lp = window.getAttributes();//获得窗体的属性
         //  lp.y = 0;//设置Dialog距离底部的距离
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
@@ -265,7 +268,7 @@ public class threeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(getActivity(), MvVideo.class); //启动
+                Intent intent = new Intent(getActivity(), MvVideo.class); //启动
                 startActivity(intent);
 
                 dialog.dismiss();
@@ -277,18 +280,18 @@ public class threeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                   List<Map<String, Object>> list = mConfig.getMvurllist();
-                   int i = list.size()-1;
-                   Map map = list.get(i);
-                   String cn = (String) map.get("cn");
-                   String vkey = (String) map.get("vkey");
-                   String url = (String) map.get("url");
-                   String videoUrl = url +vkey +"/"+ cn + "?fname=" + cn;
+                List<Map<String, Object>> list = mConfig.getMvurllist();
+                int i = list.size() - 1;
+                Map map = list.get(i);
+                String cn = (String) map.get("cn");
+                String vkey = (String) map.get("vkey");
+                String url = (String) map.get("url");
+                String videoUrl = url + vkey + "/" + cn + "?fname=" + cn;
 
-                   //DownMv(pathname,videoUrl);
-                   mvdown(videoUrl,pathname);
+                //DownMv(pathname,videoUrl);
+                mvdown(videoUrl, pathname);
 
-                   Toast.makeText(getActivity(), "正在下载", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "正在下载", Toast.LENGTH_LONG).show();
 
 
                 dialog.dismiss();
@@ -298,11 +301,9 @@ public class threeFragment extends Fragment {
     }
 
 
-
-
     //获取mv list的方法
-    public  void mv_List(){
-        final String misuelist=URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;
+    public void mv_List() {
+        final String misuelist = URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回调
@@ -312,9 +313,9 @@ public class threeFragment extends Fragment {
 
                         String jsondta = res;
 
-                        List <Map<String , Object>> list = new ArrayList<Map<String , Object>>();
+                        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-                        if(jsondta!=null){
+                        if (jsondta != null) {
                             try {
 
                                 JSONObject json = new JSONObject(jsondta);
@@ -324,10 +325,9 @@ public class threeFragment extends Fragment {
 
 
                                 for (int i = 0; i < json_list.length(); i++) {
-                                    Map<String ,Object> map=new HashMap<String, Object>();
+                                    Map<String, Object> map = new HashMap<String, Object>();
 
-
-                                    Log.e("tty", String.valueOf(json_list.length()));
+                                    Log.e("调试", String.valueOf(json_list.length()));
                                     JSONObject json_listobj = json_list.getJSONObject(i);  //把集合[]json 转换 数组 {}
                                     String json_title = json_listobj.getString("title"); //获取歌曲 title
                                     String json_mid = json_listobj.getString("mid"); //获取歌曲 mid
@@ -337,14 +337,13 @@ public class threeFragment extends Fragment {
 
                                     JSONObject json_img = json_listobj.getJSONObject("album");
 
-                                    if(mvmid.length() > 0)
-                                    {
+                                    if (mvmid.length() > 0) {
                                         String img = json_img.getString("pmid");
 
-                                        map.put("name",json_title);
-                                        map.put("mid",json_mid);
-                                        map.put("mvmid",mvmid);
-                                        map.put("pmid_img",img);
+                                        map.put("name", json_title);
+                                        map.put("mid", json_mid);
+                                        map.put("mvmid", mvmid);
+                                        map.put("pmid_img", img);
 
                                         list.add(map);
                                     }
@@ -384,9 +383,9 @@ public class threeFragment extends Fragment {
     }
 
     //获取mv list的方法
-    public  void mtv_List2(String t){
+    public void mtv_List2(String t) {
 
-        final String misuelist=URLinfo.musiclisturl1 + t + URLinfo.musiclisturl2;
+        final String misuelist = URLinfo.musiclisturl1 + t + URLinfo.musiclisturl2;
 
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {
             @Override
@@ -397,9 +396,9 @@ public class threeFragment extends Fragment {
 
                         String jsondta = res;
 
-                        List <Map<String , Object>> list = new ArrayList<Map<String , Object>>();
+                        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-                        if(jsondta!=null){
+                        if (jsondta != null) {
                             try {
 
                                 JSONObject json = new JSONObject(jsondta);
@@ -408,7 +407,7 @@ public class threeFragment extends Fragment {
                                 JSONArray json_list = json_song.getJSONArray("list");//获取到了list （60条记录） ;[]集合json
 
                                 for (int i = 0; i < json_list.length(); i++) {
-                                    Map<String ,Object> map=new HashMap<String, Object>();
+                                    Map<String, Object> map = new HashMap<String, Object>();
 
                                     JSONObject json_listobj = json_list.getJSONObject(i);  //把集合[]json 转换 数组 {}
                                     String json_title = json_listobj.getString("title"); //获取歌曲 title
@@ -420,14 +419,13 @@ public class threeFragment extends Fragment {
                                     JSONObject json_img = json_listobj.getJSONObject("album");
 
 
-                                    if(mvmid.length() > 0)
-                                    {
+                                    if (mvmid.length() > 0) {
                                         String img = json_img.getString("pmid");
 
-                                        map.put("name",json_title);
-                                        map.put("mid",json_mid);
-                                        map.put("mvmid",mvmid);
-                                        map.put("pmid_img",img);
+                                        map.put("name", json_title);
+                                        map.put("mid", json_mid);
+                                        map.put("mvmid", mvmid);
+                                        map.put("pmid_img", img);
 
                                         list.add(map);
                                     }
@@ -460,12 +458,13 @@ public class threeFragment extends Fragment {
 
 
     /**
-     *  ok http 文件流下载
-     *  加入线程后台下载 ------------后续再写------------
+     * ok http 文件流下载
+     * 加入线程后台下载
+     *
      * @param url
      * @param pathname
      */
-    public  void mvdown(String url, final String pathname) {
+    public void mvdown(String url, final String pathname) {
         //第一步获取okHttpClient对象
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
@@ -482,6 +481,7 @@ public class threeFragment extends Fragment {
             public void onFailure(Call call, IOException e) {
 
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
@@ -492,11 +492,13 @@ public class threeFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                           Boolean b =   saveIO1(flsinputStream ,pathname);
-                           if(b){
-                               Toast.makeText(getActivity(), "下载成功",Toast.LENGTH_SHORT).show();
+                            Boolean b = saveIO1(flsinputStream, pathname);
+                            if (b) {
 
-                           }
+                                Message msg = new Message();
+                                msg.what = 1;
+                                handler.sendMessage(msg);
+                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -510,14 +512,32 @@ public class threeFragment extends Fragment {
         });
     }
 
+
     /**
-     *     Android系统下载管理DownloadManager
+     * 线程 ;安卓中的网络访问要在子线程中访问 UI只能在主线程程中更新
+     */
+    @SuppressLint("HandlerLeak") //线程
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    Toast.makeText(getActivity(), "下载成功", Toast.LENGTH_SHORT).show();
+                    break;
+
+            }
+        }
+    };
+
+    /**
+     * Android系统下载管理DownloadManager
+     *
      * @param filename
      * @param downloadUrl
      */
-    private void DownMv(String filename,String downloadUrl) {
+    private void DownMv(String filename, String downloadUrl) {
         //创建request对象  下载任务
-        DownloadManager.Request request=new DownloadManager.Request(Uri.parse(downloadUrl));
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
         //设置什么网络情况下可以下载
         //request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         //设置漫游状态下是否可以下载
@@ -532,19 +552,18 @@ public class threeFragment extends Fragment {
 
         //request.setDestinationInExternalFilesDir(getActivity(), Environment.DIRECTORY_DOWNLOADS,filename+"mv.mp4");
 
-        String p ="/storage/emulated/0/XXXXXXX";
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,filename+".mp4");
+        String p = "/storage/emulated/0/XXXXXXX";
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename + ".mp4");
 
-        Log.e("path",Environment.DIRECTORY_DOWNLOADS);
+        Log.e("path", Environment.DIRECTORY_DOWNLOADS);
 
 //------------------------------------------------------------------>>>>>>>
-       // request.setDestinationInExternalPublicDir(Environment.getExternalStorageDirectory().toString(),filename+"mv.mp4");
+        // request.setDestinationInExternalPublicDir(Environment.getExternalStorageDirectory().toString(),filename+"mv.mp4");
         //获取系统服务
-        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(DOWNLOAD_SERVICE);
+        DownloadManager downloadManager = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
         //进行下载
         downloadManager.enqueue(request);
     }
-
 
 
 }
