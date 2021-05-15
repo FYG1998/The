@@ -1,8 +1,3 @@
-# The
-Java 写的Android app
-
-## App界面展示
-
 <img align="right" src="https://fyg1998.github.io/Picture/app1.png" alt="app" width="270" height="520" />
 <img align="right" src="https://fyg1998.github.io/Picture/app2.png" alt="app" width="270" height="520" />
 <img align="right" src="https://fyg1998.github.io/Picture/app3.png" alt="app" width="270" height="520" />
