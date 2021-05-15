@@ -21,7 +21,6 @@
 
 
 
-
     <!-- dialog bg 背景  样式 。。。-->
     <!-- parent="android:style/Theme.Dialog"  继承dialog样式 -->
     <style name="style_dialog" parent="android:style/Theme.Dialog">

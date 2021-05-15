@@ -44,12 +44,13 @@ public class X5WebView extends WebView {
 
 	private void initWebViewSettings() {
 		WebSettings webSetting = this.getSettings();
-		webSetting.setJavaScriptEnabled(true);  //开启js脚本支持
+		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);
 		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
-		webSetting.setSupportZoom(true);
-		webSetting.setBuiltInZoomControls(true);
+		webSetting.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
+		webSetting.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
+		webSetting.setDisplayZoomControls(false); //隐藏原生的缩放控件
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(true);
 		// webSetting.setLoadWithOverviewMode(true);
@@ -63,6 +64,8 @@ public class X5WebView extends WebView {
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webSetting.setMediaPlaybackRequiresUserGesture(false);//设置自动播放，
+
+
 
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计

@@ -7,6 +7,7 @@ import HslCommunication.MQTT.MqttClient;
 import HslCommunication.MQTT.MqttConnectionOptions;
 import HslCommunication.MQTT.MqttCredential;
 import HslCommunication.MQTT.MqttSyncClient;
+import okhttp3.internal.concurrent.Task;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -34,14 +35,17 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HslClientMqtt extends BaseActivityTwo {
 
     private Context context;
     private MqttSyncClient mqttSyncClient = null;
     private EditText editTextipaddress, editTextport, editTextsendtext, editTexttopic;
-    private Button buttonconnect, buttonclose, buttonsend, savesetting;
+    private Button buttonconnect, buttonclose, buttonsend, savesetting ,timetask;
     private TextView huichuan;
+    Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,7 @@ public class HslClientMqtt extends BaseActivityTwo {
         buttonconnect = findViewById(R.id.connect);
         huichuan = findViewById(R.id.huichuan);
         savesetting = findViewById(R.id.savesetting);
+        timetask = findViewById(R.id.timetask);
 
 
     }
@@ -82,6 +87,68 @@ public class HslClientMqtt extends BaseActivityTwo {
         Disconnect(); //关闭连接
         send();  //通讯请求
         savedatatosp();
+
+
+    }
+
+
+
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+
+            request();
+        }
+    };
+
+
+    private void timetask() {
+        timer.schedule(timerTask,1000);
+    }
+
+    public void request(){
+        if (mqttSyncClient == null) return;
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                MqttClient mqttClient = new MqttClient();//好像没有开发
+                OperateResultExTwo<String, String> read = mqttSyncClient.ReadString(editTexttopic.getText().toString(), editTextsendtext.getText().toString(), new ActionOperateExTwo<Long, Long>() {
+                            @Override
+                            public void Action(Long m, Long n) {
+                                Log.e("调试", "调试m1" + m.toString());
+                                Log.e("调试", "调试n1" + n.toString());
+                            }
+                        }, null,
+                        new ActionOperateExTwo<Long, Long>() {
+                            @Override
+                            public void Action(Long m, Long n) {
+                                Log.e("调试", "调试m2" + m.toString());
+                                Log.e("调试", "调试n2" + n.toString());
+
+                            }
+                        });
+                if (read.IsSuccess) {
+                    String str1 = read.Content1;
+                    String str2 = read.Content2;
+                    Log.e("调试", "read.Content1" + str1);
+                    Log.e("调试", "read.Content2" + str2);
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+                    Date date = new Date(System.currentTimeMillis());
+                    String sdata = simpleDateFormat.format(date);
+                    Message msg = new Message();
+                    msg.what = 2;
+                    msg.obj = sdata + str2;
+                    handler.sendMessage(msg);
+
+
+                } else {
+                    Log.e("调试", "no");
+                }
+            }
+        });
+        thread.start();
     }
 
     //连接
@@ -121,6 +188,8 @@ public class HslClientMqtt extends BaseActivityTwo {
                     }).start();
 
                     //endregion
+
+                    timetask();
 
 
                 } catch (Exception ex) {
@@ -203,6 +272,7 @@ public class HslClientMqtt extends BaseActivityTwo {
         });
     }
 
+    // 保存
     private void savedatatosp() {
         savesetting.setOnClickListener(new View.OnClickListener() {
             @Override

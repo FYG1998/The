@@ -7,30 +7,34 @@
         android:icon="@mipmap/ic"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.PublicBrowse"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.PublicBrowse" />
+
         <activity
             android:name=".aatest.TestHslClientMqttShow"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensor" />
+        <activity
+            android:name=".aatest.HslClientMqtt"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensor" />
         <!--
         android:screenOrientation="sensor"  根據物理方向傳感器確定方向. 取決於用戶手持的方向
         android:configChanges="orientation|screenSize|keyboardHidden"  支持横竖屏
+
+        android:resizeableActivity="true"  可调整activity大小
         -->
-        <activity
-            android:name=".aatest.HslClientMqtt"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="sensor" />
         <activity android:name=".activity.TestFactory" />
         <activity android:name=".activity.PictureDetail" />
         <activity android:name=".activity.SettingActivity" />
         <activity
             android:name=".activity.Browser"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:resizeableActivity="true" />
         <activity android:name=".activity.AboutActivity" />
         <activity
             android:name=".activity.VideoActivity"
@@ -38,8 +42,7 @@
             android:resizeableActivity="true" />
         <activity
             android:name=".activity.MvVideo"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:resizeableActivity="true" />
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name=".activity.FileChooser" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -50,8 +53,7 @@
         </activity>
         <activity
             android:name=".CoreFragment"
-            android:windowSoftInputMode="stateVisible|adjustPan" /> <!-- ......>>>>>>>>>>>>>>>>>>> -->
-        <!-- ................xml  mpath.储存问题................... -->
+            android:windowSoftInputMode="stateVisible|adjustPan" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.demo.fileprovider"
@@ -60,7 +62,12 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/mpath" />
-        </provider>
+        </provider> <!-- ......>>>>>>>>>>>>>>>>>>> -->
+        <!-- ................xml  mpath.储存问题................... -->
+        <service
+            android:name=".LoadX5Service"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />

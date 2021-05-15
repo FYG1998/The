@@ -11,6 +11,7 @@ import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.sdk.TbsReaderView;
+import com.tencent.smtt.sdk.WebSettings;
 
 import java.io.File;
 
@@ -43,8 +44,13 @@ public class VideoActivity extends BaseActivityTwo {
 
         Intent intent = getIntent();
         String name = "http://111.231.191.26/See%20You%20Again.mp4";  //测试视频url
+        String test = "http://debugtbs.qq.com";  //测试视频url
 
-       url = "/storage/emulated/0/tencent/MicroMsg/Download/测试文档.doc";
+
+
+
+       url = "/storage/emulated/0/Download/X5内核.pdf";
+
 
 
         String videoUrl =  intent.getStringExtra("url");
@@ -69,7 +75,7 @@ public class VideoActivity extends BaseActivityTwo {
         openFile();
 
 
-      //  TbsVideo.openVideo(this,name);  //直接打开视频也可以
+        //TbsVideo.openVideo(this,test);  //直接打开视频也可以
       //  TbsVideo.openVideo(this, Environment.getExternalStorageDirectory() + “****.mp4”);  //发现播放视频不错，一句话就可以播放本地视频。 https://my.oschina.net/JiangTun/blog/968035
 
 

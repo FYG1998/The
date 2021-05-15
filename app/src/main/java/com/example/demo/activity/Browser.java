@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -49,6 +50,8 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
 
+import androidx.core.content.res.ResourcesCompat;
+
 public class Browser extends Activity {
     /**
      * 作为一个浏览器的示例展示出来，采用android+web的模式
@@ -63,19 +66,21 @@ public class Browser extends Activity {
     private Button mGo;
     private EditText mUrl;
 
+
+    private URL mIntentUrl;
+
     private static final String mHomeUrl = "https://fyg1998.github.io/indextools.html";
     private static final String TAG = "SdkDemo";
     private static final int MAX_LENGTH = 14;
     private boolean mNeedTestPage = false;
-    private final int disable = 120;
-    private final int enable = 255;
     private ProgressBar mPageLoadingProgressBar = null;
     private ValueCallback<Uri> uploadFile;
-    private URL mIntentUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT); //窗口支持透明度 切换activity 防止黑屏
+
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -88,21 +93,20 @@ public class Browser extends Activity {
             } catch (Exception e) {
             }
         }
-        //
+
         try {
-            if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 11) {
-                getWindow()
-                        .setFlags(
-                                android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-                                android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+            if (android.os.Build.VERSION.SDK_INT >= 11) {
+                getWindow().setFlags(
+                        android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                        android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
             }
         } catch (Exception e) {
         }
 
         /*
-         * getWindow().addFlags(
-         * android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
+         * getWindow().addFlags( android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN); //可以隐藏软键盘
          */
+
         setContentView(R.layout.activity_browser);
         mViewParent = (ViewGroup) findViewById(R.id.webViewBrowser);
 
@@ -112,31 +116,36 @@ public class Browser extends Activity {
 
     }
 
+    /**
+     * 设置button 状态
+     * @param view
+     * setImageAlpha  设置应应用于图像的alpha值。
+     */
     private void changGoForwardButton(WebView view) {
         if (view.canGoBack())
-            mBack.setAlpha(enable);
+            mBack.setImageAlpha(255);
         else
-            mBack.setAlpha(disable);
+            mBack.setImageAlpha(22);
         if (view.canGoForward())
-            mForward.setAlpha(enable);
+            mForward.setImageAlpha(255);
         else
-            mForward.setAlpha(disable);
+            mForward.setImageAlpha(22);
         if (view.getUrl() != null && view.getUrl().equalsIgnoreCase(mHomeUrl)) {
-            mHome.setAlpha(disable);
+            mHome.setImageAlpha(22);
             mHome.setEnabled(false);
         } else {
-            mHome.setAlpha(enable);
+            mHome.setImageAlpha(255);
             mHome.setEnabled(true);
         }
     }
 
+    /**
+     * 进度条
+     */
     private void initProgressBar() {
-        mPageLoadingProgressBar = (ProgressBar) findViewById(R.id.progressBar1);// new
-        // ProgressBar(getApplicationContext(),
-        // null,
-        // android.R.attr.progressBarStyleHorizontal);
+        mPageLoadingProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
         mPageLoadingProgressBar.setMax(100);
-        mPageLoadingProgressBar.setProgressDrawable(this.getResources().getDrawable(R.drawable.color_progressbar));
+        mPageLoadingProgressBar.setProgressDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.color_progressbar,null));
     }
 
     private void init() {
@@ -149,6 +158,9 @@ public class Browser extends Activity {
 
         initProgressBar();
 
+
+
+        //该界面打开更多链接
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -160,17 +172,15 @@ public class Browser extends Activity {
                 super.onPageFinished(view, url);
                 // mTestHandler.sendEmptyMessage(MSG_OPEN_TEST_URL);
                 mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 5000);// 5s?
-                if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16)
+                if (Build.VERSION.SDK_INT >= 16)
                     changGoForwardButton(view);
                 /* mWebView.showLog("test Log"); */
             }
         });
 
         mWebView.setWebChromeClient(new WebChromeClient() {
-
             @Override
-            public boolean onJsConfirm(WebView arg0, String arg1, String arg2,
-                                       JsResult arg3) {
+            public boolean onJsConfirm(WebView arg0, String arg1, String arg2, JsResult arg3) {
                 return super.onJsConfirm(arg0, arg1, arg2, arg3);
             }
 
@@ -184,8 +194,7 @@ public class Browser extends Activity {
              * 全屏播放配置
              */
             @Override
-            public void onShowCustomView(View view,
-                                         CustomViewCallback customViewCallback) {
+            public void onShowCustomView(View view, CustomViewCallback customViewCallback) {
                 FrameLayout normalView = (FrameLayout) findViewById(R.id.web_filechooser);
                 ViewGroup viewGroup = (ViewGroup) normalView.getParent();
                 viewGroup.removeView(normalView);
@@ -209,8 +218,7 @@ public class Browser extends Activity {
             }
 
             @Override
-            public boolean onJsAlert(WebView arg0, String arg1, String arg2,
-                                     JsResult arg3) {
+            public boolean onJsAlert(WebView arg0, String arg1, String arg2, JsResult arg3) {
                 /**
                  * 这里写入你自定义的window alert
                  */
@@ -218,48 +226,33 @@ public class Browser extends Activity {
             }
         });
 
+        //网页来的 事件
         mWebView.setDownloadListener(new DownloadListener() {
-
             @Override
-            public void onDownloadStart(String arg0, String arg1, String arg2,
-                                        String arg3, long arg4) {
+            public void onDownloadStart(String arg0, String arg1, String arg2, String arg3, long arg4) {
                 TbsLog.d(TAG, "url: " + arg0);
-                new AlertDialog.Builder(Browser.this)
+                new AlertDialog.Builder(Browser.this,R.style.Theme_AppCompat_Light_Dialog_Alert)  //https://blog.csdn.net/Jay_zjc/article/details/82346643  dialog不显示文字加 R.style.Theme_AppCompat_Light_Dialog_Alert
                         .setTitle("allow to download？")
                         .setPositiveButton("yes",
                                 new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog,
-                                                        int which) {
-                                        Toast.makeText(
-                                                Browser.this,
-                                                "fake message: ii'll download...",
-                                                1000).show();
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(Browser.this, "fake message: ii'll download...",Toast.LENGTH_LONG).show();
                                     }
                                 })
-                        .setNegativeButton("no",
-                                new DialogInterface.OnClickListener() {
+                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
 
                                     @Override
-                                    public void onClick(DialogInterface dialog,
-                                                        int which) {
+                                    public void onClick(DialogInterface dialog, int which) {
                                         // TODO Auto-generated method stub
-                                        Toast.makeText(
-                                                Browser.this,
-                                                "fake message: refuse download...",
-                                                Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Browser.this, "fake message: refuse download...", Toast.LENGTH_SHORT).show();
                                     }
                                 })
-                        .setOnCancelListener(
-                                new DialogInterface.OnCancelListener() {
-
+                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                     @Override
                                     public void onCancel(DialogInterface dialog) {
                                         // TODO Auto-generated method stub
-                                        Toast.makeText(
-                                                Browser.this,
-                                                "fake message: refuse download...",
-                                                Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Browser.this, "fake message: refuse download...", Toast.LENGTH_SHORT).show();
                                     }
                                 }).show();
             }
@@ -281,8 +274,7 @@ public class Browser extends Activity {
         webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
         webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
         webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
-        webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
-                .getPath());
+        webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0).getPath());
         // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
         webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
         // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -293,29 +285,28 @@ public class Browser extends Activity {
         } else {
             mWebView.loadUrl(mIntentUrl.toString());
         }
-        TbsLog.d("time-cost", "cost time: "
-                + (System.currentTimeMillis() - time));
+        TbsLog.d("time-cost", "cost time: " + (System.currentTimeMillis() - time));
         CookieSyncManager.createInstance(this);
         CookieSyncManager.getInstance().sync();
     }
 
     private void initBtnListenser() {
-        mBack = (ImageButton) findViewById(R.id.btnBack1);
-        mForward = (ImageButton) findViewById(R.id.btnForward1);
+        mBack = (ImageButton) findViewById(R.id.btnBack1);  //  <--
+        mForward = (ImageButton) findViewById(R.id.btnForward1);  //  -->
         mExit = (ImageButton) findViewById(R.id.btnExit1);
         mHome = (ImageButton) findViewById(R.id.btnHome1);
         mGo = (Button) findViewById(R.id.btnGo1);
         mUrl = (EditText) findViewById(R.id.editUrl1);
-        mMore = (ImageButton) findViewById(R.id.btnMore);
-        if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16) {
-            mBack.setAlpha(disable);
-            mForward.setAlpha(disable);
-            mHome.setAlpha(disable);
+        mMore = (ImageButton) findViewById(R.id.btnMore);  // more
+
+        if (Build.VERSION.SDK_INT >= 16) {
+            mBack.setImageAlpha(22);
+            mForward.setImageAlpha(22);
+            mHome.setImageAlpha(22);
         }
         mHome.setEnabled(false);
 
         mBack.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (mWebView != null && mWebView.canGoBack())
@@ -346,11 +337,11 @@ public class Browser extends Activity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(Browser.this, "not completed",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(Browser.this, "点击了 mMore 按钮", Toast.LENGTH_LONG).show();
             }
         });
 
+        //mUrl 设置焦点
         mUrl.setOnFocusChangeListener(new OnFocusChangeListener() {
 
             @Override
@@ -382,8 +373,8 @@ public class Browser extends Activity {
 
         });
 
+        //mURl EditText的addTextChangedListener(TextWatcher watcher)方法对EditText实现监听
         mUrl.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
@@ -418,8 +409,9 @@ public class Browser extends Activity {
             }
         });
 
-        mHome.setOnClickListener(new OnClickListener() {
 
+        // 跳转 Home 页面
+        mHome.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mWebView != null)
@@ -431,8 +423,7 @@ public class Browser extends Activity {
             @Override
             public void onClick(View v) {
 
-                //Process.killProcess(Process.myPid());  //杀掉进程
-
+                //Process.killProcess(Process.myPid());  //杀掉进程  不太好用
                // 清除堆栈里所有的Activity
                 Intent intent = new Intent(Browser.this, CoreFragment.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -440,16 +431,19 @@ public class Browser extends Activity {
         });
     }
 
-    boolean[] m_selected = new boolean[] { true, true, true, true, false,
-            false, true };
+    //boolean[] m_selected = new boolean[] { true, true, true, true, false, false, true };
 
+
+    /**
+     * 监听手机屏幕上的按键
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mWebView != null && mWebView.canGoBack()) {
                 mWebView.goBack();
-                if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16)
+                if (Build.VERSION.SDK_INT >= 16)
                     changGoForwardButton(mWebView);
                 return true;
             } else
@@ -460,9 +454,8 @@ public class Browser extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        TbsLog.d(TAG, "onActivityResult, requestCode:" + requestCode
-                + ",resultCode:" + resultCode);
-
+        TbsLog.d(TAG, "onActivityResult, requestCode:" + requestCode + ",resultCode:" + resultCode);
+        Log.d("调试", "onActivityResult, requestCode:" + requestCode + ",resultCode:" + resultCode);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 0:
@@ -493,6 +486,10 @@ public class Browser extends Activity {
         mWebView.loadUrl(intent.getData().toString());
     }
 
+    /**
+     * onDestroy()
+     * 销毁结束TBS 内核
+     */
     @Override
     protected void onDestroy() {
         if (mTestHandler != null)
@@ -515,12 +512,11 @@ public class Browser extends Activity {
                         return;
                     }
 
-                    String testUrl = "file:///sdcard/outputHtml/html/"
-                            + Integer.toString(mCurrentUrl) + ".html";
+                    String testUrl = "file:///sdcard/outputHtml/html/" + Integer.toString(mCurrentUrl) + ".html";
+
                     if (mWebView != null) {
                         mWebView.loadUrl(testUrl);
                     }
-
                     mCurrentUrl++;
                     break;
                 case MSG_INIT_UI:
