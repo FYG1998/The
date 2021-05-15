@@ -1,6 +1,8 @@
 # The
  `Java` 语言编写的Android App
  
+ 上学的时候都没有这么认真,反而工作了却认真学习,那时候的我们真的是很天真，看来美好的往往是回忆！！！
+ 
 ### 知识点Android——四大组件、六大布局、五大存储
 Android四大组件分别为activity、service、content provider、broadcast receiver。
 
