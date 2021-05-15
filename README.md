@@ -6,7 +6,7 @@
 ### 知识点Android——四大组件、六大布局、五大存储
 Android四大组件分别为activity、service、content provider、broadcast receiver。
 
-六大界面布局方式包括： 线性布局(LinearLayout)、框架布局(FrameLayout)、表格布局(TableLayout)、相对布局(RelativeLayout)、绝对布局(AbsoluteLayout)和网格布局(GridLayout) 。
+六大界面布局方式包括： 线性布局(LinearLayout)、框架布局(FrameLayout)、表格布局(TableLayout)、相对布局(RelativeLayout)、约束布局(ConstraintLayout)和网格布局(GridLayout) 。
 
 存储，可供选择的存储方式有SharedPreferences、文件存储、SQLite数据库方式、内容提供器（Content provider）和网络。 这里只用到了`SharedPreferences`
  
