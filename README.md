@@ -11,6 +11,14 @@ Android四大组件分别为activity、service、content provider、broadcast re
 
 存储，可供选择的存储方式有SharedPreferences、文件存储、SQLite数据库方式、内容提供器（Content provider）和网络。 这里只用到了`SharedPreferences`
  
+ ### App 基本功能
+ - 因为没用后台服务器,一起公告，图片，都是借助第三方工具的，比如有道云笔记，分享图文后连接关联到APP就可以发布图文类的消息了，简单的互动，
+ - 后台解析了QQ音乐mv视频 ，写了个简单的适配器展示出来， 支持在线播放，下载 ,
+ - 图片展示适配器
+ - 轮播图
+ - 浏览器
+ - 如下图APP展示界面
+
 
 ### App界面展示
 
