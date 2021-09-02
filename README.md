@@ -1,7 +1,7 @@
 # The
  `Java` 语言编写的Android App
  
- 纸上得来终觉浅，绝知此事要躬行——《冬夜读书示子聿》 陆游
+ 纸上得来终觉浅，绝知此事要躬行
  
 ### 知识点Android——四大组件、六大布局、五大存储
 
@@ -22,13 +22,13 @@ Android四大组件分别为activity、service、content provider、broadcast re
 
 ### App界面展示
 
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app1.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app2.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app3.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app4.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app5.png" alt="app" width="30%"/>
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app6.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app7.png" alt="app" width="30%"/>
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app8.png" alt="app" width="30%" />
-<img align="right" src="https://naiop.github.io/mimages/picture/The/app9.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app1.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app2.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app3.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app4.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app5.png" alt="app" width="30%"/>
+<img align="right" src="https://naiop.github.io/images/The/app6.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app7.png" alt="app" width="30%"/>
+<img align="right" src="https://naiop.github.io/images/The/app8.png" alt="app" width="30%" />
+<img align="right" src="https://naiop.github.io/images/The/app9.png" alt="app" width="30%" />
 
