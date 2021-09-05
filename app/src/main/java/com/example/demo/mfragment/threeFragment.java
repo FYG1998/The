@@ -40,11 +40,13 @@ import android.widget.Toast;
 
 import com.example.demo.R;
 import com.example.demo.activity.MvVideo;
+import com.example.demo.activity.SettingActivity;
 import com.example.demo.adapter.MvListBaseAdapter;
-import com.example.demo.umodel.URLinfo;
-import com.example.demo.umodel.mCallback;
-import com.example.demo.umodel.mConfig;
-import com.example.demo.umodel.mOKHttp;
+import com.example.demo.model.URLinfo;
+import com.example.demo.model.mCallback;
+import com.example.demo.model.mConfig;
+import com.example.demo.model.mOKHttp;
+import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.playUrl;
 
 import org.json.JSONArray;
@@ -59,8 +61,8 @@ import java.util.List;
 import java.util.Map;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
-import static com.example.demo.umodel.mFileTool.saveBit;
-import static com.example.demo.umodel.mFileTool.saveIO1;
+import static com.example.demo.model.mFileTool.saveBit;
+import static com.example.demo.model.mFileTool.saveIO1;
 
 
 public class threeFragment extends Fragment {
@@ -304,9 +306,10 @@ public class threeFragment extends Fragment {
     //获取mv list的方法
     public void mv_List() {
         final String misuelist = URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;
+
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {
             @Override
-            public void onSuccess(final String res) {//成功的okhttp回调
+            public void onSuccess(final String res) {//成功的okhttp回
                 getActivity().runOnUiThread(new Runnable() { //线程
                     @Override
                     public void run() { //主线程操作
@@ -350,7 +353,7 @@ public class threeFragment extends Fragment {
 
 
                                 }
-                                Log.e("map", list.toString());
+                                Log.d("map", list.toString());
 
 
                                 MvListBaseAdapter adapter = new MvListBaseAdapter(getContext());

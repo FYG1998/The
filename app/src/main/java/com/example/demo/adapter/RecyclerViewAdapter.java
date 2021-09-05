@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo.R;
 import com.example.demo.activity.PictureDetail;
-import com.example.demo.umodel.ImgModel;
+import com.example.demo.model.ImgModel;
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

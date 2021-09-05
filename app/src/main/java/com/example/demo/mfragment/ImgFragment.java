@@ -12,18 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.demo.R;
 import com.example.demo.adapter.RecyclerViewAdapter;
-import com.example.demo.umodel.ImgModel;
-import com.example.demo.umodel.mCallback;
-import com.example.demo.umodel.mOKHttp;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.demo.model.ImgModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  *

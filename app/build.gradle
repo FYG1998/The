@@ -60,5 +60,11 @@ dependencies {
     //Banner轮播图
     implementation 'com.youth.banner:banner:1.4.10'
 
+    //App update
+    implementation 'com.qianwen:update-app:3.5.2'
+
+    //okgo
+    implementation 'com.lzy.net:okgo:3.0.4'
+
 
 }

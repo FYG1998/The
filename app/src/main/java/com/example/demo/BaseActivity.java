@@ -32,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BaseActivity extends AppCompatActivity {
 
     public static Context mContext;
+    private static final String TAG = "BaseActivity";
 
 
     @Override
@@ -47,6 +48,7 @@ public class BaseActivity extends AppCompatActivity {
 
     //状态栏沉浸
      public  void setTranslucent(Activity mContext) {
+         Log.d(TAG, "setTranslucent");
 
          //去除标题栏
          if (getSupportActionBar() != null){

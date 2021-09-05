@@ -1,0 +1,9 @@
+{
+   "update": "Yes",
+    "new_version": "1.1.0",
+    "apk_file_url": "https://raw.githubusercontent.com/xxxx.apk",
+    "update_log": "1，item1。\r\n2，item1。\r\n3，item1，item1。\r\n4，item1，item1。\r\n5，item1。",
+    "target_size": "5M",
+    "new_md5":"12345b97be1234123f4556d2543",
+    "constraint": false
+}

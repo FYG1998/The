@@ -22,7 +22,7 @@ import com.example.demo.mfragment.twoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import static com.example.demo.umodel.mFileTool.mFileCreate;
+import static com.example.demo.model.mFileTool.mFileCreate;
 
 public class CoreFragment extends BaseActivity {
 

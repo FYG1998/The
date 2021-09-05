@@ -2,7 +2,7 @@ package com.example.demo.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.example.demo.umodel.spInfo;
+import com.example.demo.model.spInfo;
 
 /**
  * 2021/04/11

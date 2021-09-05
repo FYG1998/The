@@ -5,34 +5,24 @@ import HslCommunication.Core.Types.OperateResult;
 import HslCommunication.Core.Types.OperateResultExTwo;
 import HslCommunication.MQTT.MqttClient;
 import HslCommunication.MQTT.MqttConnectionOptions;
-import HslCommunication.MQTT.MqttCredential;
 import HslCommunication.MQTT.MqttSyncClient;
-import okhttp3.internal.concurrent.Task;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsSeekBar;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
-import com.example.demo.umodel.spInfo;
+import com.example.demo.model.spInfo;
 import com.example.demo.utils.SPDataUtils;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;

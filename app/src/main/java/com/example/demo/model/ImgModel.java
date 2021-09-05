@@ -1,4 +1,4 @@
-package com.example.demo.umodel;
+package com.example.demo.model;
 
 public class ImgModel {
 

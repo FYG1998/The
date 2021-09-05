@@ -7,10 +7,10 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.demo.umodel.URLinfo;
-import com.example.demo.umodel.mCallback;
-import com.example.demo.umodel.mOKHttp;
-import com.example.demo.umodel.spInfo;
+import com.example.demo.model.URLinfo;
+import com.example.demo.model.mCallback;
+import com.example.demo.model.mOKHttp;
+import com.example.demo.model.spInfo;
 import com.example.demo.utils.SPDataUtils;
 
 import org.json.JSONException;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 import androidx.core.content.res.ResourcesCompat;
 
-import static com.example.demo.umodel.URLinfo.setImgurl;
+import static com.example.demo.model.URLinfo.setImgurl;
 
 
 public class MainActivity extends BaseActivity {

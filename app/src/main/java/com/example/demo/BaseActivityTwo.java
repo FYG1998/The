@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.demo.model.PermissionListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 public class BaseActivityTwo extends AppCompatActivity {
@@ -100,6 +107,30 @@ public class BaseActivityTwo extends AppCompatActivity {
         initToolbar();
     }
 
+
+    private PermissionListener mListener;
+    private static final int REQUEST_CODE = 1;
+    /**
+     * 请求运行时权限
+     *
+     * @param permissions 权限列表
+     * @param listener    授权监听方法
+     */
+    public void requestRuntimePermissions(String[] permissions, PermissionListener listener) {
+        mListener = listener;
+        List<String> permissionList = new ArrayList<>();
+        for (String permission : permissions) {
+            //判断权限是否已经授予
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(permission);
+            }
+        }
+        if (!permissionList.isEmpty()) {
+            ActivityCompat.requestPermissions(this, permissionList.toArray(new String[permissionList.size()]), REQUEST_CODE);
+        } else {
+            mListener.onGranted();
+        }
+    }
 
 
 
