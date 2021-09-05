@@ -20,7 +20,7 @@ public class LoadX5Service extends Service {
         super.onCreate();
 
         //非wifi情况下，主动下载x5内核
-        //QbSdk.setDownloadWithoutWifi(true);
+        QbSdk.setDownloadWithoutWifi(true);
         //  预加载X5内核
         QbSdk.initX5Environment(getApplicationContext(), cb);
 

@@ -63,7 +63,7 @@ public class X5WebView extends WebView {
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webSetting.setMediaPlaybackRequiresUserGesture(false);//设置自动播放，
+		//webSetting.setMediaPlaybackRequiresUserGesture(false);//设置自动播放，
 
 
 

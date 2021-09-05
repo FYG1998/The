@@ -34,6 +34,7 @@
         <activity
             android:name=".activity.Browser"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensor"
             android:resizeableActivity="true" />
         <activity android:name=".activity.AboutActivity" />
         <activity
@@ -42,7 +43,8 @@
             android:resizeableActivity="true" />
         <activity
             android:name=".activity.MvVideo"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensor"/>
         <activity android:name=".activity.FileChooser" />
         <activity android:name=".MainActivity">
             <intent-filter>
