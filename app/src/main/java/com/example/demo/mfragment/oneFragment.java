@@ -75,9 +75,9 @@ public class oneFragment extends Fragment {
     private void initView(View view) {
 
         images = new ArrayList();
-        images.add("http://kwimg2.kuwo.cn/star/upload/66/85/1575256374021_.jpg");
-        images.add("http://kwimg2.kuwo.cn/star/upload/71/68/1575818166158_.jpg");
-        images.add("http://kwimg1.kuwo.cn/star/upload/68/54/1575429173078_.jpg");
+        images.add("https://naiop.github.io/images/bg1.jpg");
+        images.add("https://naiop.github.io/images/bg2.jpg");
+        images.add("https://naiop.github.io/images/bg3.jpg");
 
         imageView=view.findViewById(R.id.img);
         button = view.findViewById(R.id.buimg);
