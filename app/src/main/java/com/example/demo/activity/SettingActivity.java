@@ -18,6 +18,7 @@ import com.example.demo.tencent_tbs.X5WebView;
 import com.example.demo.model.PermissionListener;
 import com.example.demo.model.spInfo;
 import com.example.demo.update.OkGoUpdateHttp;
+import com.example.demo.utils.PackageUtils;
 import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.SPDataUtils;
 import com.vector.update_app.UpdateAppBean;
@@ -42,7 +43,7 @@ public class SettingActivity extends BaseActivityTwo {
     private Switch mSwitch;
     private Button button1,button2,button3 ,btn_update_check ;
     private EditText editTexttime ;
-    private TextView texttbsstate;
+    private TextView texttbsstate,tv_ver_setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class SettingActivity extends BaseActivityTwo {
         setTitle("Setting");  // BaseActivityTwo 定义的 标题名称
         setBackBtn(); //继承BaseActivityTwo里定义的 返回事件
 
+
         spInfo info = SPDataUtils.getspInfo(context);
         mSwitch = (Switch) findViewById(R.id.sw_wifi);
         mSwitch.setChecked(info.getMboolean());
@@ -70,6 +72,7 @@ public class SettingActivity extends BaseActivityTwo {
         editTexttime = findViewById(R.id.editTexttime);
         editTexttime.setText(info.getTime()) ;
         texttbsstate = findViewById(R.id.tbs_state);
+        tv_ver_setting = findViewById(R.id.tv_ver_setting);
 
 
     }
@@ -80,6 +83,8 @@ public class SettingActivity extends BaseActivityTwo {
         X5WebView x5WebView = new X5WebView(this);
         if(x5WebView.getX5WebViewExtension() != null){ texttbsstate.setText("ture");}
         initBtnListenser();
+
+        tv_ver_setting.setText(tv_ver_setting.getText()+"  "+PackageUtils.packageName(context));
     }
 
 
@@ -176,7 +181,7 @@ public class SettingActivity extends BaseActivityTwo {
             Toast.makeText(this, "无法获取Sdcard存储卡", Toast.LENGTH_SHORT).show();
             return;
         }
-        String path =Environment.getExternalStorageDirectory()+"/xjscaner.apk";
+        String path =Environment.getExternalStorageDirectory()+"/the.apk";
         Map<String, String> params = new HashMap<String, String>();
         params.put("appKey", "b97bea014531123f94c3ba7b7afbaad2");
         params.put("appVersion", AppUpdateUtils.getVersionName(this));
@@ -255,7 +260,7 @@ public class SettingActivity extends BaseActivityTwo {
 //                                    .setUpdateLog(jsonObject.optString("update_log"))
                                     //测试内容过度
 //                                    .setUpdateLog("测试")
-                                    .setUpdateLog("1、修复程序运行BUG；\n2、优化操作体验；\n3、提高传输效率；")
+                                    .setUpdateLog(jsonObject.optString("update_log"))
                                     //大小，不设置不显示大小，可以不设置
                                     .setTargetSize(jsonObject.optString("target_size"))
                                     //是否强制更新，可以不设置

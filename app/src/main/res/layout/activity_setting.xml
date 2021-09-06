@@ -177,37 +177,32 @@
         app:layout_constraintTop_toBottomOf="@+id/divider_light_first1" />
 
 
-    <View
-        android:id="@+id/divider_light_first3"
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:layout_marginTop="16dp"
-        android:background="@color/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_praise" />
+
     <LinearLayout
         android:id="@+id/ll_item1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_light_first3">
+        app:layout_constraintTop_toBottomOf="@id/divider_light_first2">
 
         <TextView
+            android:textColor="#000000"
             android:id="@+id/tv_ver_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:padding="10dp"
-            android:text="ver 1.0"/>
+            android:text="version"/>
         <Button
             android:id="@+id/btn_update_check"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/style_fill_blue"
             android:text="检查更新"/>
 
     </LinearLayout>
