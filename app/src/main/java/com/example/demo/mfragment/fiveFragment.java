@@ -10,20 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
+import com.example.demo.activity.LoginActivity;
 import com.example.demo.activity.SettingActivity;
 import com.example.demo.activity.FileChooser;
 import com.example.demo.activity.TestFactory;
 import com.example.demo.utils.QQUtil;
+import com.example.demo.utils.SoundUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class fiveFragment extends Fragment {
 
     RelativeLayout aboutapp,webbrowser,tbsfile,qqgroup,factorymodel,downlaodpath,setting,exitlogin,de;
+    ImageView img_header;
 
     private void initView(View view) {
         aboutapp = view.findViewById(R.id.aboutapp);
@@ -35,6 +42,7 @@ public class fiveFragment extends Fragment {
         setting = view.findViewById(R.id.Setting);
         exitlogin = view.findViewById(R.id.exitlogin);
         de = view.findViewById(R.id.de);
+        img_header = view.findViewById(R.id.img_header);
     }
 
     @Override
@@ -50,6 +58,14 @@ public class fiveFragment extends Fragment {
     private void initData() {
 
         initBtnListenser();
+        img_header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivityForResult(intent, 0);
+
+            }
+        });
     }
 
     private void initBtnListenser() {
@@ -70,6 +86,7 @@ public class fiveFragment extends Fragment {
             public void onClick(View v) {
 
                Toast.makeText(getActivity(),"点击一下",Toast.LENGTH_SHORT).show();
+                SoundUtils.playSound(R.raw.sucess);
 
             }
         });

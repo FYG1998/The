@@ -60,7 +60,7 @@ public class oneFragment extends Fragment {
 
 
     private String api ="https://vip.bljiex.com/?v=";
-    private String albummid ="http://ww4.sinaimg.cn/large/610dc034jw1f6ipaai7wgj20dw0kugp4.jpg";
+    private String albummid ="http://p7.qhimg.com/bdr/__85/t01f6858f53ad68e60a.jpg";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

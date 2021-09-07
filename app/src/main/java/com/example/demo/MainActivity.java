@@ -1,10 +1,12 @@
 package com.example.demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.demo.model.URLinfo;
@@ -16,6 +18,10 @@ import com.example.demo.utils.SPDataUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,13 +47,35 @@ public class MainActivity extends BaseActivity {
 
     private void ininView() {
         imageView=findViewById(R.id.imageview);
+
         String imgPath = Environment.getExternalStorageDirectory().getPath() + "/A_Test/b";
-        Bitmap bitmap = getLoacalBitmap(imgPath);   //从本地取图片(在cdcard中获取)
+        final Bitmap bitmap = getLoacalBitmap(imgPath);   //从本地取图片(在cdcard中获取)
         if(fileIsExists(imgPath)){  //判断文件是否存在
             imageView .setImageBitmap(bitmap); //设置Bitmap
         }else {
             imageView.setImageDrawable( ResourcesCompat.getDrawable(getResources(), R.drawable.splash, null)); //不存在加载原先设置
         }
+
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //长按保存图片
+                try {
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HH:mm:ss");// yyyy年MM月dd日 HH:mm:ss
+                    Date date = new Date(System.currentTimeMillis());
+
+                    File file = new File(Environment.getExternalStorageDirectory().getPath()  + "/A_Test/" +simpleDateFormat.format(date) + ".jpg");
+                    FileOutputStream out = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                showToast("长安");
+                return false;//false 长按没有震动
+            }
+        });
     }
 
     private void initData() {
@@ -87,6 +115,13 @@ public class MainActivity extends BaseActivity {
         }, 1000);*/
     }
 
+
+
+
+
+
+
+
     //获取导播图网址
     public  void Guidechart(){
         mOKHttp.mConfig(URLinfo.getimgUrl).getRequest(new mCallback() {
@@ -120,10 +155,8 @@ public class MainActivity extends BaseActivity {
         });
 
     }
-
     //公告栏文字 okhttp 获取
     public void getAsync1(){
-
         mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回调

@@ -28,7 +28,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation files('libs\\HslCommunication-2.0.2.jar')
     implementation files('libs\\HslCommunication-2.0.2-javadoc.jar')
-    implementation files('libs\\tbs_sdk_thirdapp_v4.3.0.93_43993_sharewithdownloadwithfile_withoutGame_obfs_20210220_114728.jar')
+    implementation files('libs\\tbs_sdk_thirdapp_v4.3.0.185_44085_sharewithdownloadwithfile_withoutGame_obfs_20210809_201442.jar')
+
+
 
 
     testImplementation 'junit:junit:4.13.1'
@@ -60,7 +62,7 @@ dependencies {
     //Banner轮播图
     implementation 'com.youth.banner:banner:1.4.10'
 
-    //App update
+    //App update 更新app
     implementation 'com.qianwen:update-app:3.5.2'
 
     //okgo

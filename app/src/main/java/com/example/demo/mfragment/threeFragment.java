@@ -112,7 +112,8 @@ public class threeFragment extends Fragment {
                 .build();
         //第二步构建Request对象
         Request request = new Request.Builder()
-                .url(URLinfo.imgurl)
+                //.url(URLinfo.imgurl)
+                .url("http://bz.eleuu.com/api.php?cid=phone&do=get2tag&tag=-4&page=1&show=location")
                 .get()
                 .build();
         //第三步构建Call对象
@@ -490,7 +491,7 @@ public class threeFragment extends Fragment {
 
                 final InputStream flsinputStream = response.body().byteStream();//得到图片的流
 
-                //创建子线程 延续
+                //创建子线程
                 Thread myThread = new Thread() {
                     @Override
                     public void run() {

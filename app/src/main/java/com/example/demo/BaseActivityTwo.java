@@ -17,6 +17,7 @@ import com.example.demo.model.PermissionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -129,6 +130,39 @@ public class BaseActivityTwo extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, permissionList.toArray(new String[permissionList.size()]), REQUEST_CODE);
         } else {
             mListener.onGranted();
+        }
+    }
+
+    /**
+     * 处理授权回调
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CODE:
+                if (grantResults.length > 0) {
+                    //拒绝的权限列表
+                    List<String> deniedPermission = new ArrayList<>();
+                    for (int i = 0; i < grantResults.length; i++) {
+                        int grantResult = grantResults[i];
+                        if (grantResult == PackageManager.PERMISSION_DENIED) {
+                            deniedPermission.add(permissions[i]);
+                        }
+                    }
+                    if (deniedPermission.isEmpty()) {
+                        mListener.onGranted();
+                    } else {
+                        mListener.onDenied(deniedPermission);
+                    }
+                }
+                break;
+            default:
+                break;
         }
     }
 
