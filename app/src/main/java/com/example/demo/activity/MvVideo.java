@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.demo.BaseActivity;
+import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.example.demo.model.mConfig;
@@ -47,18 +48,23 @@ public class MvVideo extends BaseActivity {
 
         //横屏播放
         if (mx5webView.getX5WebViewExtension() != null) {
+
+            // 对于刘海屏机器如果webview被遮挡会自动padding
+            mx5webView.getSettingsExtension().setDisplayCutoutEnable(true);
+
             Toast.makeText(this, "开启X5全屏播放模式", Toast.LENGTH_LONG).show();
             Bundle data = new Bundle();
             data.putBoolean("standardFullScreen", false);// true表示标准全屏，false表示X5全屏；不设置默认false，
             data.putBoolean("supportLiteWnd", false);// false：关闭小窗；true：开启小窗；不设置默认true，
             data.putInt("DefaultVideoScreen", 1);// 1：以页面内开始播放，2：以全屏开始播放；不设置默认：1
-
             mx5webView.getX5WebViewExtension().invokeMiscMethod("setVideoParams", data);
 
             mx5webView.loadUrl(videoUrl);
             getWindow().setFormat(PixelFormat.TRANSLUCENT);
             mx5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
             mx5webView.setWebChromeClient(new WebChromeClient());
+
+
 
         } else {
 

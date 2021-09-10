@@ -11,19 +11,12 @@ import com.example.demo.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.sdk.TbsReaderView;
-import com.tencent.smtt.sdk.WebSettings;
-
 import java.io.File;
 
-
 public class VideoActivity extends BaseActivityTwo {
-
-
-
     private X5WebView x5webView;
     private RelativeLayout rlRoot;
-
-    TbsReaderView tbsReaderView;
+    private TbsReaderView tbsReaderView;
     private String url;
 
     @Override
@@ -42,42 +35,10 @@ public class VideoActivity extends BaseActivityTwo {
             }
         });
 
-        Intent intent = getIntent();
-        String name = "http://111.231.191.26/See%20You%20Again.mp4";  //测试视频url
-        String test = "http://debugtbs.qq.com";  //测试视频url
-
-
-
-
-       url = "/storage/emulated/0/Download/X5内核.pdf";
-
-
-
-        String videoUrl =  intent.getStringExtra("url");
-        //横屏播放
-       /* if (x5webView.getX5WebViewExtension() != null) {
-            //Toast.makeText(this, "开启X5全屏播放模式", Toast.LENGTH_LONG).show();
-            Bundle data = new Bundle();
-            data.putBoolean("standardFullScreen", false);// true表示标准全屏，false表示X5全屏；不设置默认false，
-            data.putBoolean("supportLiteWnd", false);// false：关闭小窗；true：开启小窗；不设置默认true，
-            data.putInt("DefaultVideoScreen", 2);// 1：以页面内开始播放，2：以全屏开始播放；不设置默认：1
-
-            x5webView.getX5WebViewExtension().invokeMiscMethod("setVideoParams", data);
-
-            x5webView.loadUrl(name);
-            //getWindow().setFormat(PixelFormat.TRANSLUCENT);
-            x5webView.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
-            x5webView.setWebChromeClient(new WebChromeClient());
-
-        }*/
+       url = "/storage/emulated/0/A_Test/test.pdf";
 
         rlRoot.addView(tbsReaderView, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));//装载TbsReaderView的视图
         openFile();
-
-
-        //TbsVideo.openVideo(this,test);  //直接打开视频也可以
-      //  TbsVideo.openVideo(this, Environment.getExternalStorageDirectory() + “****.mp4”);  //发现播放视频不错，一句话就可以播放本地视频。 https://my.oschina.net/JiangTun/blog/968035
-
 
     }
 
@@ -116,7 +77,6 @@ public class VideoActivity extends BaseActivityTwo {
         Log.e("tag",fileName);
         return fileName;
     }
-
 
     @Override
     protected void onDestroy() {

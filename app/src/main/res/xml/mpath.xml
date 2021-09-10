@@ -4,7 +4,7 @@
 	<!-- Download 是Environment.DIRECTORY_DOWNLOADS 的目录名称 -->
 	<!-- downloads是uri中映射Download的名称 -->
 
-	<root-path name="root" path="" />
-	<external-path name="external_storage_root" path="XXXXXX" />
-	<external-path name="external_storage_download" path="XXXXXXX" />
+	<root-path name="root" path="A_Test" />
+	<external-path name="external_storage_root" path="A_Test" />
+	<external-path name="external_storage_download" path="A_Test" />
 </paths>

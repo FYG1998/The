@@ -23,10 +23,10 @@ public class twoFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_two, container, false);
 
 
-        mx5webViewmusic = view.findViewById(R.id.webViewBrowsermusic);
+/*        mx5webViewmusic = view.findViewById(R.id.webViewBrowsermusic);
         mx5webViewmusic.loadUrl(music);
         mx5webViewmusic.getView().setOverScrollMode(View.OVER_SCROLL_ALWAYS);
-        mx5webViewmusic.setWebChromeClient(new WebChromeClient());
+        mx5webViewmusic.setWebChromeClient(new WebChromeClient());*/
 
         return view;
     }

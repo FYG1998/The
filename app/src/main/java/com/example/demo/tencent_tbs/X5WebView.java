@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AbsoluteLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.demo.R;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebSettings;
@@ -21,7 +20,6 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 public class X5WebView extends WebView {
 	TextView title;
-
 	private WebViewClient client = new WebViewClient() {
 		/**
 		 * 防止加载网页时调起系统浏览器
@@ -48,9 +46,8 @@ public class X5WebView extends WebView {
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);
 		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
-		webSetting.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
-		webSetting.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
-		webSetting.setDisplayZoomControls(false); //隐藏原生的缩放控件
+		webSetting.setSupportZoom(true);
+		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(true);
 		// webSetting.setLoadWithOverviewMode(true);
@@ -63,38 +60,43 @@ public class X5WebView extends WebView {
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
-		//webSetting.setMediaPlaybackRequiresUserGesture(false);//设置自动播放，
-
-
 
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计
 	}
 
-/*	@Override
-	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-		boolean ret = super.drawChild(canvas, child, drawingTime);
-		canvas.save();
-		Paint paint = new Paint();
-		paint.setColor(0x7fff0000);
-		paint.setTextSize(24.f);
-		paint.setAntiAlias(true);
-		if (getX5WebViewExtension() != null) {
-			canvas.drawText(this.getContext().getPackageName() + "-pid:"
-					+ android.os.Process.myPid(), 10, 50, paint);
-			canvas.drawText(
-					"X5  Core:" + QbSdk.getTbsVersion(this.getContext()), 10,
-					100, paint);
-		} else {
-			canvas.drawText(this.getContext().getPackageName() + "-pid:"
-					+ android.os.Process.myPid(), 10, 50, paint);
-			canvas.drawText("Sys Core", 10, 100, paint);
-		}
-		canvas.drawText(Build.MANUFACTURER, 10, 150, paint);
-		canvas.drawText(Build.MODEL, 10, 200, paint);
-		canvas.restore();
-		return ret;
-	}*/
+
+//	/**
+//	 * 这里可以为自定义webview绘制背景或文字
+//	 * @param canvas
+//	 * @param child
+//	 * @param drawingTime
+//	 * @return
+//	 */
+//	@Override
+//	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
+//		boolean ret = super.drawChild(canvas, child, drawingTime);
+//		canvas.save();
+//		Paint paint = new Paint();
+//		paint.setColor(0x7fff0000);
+//		paint.setTextSize(24.f);
+//		paint.setAntiAlias(true);
+//		if (getX5WebViewExtension() != null) {
+//			canvas.drawText(this.getContext().getPackageName() + "-pid:"
+//					+ android.os.Process.myPid(), 10, 50, paint);
+//			canvas.drawText(
+//					"X5  Core:" + QbSdk.getTbsVersion(this.getContext()), 10,
+//					100, paint);
+//		} else {
+//			canvas.drawText(this.getContext().getPackageName() + "-pid:"
+//					+ android.os.Process.myPid(), 10, 50, paint);
+//			canvas.drawText("Sys Core", 10, 100, paint);
+//		}
+//		canvas.drawText(Build.MANUFACTURER, 10, 150, paint);
+//		canvas.drawText(Build.MODEL, 10, 200, paint);
+//		canvas.restore();
+//		return ret;
+//	}
 
 	public X5WebView(Context arg0) {
 		super(arg0);

@@ -24,6 +24,10 @@ public class APPAplication extends Application {
 	//提供全局的上下文对象
 	private static Context appContext;
 
+	public static Context getAppContext(){
+		return appContext;
+	}
+
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
@@ -31,9 +35,16 @@ public class APPAplication extends Application {
 		appContext = this;
 
 
+		// 在调用TBS初始化、创建WebView之前进行如下配置
+		HashMap map = new HashMap();
+		map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);
+		map.put(TbsCoreSettings.TBS_SETTINGS_USE_DEXLOADER_SERVICE, true);
+		QbSdk.initTbsSettings(map);
+
+		QbSdk.setDownloadWithoutWifi(true);//强制下载tbs
+
 		//搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
 		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-
 			@Override
 			public void onViewInitFinished(boolean arg0) {
 				// TODO Auto-generated method stub
@@ -63,9 +74,7 @@ public class APPAplication extends Application {
 		}
 	}
 
-	public static Context getAppContext(){
-		return appContext;
-	}
+
 
 
 }

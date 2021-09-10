@@ -10,7 +10,6 @@
     <com.example.demo.tencent_tbs.X5WebView
         android:id="@+id/x5_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hapticFeedbackEnabled="true"/>
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

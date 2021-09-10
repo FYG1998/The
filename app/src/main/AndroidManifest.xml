@@ -29,7 +29,6 @@
         <!--
         android:screenOrientation="sensor"  根據物理方向傳感器確定方向. 取決於用戶手持的方向
         android:configChanges="orientation|screenSize|keyboardHidden"  支持横竖屏
-
         android:resizeableActivity="true"  可调整activity大小
         -->
         <activity android:name=".activity.TestFactory" />
@@ -38,8 +37,7 @@
         <activity
             android:name=".activity.Browser"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:resizeableActivity="true"
-            android:screenOrientation="sensor" />
+            android:resizeableActivity="true" />
         <activity android:name=".activity.AboutActivity" />
         <activity
             android:name=".activity.VideoActivity"
@@ -48,7 +46,10 @@
         <activity
             android:name=".activity.MvVideo"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="sensor" />
+            android:screenOrientation="sensor"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+
+             />
         <activity android:name=".activity.FileChooser" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -75,21 +76,35 @@
             android:name=".LoadX5Service"
             android:enabled="true"
             android:exported="true" />
+
+        <!--在AndroidManifest.xml中增加内核首次加载时优化Service声明。
+        该Service仅在TBS内核首次Dex加载时触发并执行dex2oat任务，任务完成后自动结束。-->
+        <service
+            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:label="dexopt"
+            android:process=":dexopt" >
+        </service>
+
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REPLACE_EXISTING_PACKAGE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+
     <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
+
 
 </manifest>
