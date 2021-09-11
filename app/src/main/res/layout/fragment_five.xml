@@ -222,7 +222,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img_de"
-                    android:text="Text"
+                    android:text="Link"
                     android:textColor="#000000" />
 
                 <ImageView

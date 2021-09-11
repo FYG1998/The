@@ -40,12 +40,17 @@ import android.widget.Toast;
 
 import com.example.demo.R;
 import com.example.demo.adapter.MvListBaseAdapter;
+import com.example.demo.base.BaseActivity;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mConfig;
 import com.example.demo.model.mOKHttp;
 import com.example.demo.utils.ProgressDialogUtil;
+import com.example.demo.utils.ToastUtil;
 import com.example.demo.utils.playUrl;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.StringCallback;
 import com.tencent.smtt.sdk.TbsVideo;
 
 import org.json.JSONArray;
@@ -167,7 +172,7 @@ public class threeFragment extends Fragment {
                 v.setFocusableInTouchMode(false);
 
                 if (!(TextUtils.isEmpty(editText.getText().toString()))) {
-                    mv_List();
+                    mv_List3();
                 } else {
                     Toast.makeText(getActivity(), "搜索关键字不能为空", Toast.LENGTH_SHORT).show();
                 }
@@ -314,6 +319,103 @@ public class threeFragment extends Fragment {
     }
 
 
+
+
+    public void mv_List3(){
+        final String misuelist = URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;
+        OkGo.<String>get(misuelist)               // 请求方式和请求url
+                .tag(this)                       // 请求的 tag, 主要用于取消对应的请求
+                .cacheKey("cacheKey")            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
+                .cacheMode(CacheMode.NO_CACHE)    // 缓存模式，详细请看缓存介绍
+                //  .cacheTime(3000)//缓存时间
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(com.lzy.okgo.request.base.Request<String, ? extends com.lzy.okgo.request.base.Request> request) {
+                        ProgressDialogUtil.showProgressDialog(getActivity());
+                    }
+
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+                        String jsondta = response.body();
+                        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                        if (jsondta != null) {
+                            try {
+
+                                JSONObject json = new JSONObject(jsondta);
+                                JSONObject json_data = json.getJSONObject("data");
+                                JSONObject json_song = json_data.getJSONObject("song");
+                                JSONArray json_list = json_song.getJSONArray("list");//获取到了list （60条记录） ;[]集合json
+
+
+                                for (int i = 0; i < json_list.length(); i++) {
+                                    Map<String, Object> map = new HashMap<String, Object>();
+
+                                    Log.e("调试", String.valueOf(json_list.length()));
+                                    JSONObject json_listobj = json_list.getJSONObject(i);  //把集合[]json 转换 数组 {}
+                                    String json_title = json_listobj.getString("title"); //获取歌曲 title
+                                    String json_mid = json_listobj.getString("mid"); //获取歌曲 mid
+
+                                    JSONObject json_mv = json_listobj.getJSONObject("mv");
+                                    String mvmid = json_mv.getString("vid");
+
+                                    JSONObject json_img = json_listobj.getJSONObject("album");
+
+                                    if (mvmid.length() > 0) {
+                                        String img = json_img.getString("pmid");
+
+                                        map.put("name", json_title);
+                                        map.put("mid", json_mid);
+                                        map.put("mvmid", mvmid);
+                                        map.put("pmid_img", img);
+
+                                        list.add(map);
+                                    }
+
+
+                                }
+                                Log.d("map", list.toString());
+
+
+                                MvListBaseAdapter adapter = new MvListBaseAdapter(getContext());
+                                adapter.setList(list);
+
+                                        /*SimpleAdapter adapter = new SimpleAdapter(
+                                                getActivity(),
+                                                list,R.layout.item_list,
+                                                new String[]{"name","mid"},
+                                                new int[]{R.id.name,R.id.mid});*/
+
+                                mListView.setAdapter(adapter);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
+                        super.onError(response);
+                        ToastUtil.showLong(context,response.message());
+                    }
+
+
+
+                    @Override
+                    public void onFinish() {
+                        ProgressDialogUtil.cancelProgressDialog(getActivity());
+
+                    }
+
+                });
+
+    }
     //获取mv list的方法
     public void mv_List() {
         final String misuelist = URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;

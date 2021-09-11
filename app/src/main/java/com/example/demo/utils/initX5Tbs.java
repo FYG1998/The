@@ -1,12 +1,9 @@
 package com.example.demo.utils;
 
 import android.util.Log;
-
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
-
 import java.util.HashMap;
-
 import static com.example.demo.base.APPAplication.getAppContext;
 
 public class initX5Tbs {

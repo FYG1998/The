@@ -3,7 +3,9 @@ package com.example.demo.mfragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,21 +15,22 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
+import com.example.demo.activity.CodeActivity;
 import com.example.demo.activity.LoginActivity;
 import com.example.demo.activity.MainTbs;
 import com.example.demo.activity.SettingActivity;
-import com.example.demo.activity.FileChooser;
 import com.example.demo.activity.TestFactory;
-import com.example.demo.utils.QQUtil;
+import com.example.demo.utils.WXQQUtil;
 import com.example.demo.utils.SoundUtils;
 
 
 public class fiveFragment extends Fragment {
 
-    RelativeLayout aboutapp,webbrowser,tbsfile,qqgroup,factorymodel,downlaodpath,setting,exitlogin,de;
+    RelativeLayout aboutapp, webbrowser, tbsfile, qqgroup, factorymodel, downlaodpath, setting, exitlogin, de;
     ImageView img_header;
 
     private void initView(View view) {
@@ -44,8 +47,7 @@ public class fiveFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_five, container, false);
 
         initView(view);
@@ -59,7 +61,7 @@ public class fiveFragment extends Fragment {
         img_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivityForResult(intent, 0);
 
             }
@@ -72,7 +74,7 @@ public class fiveFragment extends Fragment {
         aboutapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), AboutActivity.class);
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
 
             }
@@ -83,8 +85,11 @@ public class fiveFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-               Toast.makeText(getActivity(),"点击一下",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "点击一下", Toast.LENGTH_SHORT).show();
                 SoundUtils.playSound(R.raw.sucess);
+                Intent intent = new Intent(getActivity(), CodeActivity.class);
+                startActivity(intent);
+
 
             }
         });
@@ -93,11 +98,11 @@ public class fiveFragment extends Fragment {
         webbrowser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), Browser.class);
+                Intent intent = new Intent(getActivity(), Browser.class);
                 startActivity(intent);
 
             }
-        }) ;
+        });
 
         //tbs file
         tbsfile.setOnClickListener(new View.OnClickListener() {
@@ -113,8 +118,8 @@ public class fiveFragment extends Fragment {
         qqgroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!QQUtil.joinQQGroup("Oo7Jsgqio1N3n50qJcLYX50EODExfbQk ", getActivity())) {
-                    Toast.makeText(getActivity(), "未安装手Q或安装的版本不支持",Toast.LENGTH_SHORT).show();
+                if (!WXQQUtil.joinQQGroup("Oo7Jsgqio1N3n50qJcLYX50EODExfbQk ", getActivity())) {
+                    Toast.makeText(getActivity(), "未安装手Q或安装的版本不支持", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -125,11 +130,11 @@ public class fiveFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Dialog dialog = new Dialog(getContext(),R.style.style_dialog);
-                View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_path , null);
+                Dialog dialog = new Dialog(getContext(), R.style.style_dialog);
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_path, null);
                 dialog.setContentView(view); //将布局设置给Dialog
                 Window window = dialog.getWindow();
-                window.setGravity( Gravity.BOTTOM); //设置Dialog从窗体底部弹出
+                window.setGravity(Gravity.BOTTOM); //设置Dialog从窗体底部弹出
                 WindowManager.LayoutParams lp = window.getAttributes();//获得窗体的属性
                 lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
                 lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -157,7 +162,7 @@ public class fiveFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
             }
-        }) ;
+        });
 
         //退出app
         exitlogin.setOnClickListener(new View.OnClickListener() {
@@ -168,8 +173,6 @@ public class fiveFragment extends Fragment {
         });
 
     }
-
-
 
 
 }

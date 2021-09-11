@@ -12,17 +12,14 @@ import android.widget.ImageView;
 import com.example.demo.base.BaseActivity;
 import com.example.demo.base.CoreFragment;
 import com.example.demo.model.URLinfo;
+import com.example.demo.model.Config;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mOKHttp;
 import com.example.demo.model.spInfo;
-import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.SPDataUtils;
-import com.example.demo.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.cache.CacheMode;
-import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,7 +77,7 @@ public class MainActivity extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                showToast("长安");
+                showToast("安");
                 return false;//false 去掉震动
             }
         });
@@ -88,7 +85,8 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         Guidechart(); // 获取导播图网址
-       // Responsion();
+        Responsion();
+        downLoadDatabase();
         msleep();
     }
 
@@ -159,15 +157,15 @@ public class MainActivity extends BaseActivity {
 
     //公告栏文字 okhttp 获取
     public void Responsion() {
-        /*mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
+        mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回调
-               runOnUiThread(new Runnable() { //线程
+                runOnUiThread(new Runnable() { //线程
                     @Override
                     public void run() { //主线程操作
                         String json = res;
-                        String contr ="";
-                        if(json!=null){
+                        String contr = "";
+                        if (json != null) {
                             try {
                                 JSONObject jsonObject = new JSONObject(json); //Jsons 解析
                                 contr = jsonObject.optString("content");
@@ -177,13 +175,12 @@ public class MainActivity extends BaseActivity {
                             }
                         }
                         // java 正则表达式 截取 https://blog.csdn.net/u013456370/article/details/78490052/
-                        String regex="json(.*?)json";
-                        Pattern pattern= Pattern.compile(regex);   //pattern 正则表达式类
+                        String regex = "json(.*?)json";
+                        Pattern pattern = Pattern.compile(regex);   //pattern 正则表达式类
                         Matcher matcher = pattern.matcher(contr.toString());
 
-                        while (matcher.find())
-                        {
-                            String data =matcher.group(1);
+                        while (matcher.find()) {
+                            String data = matcher.group(1);
                             URLinfo.setmTextnotice(data);
                             Log.d("TAG", data);
                         }
@@ -196,12 +193,12 @@ public class MainActivity extends BaseActivity {
             public void onFailure(Exception e) {
             }
         });
-*/
-        String a = "https://api.github.com/repos/square/retrofit/contributors";
-        String b ="http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6";
-        String c ="https://naiop.github.io/test/updateApp.json";
 
-        OkGo.<String>get(b)                            // 请求方式和请求url
+        String a = "https://api.github.com/repos/square/retrofit/contributors";
+        String b = "http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6";
+        String c = "https://naiop.github.io/test/updateApp.json";
+
+        /*OkGo.<String>get(Config.SongName("赵雷"))     // 请求方式和请求url
                 .tag(this)                       // 请求的 tag, 主要用于取消对应的请求
                 .cacheKey("cacheKey")            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
                 .cacheMode(CacheMode.NO_CACHE)    // 缓存模式，详细请看缓存介绍
@@ -232,10 +229,40 @@ public class MainActivity extends BaseActivity {
 
                     }
 
-                });
+                });*/
+
+
+
+
 
 
 
 
     }
+
+
+
+
+    private void downLoadDatabase() {
+
+        String zpl = "https://api.labelary.com/v1/printers/8dpmm/labels/4x6/0/";
+        OkGo.<File>get(zpl)
+                .headers("Accept", "application/pdf") //下载文件要添加headers
+                .params("", Config.zplCode(null))
+                .execute(new FileCallback(Config.mPath(), "test.pdf") {   //指定下载的路径  下载文件名
+                    @Override
+                    public void onSuccess(Response<File> response) {
+                        Log.i("randomcode", "下载成功1 " + response.body());
+                    }
+
+                    @Override
+                    public void onError(Response<File> response) {
+                        super.onError(response);
+                        Log.i("randomcode", "下载失败1 " + response.body());
+                    }
+                });
+
+    }
+
+
 }

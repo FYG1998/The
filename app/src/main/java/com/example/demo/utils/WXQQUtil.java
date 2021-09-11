@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 
-public class QQUtil {
+public class WXQQUtil {
     /*
      * 由官网生成 :https://qun.qq.com/join.html
      * @param key 由官网生成的key
@@ -23,5 +23,18 @@ public class QQUtil {
             return false;
         }
     }
+
+    public static void openWeixinQRCode(Context context) {
+        try {
+            Intent intent = context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
+            intent.putExtra("LauncherUI.From.Scaner.Shortcut", true);
+            intent.setAction("android.intent.action.VIEW");
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
