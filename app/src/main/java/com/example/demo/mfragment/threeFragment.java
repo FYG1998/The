@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -39,8 +39,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demo.R;
-import com.example.demo.activity.MvVideo;
-import com.example.demo.activity.SettingActivity;
 import com.example.demo.adapter.MvListBaseAdapter;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.mCallback;
@@ -48,6 +46,7 @@ import com.example.demo.model.mConfig;
 import com.example.demo.model.mOKHttp;
 import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.playUrl;
+import com.tencent.smtt.sdk.TbsVideo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,6 +66,7 @@ import static com.example.demo.model.mFileTool.saveIO1;
 
 public class threeFragment extends Fragment {
 
+    private Context context;
     protected View view;
     private TextView textView;
     private EditText editText;
@@ -90,6 +90,7 @@ public class threeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_three, container, false);
+        context =getActivity();
 
         initView(view);
         initData();
@@ -271,9 +272,18 @@ public class threeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), MvVideo.class); //启动
-                startActivity(intent);
+                List<Map<String, Object>> list = mConfig.getMvurllist();
+                int i = list.size() - 1;
+                Map map = list.get(i);
+                String cn = (String) map.get("cn");
+                String vkey = (String) map.get("vkey");
+                String url = (String) map.get("url");
+                String videoUrl = url + vkey + "/" + cn + "?fname=" + cn;
+                Log.d("调试", videoUrl);
+                Toast.makeText(getActivity(), "开启X5播放模式", Toast.LENGTH_LONG).show();
 
+                getActivity().getWindow().setFormat(PixelFormat.TRANSLUCENT);
+                TbsVideo.openVideo(context, videoUrl);
                 dialog.dismiss();
 
             }
@@ -307,7 +317,6 @@ public class threeFragment extends Fragment {
     //获取mv list的方法
     public void mv_List() {
         final String misuelist = URLinfo.musiclisturl1 + editText.getText().toString() + URLinfo.musiclisturl2;
-
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回
@@ -316,9 +325,7 @@ public class threeFragment extends Fragment {
                     public void run() { //主线程操作
 
                         String jsondta = res;
-
                         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-
                         if (jsondta != null) {
                             try {
 

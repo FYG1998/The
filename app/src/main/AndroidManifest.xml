@@ -3,7 +3,7 @@
     package="com.example.demo">
 
     <application
-        android:name=".APPAplication"
+        android:name=".base.APPAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic"
         android:label="@string/app_name"
@@ -17,13 +17,13 @@
             android:name=".activity.LoginActivity"
             android:label="Activity Dialog"
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth" />
-        <activity android:name=".activity.PublicBrowse" />
+        <activity android:name=".activity.MainTbs" />
         <activity
-            android:name=".aatest.TestHslClientMqttShow"
+            android:name=".A_Test.TestHslClientMqttShow"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensor" />
         <activity
-            android:name=".aatest.HslClientMqtt"
+            android:name=".A_Test.HslClientMqtt"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensor" />
         <!--
@@ -40,26 +40,31 @@
             android:resizeableActivity="true" />
         <activity android:name=".activity.AboutActivity" />
         <activity
-            android:name=".activity.VideoActivity"
+            android:name=".activity.OpenFile"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:resizeableActivity="true" />
+        <!--清单文件AndroidManifest.xml中配置SDK中的视频播放Activity-->
         <activity
-            android:name=".activity.MvVideo"
+            android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:alwaysRetainTaskState="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="sensor"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="false"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
-             />
         <activity android:name=".activity.FileChooser" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CoreFragment"
+            android:name=".base.CoreFragment"
             android:windowSoftInputMode="stateVisible|adjustPan" />
 
         <provider

@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.demo.R;
-import com.example.demo.activity.VideoActivity;
+import com.example.demo.activity.OpenFile;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.bitmap;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -171,7 +171,7 @@ public class oneFragment extends Fragment {
                 String url = api + mUrl.getText().toString();
 
                 //intent 传值 https://blog.csdn.net/qq_36721053/article/details/53637667
-                Intent intent =new Intent(getActivity(), VideoActivity.class); //启动
+                Intent intent =new Intent(getActivity(), OpenFile.class); //启动
                 intent.putExtra("url", url);
                 startActivity(intent);
 

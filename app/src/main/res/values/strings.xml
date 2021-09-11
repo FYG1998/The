@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">The</string>
 
-
-
-    <!--关于String -->
-   <!-- <string name="app_version">Version %1$s</string>-->
-    <string name="app_version">Version 2.1.1</string>
+    <!--AboutActivity -->
     <string name="about_App">关于App</string>
     <string name="about_app_detail">
          胡乱写的Android App,毕业以后工作主要是C# 语言方面的编程，学过Java，平时没事干就随便敲两行代码
@@ -104,12 +100,11 @@
     </string>
 
 
-    <!--网格-->
+    <!--tbs-->
     <string-array name="index_titles">
         <item>浏览器demo</item>
-        <item>全屏播放</item>
-        <item>文件选择器</item>
+        <item>Filepath</item>
+        <item>文件浏览</item>
     </string-array>
-
 
 </resources>

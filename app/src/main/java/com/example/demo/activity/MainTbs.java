@@ -1,7 +1,5 @@
 package com.example.demo.activity;
 
-
- import android.app.Activity;
  import android.content.Context;
  import android.content.Intent;
  import android.os.Bundle;
@@ -10,13 +8,13 @@ package com.example.demo.activity;
  import android.widget.GridView;
  import android.widget.SimpleAdapter;
 
+ import com.example.demo.base.BaseActivityTwo;
  import com.example.demo.R;
-
  import java.util.ArrayList;
  import java.util.HashMap;
 
 
-public class PublicBrowse extends Activity {
+public class MainTbs extends BaseActivityTwo {
 
 
     private Context mContext = null;
@@ -25,11 +23,19 @@ public class PublicBrowse extends Activity {
     private ArrayList<HashMap<String, Object>> items;
     private static String[] titles = null;
 
+    // add constant here
+    private static final int TBS_WEB = 0;
+    private static final int FULL_SCREEN_VIDEO = 1;
+    private static final int FILE_CHOOSER = 2;
+
     private static boolean main_initialized = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_publicbrowse);
+        setContentView(R.layout.activity_maintbs);
+        setTitle("Tbs_tools");
+        setBackBtn();
+
 
         mContext = this;
         if (!main_initialized) {
@@ -64,8 +70,30 @@ public class PublicBrowse extends Activity {
             this.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
-                public void onItemClick(AdapterView<?> gridView, View view,
-                                        int position, long id) {
+                public void onItemClick(AdapterView<?> gridView, View view, int position, long id) {
+                    Intent intent = null;
+
+                    switch (position) {
+                        case TBS_WEB: {
+                            intent = new Intent(MainTbs.this, Browser.class);
+                            MainTbs.this.startActivity(intent);
+
+                        }
+                        break;
+                        case FULL_SCREEN_VIDEO: {
+                            intent = new Intent(MainTbs.this, FileChooser.class);
+                            MainTbs.this.startActivity(intent);
+                        }
+                        break;
+
+                        case FILE_CHOOSER: {
+                            intent = new Intent(MainTbs.this, OpenFile.class);
+                            MainTbs.this.startActivity(intent);
+
+                        }
+                        break;
+
+                    }
 
 
 
@@ -76,6 +104,16 @@ public class PublicBrowse extends Activity {
         main_initialized = true;
 
     }
+
+    @Override
+    protected void onResume() {
+        this.new_init();
+
+        // this.gridView.setAdapter(gridAdapter);
+        super.onResume();
+    }
+
+
 
 
 }

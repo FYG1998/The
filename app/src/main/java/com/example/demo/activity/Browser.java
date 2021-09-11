@@ -13,12 +13,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Process;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
@@ -31,15 +29,11 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.demo.BaseActivity;
-import com.example.demo.CoreFragment;
+import com.example.demo.base.CoreFragment;
 import com.example.demo.R;
-import com.example.demo.mfragment.fiveFragment;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -151,6 +145,9 @@ public class Browser extends Activity {
     private void init() {
 
         mWebView = new X5WebView(this, null);
+
+        // 对于刘海屏机器如果webview被遮挡会自动padding
+        mWebView.getSettingsExtension().setDisplayCutoutEnable(true);
 
         mViewParent.addView(mWebView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.FILL_PARENT,

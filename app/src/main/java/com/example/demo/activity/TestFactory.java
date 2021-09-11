@@ -1,19 +1,17 @@
 package com.example.demo.activity;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.demo.BaseActivity;
+import com.example.demo.base.BaseActivity;
 import com.example.demo.R;
-import com.example.demo.aatest.HslClientMqtt;
-import com.example.demo.aatest.TestHslClientMqttShow;
-
+import com.example.demo.A_Test.HslClientMqtt;
+import com.example.demo.A_Test.TestHslClientMqttShow;
 
 public class TestFactory extends BaseActivity {
     private Context context;
     private Button button1,hslmqtt_adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

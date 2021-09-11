@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.base;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.example.demo.R;
+import com.example.demo.base.BaseActivity;
 import com.example.demo.mfragment.fiveFragment;
 import com.example.demo.mfragment.fourFragment;
 import com.example.demo.mfragment.oneFragment;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".CoreFragment">
+    tools:context=".base.CoreFragment">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_horizontal_ntb"

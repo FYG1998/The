@@ -1,7 +1,10 @@
 package com.example.demo.model;
 
+import android.app.Activity;
 import android.util.Log;
-import com.example.demo.BaseActivity;
+import com.example.demo.base.BaseActivity;
+import com.example.demo.utils.ProgressDialogUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import okhttp3.Call;
@@ -36,8 +39,6 @@ public class mOKHttp {
     //get请求  请求字符串 json
     public void getRequest(final mCallback callback){
 
-        //SharedPreferences sp = context.getSharedPreferences("sp_ttit", MODE_PRIVATE);
-        //String token = sp.getString("token", "");后期写
 
         //第二步构建Request对象
         final Request request = new Request.Builder()

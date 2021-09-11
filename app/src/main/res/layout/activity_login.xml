@@ -8,7 +8,7 @@
     tools:context=".activity.LoginActivity">
 
     <EditText
-        android:id="@+id/et_part_number"
+        android:id="@+id/et_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="账号"
@@ -21,13 +21,13 @@
         android:padding="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/view_bg_default"
-        app:layout_constraintBottom_toTopOf="@id/et_equipment_number"
+        app:layout_constraintBottom_toTopOf="@id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
     <EditText
-        android:id="@+id/et_equipment_number"
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="密码"
@@ -39,17 +39,17 @@
         android:padding="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/view_bg_default"
-        app:layout_constraintTop_toBottomOf="@id/et_part_number"
+        app:layout_constraintTop_toBottomOf="@id/et_account"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_fitout_submit"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_submit"/>
     <Button
-        android:id="@+id/btn_fitout_submit"
+        android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="登录"
         android:background="@drawable/btn_bg"
-        app:layout_constraintTop_toBottomOf="@+id/et_equipment_number"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

@@ -289,7 +289,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/wenjianjia" />
+                    android:src="@mipmap/tbs" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -297,7 +297,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/img_tbsfile"
-                    android:text="TBS File"
+                    android:text="TBS"
                     android:textColor="#000000" />
 
                 <ImageView

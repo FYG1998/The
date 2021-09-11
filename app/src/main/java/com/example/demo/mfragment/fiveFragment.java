@@ -17,14 +17,12 @@ import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
 import com.example.demo.activity.LoginActivity;
+import com.example.demo.activity.MainTbs;
 import com.example.demo.activity.SettingActivity;
 import com.example.demo.activity.FileChooser;
 import com.example.demo.activity.TestFactory;
 import com.example.demo.utils.QQUtil;
 import com.example.demo.utils.SoundUtils;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class fiveFragment extends Fragment {
@@ -95,8 +93,7 @@ public class fiveFragment extends Fragment {
         webbrowser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Browser.class);
+                Intent intent=new Intent(getActivity(), Browser.class);
                 startActivity(intent);
 
             }
@@ -106,7 +103,7 @@ public class fiveFragment extends Fragment {
         tbsfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), FileChooser.class);
+                Intent intent = new Intent(getActivity(), MainTbs.class);
                 startActivity(intent);
             }
         });

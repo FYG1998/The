@@ -3,12 +3,11 @@ package com.example.demo.activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
-import com.example.demo.BaseActivity;
+import com.example.demo.base.BaseActivity;
 import com.example.demo.R;
 import com.r0adkll.slidr.Slidr;
 
 public class PictureDetail extends BaseActivity {
-
 
     private ImageView img_picture;
     private String picUrl;

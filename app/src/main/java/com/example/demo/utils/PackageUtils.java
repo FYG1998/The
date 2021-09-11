@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
  *
  * @author Fyg add 2021.2
  */
-
 public class PackageUtils {
 
     public static int packageCode(Context context) {

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".aatest.TestHslClientMqttShow">
+    tools:context=".A_Test.TestHslClientMqttShow">
 
 
         <LinearLayout

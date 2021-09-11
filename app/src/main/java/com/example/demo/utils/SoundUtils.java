@@ -7,15 +7,13 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
-
-import com.example.demo.APPAplication;
-
+import com.example.demo.base.APPAplication;
 import java.io.IOException;
 
 
 /**
- * Created by
- * 播放提示声音
+ * Created by 2021.9.11
+ * 播放提示声
  */
 public class SoundUtils {
     /**
@@ -93,8 +91,8 @@ public class SoundUtils {
         });
         //第一个参数id，即传入池中的顺序，第二个和第三个参数为左右声道，第四个参数为优先级，第五个是否循环播放，0不循环，-1循环
         //最后一个参数播放比率，范围0.5到2，通常为1表示正常播放
-//        soundPool.play(1, 1, 1, 0, 0, 1);
+        ///soundPool.play(1, 1, 1, 0, 0, 1);
         //回收Pool中的资源
-//        soundPool.release();
+        //soundPool.release();
     }
 }

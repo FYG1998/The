@@ -1,9 +1,9 @@
 {
    "update": "Yes",
-    "new_version": "1.1.0",
-    "apk_file_url": "https://raw.githubusercontent.com/xxxx.apk",
-    "update_log": "1，item1。\r\n2，item1。\r\n3，item1，item1。\r\n4，item1，item1。\r\n5，item1。",
-    "target_size": "5M",
-    "new_md5":"12345b97be1234123f4556d2543",
+    "new_version": "2.1.1",
+    "apk_file_url": "https://download.fastgit.org/naiop/The/releases/download/1.0.0/app-debug.apk",
+    "update_log": "增加在线update\r\n修复程序运行BUG\r\n优化操作体验\r\n提高传输效率",
+    "target_size": "10M",
+    "new_md5":"b97bea014531123f94c3ba7b7afbaad2",
     "constraint": false
 }

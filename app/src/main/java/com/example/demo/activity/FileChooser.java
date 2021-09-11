@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.demo.BaseActivityTwo;
+import com.example.demo.base.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.sdk.ValueCallback;

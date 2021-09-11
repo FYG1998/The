@@ -135,13 +135,24 @@
         android:id="@+id/tbs_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="false"
         android:textColor="#03A9F4"
         android:textSize="14sp"
-        android:layout_marginRight="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_heavy_second3" />
+        android:layout_marginLeft="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_praise"
+        app:layout_constraintStart_toEndOf="@+id/tv_praise"
+        app:layout_constraintTop_toTopOf="@+id/tv_praise" />
+
+    <Button
+        android:id="@+id/btn_tbs_init"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="init-tbs"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/style_fill_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_praise"
+        app:layout_constraintTop_toTopOf="@+id/tv_praise"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/divider_light_first2"

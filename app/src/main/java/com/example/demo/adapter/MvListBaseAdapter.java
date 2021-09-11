@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.demo.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 import java.util.Map;
 

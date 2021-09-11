@@ -1,7 +1,7 @@
 package com.example.demo;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
@@ -9,24 +9,30 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.demo.base.BaseActivity;
+import com.example.demo.base.CoreFragment;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mOKHttp;
 import com.example.demo.model.spInfo;
+import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.SPDataUtils;
+import com.example.demo.utils.ToastUtil;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.base.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import androidx.core.content.res.ResourcesCompat;
-
 import static com.example.demo.model.URLinfo.setImgurl;
 
 
@@ -34,26 +40,28 @@ public class MainActivity extends BaseActivity {
 
     private ImageView imageView;
     private Context context;
+    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        context =this;
+        context = this;
+        activity =this;
         ininView();
         initData();
     }
 
     private void ininView() {
-        imageView=findViewById(R.id.imageview);
+        imageView = findViewById(R.id.imageview);
 
         String imgPath = Environment.getExternalStorageDirectory().getPath() + "/A_Test/b";
         final Bitmap bitmap = getLoacalBitmap(imgPath);   //从本地取图片(在cdcard中获取)
-        if(fileIsExists(imgPath)){  //判断文件是否存在
-            imageView .setImageBitmap(bitmap); //设置Bitmap
-        }else {
-            imageView.setImageDrawable( ResourcesCompat.getDrawable(getResources(), R.drawable.splash, null)); //不存在加载原先设置
+        if (fileIsExists(imgPath)) {  //判断文件是否存在
+            imageView.setImageBitmap(bitmap); //设置Bitmap
+        } else {
+            imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.splash, null)); //不存在加载原先设置
         }
 
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -64,7 +72,7 @@ public class MainActivity extends BaseActivity {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HH:mm:ss");// yyyy年MM月dd日 HH:mm:ss
                     Date date = new Date(System.currentTimeMillis());
 
-                    File file = new File(Environment.getExternalStorageDirectory().getPath()  + "/A_Test/" +simpleDateFormat.format(date) + ".jpg");
+                    File file = new File(Environment.getExternalStorageDirectory().getPath() + "/A_Test/" + simpleDateFormat.format(date) + ".jpg");
                     FileOutputStream out = new FileOutputStream(file);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                     out.flush();
@@ -73,19 +81,19 @@ public class MainActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 showToast("长安");
-                return false;//false 长按没有震动
+                return false;//false 去掉震动
             }
         });
     }
 
     private void initData() {
         Guidechart(); // 获取导播图网址
-        getAsync1();
+       // Responsion();
         msleep();
     }
 
     // 使程序休眠几秒后跳转
-    private void msleep(){
+    private void msleep() {
         spInfo info = SPDataUtils.getspInfo(context);
         final int s = Integer.parseInt(info.getTime());
         //创建子线程 延续
@@ -116,20 +124,14 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-
-
-
-
-
     //获取导播图网址
-    public  void Guidechart(){
+    public void Guidechart() {
         mOKHttp.mConfig(URLinfo.getimgUrl).getRequest(new mCallback() {
             @Override
             public void onSuccess(String res) {  //okhttp 成功回调
                 String json = res;
-                String contr ="";
-                if(json!=null){
+                String contr = "";
+                if (json != null) {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         contr = jsonObject.optString("content"); //获取到content 数据
@@ -138,13 +140,12 @@ public class MainActivity extends BaseActivity {
                         e.printStackTrace();
                     }
                 }
-                String zzbds="(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&:/~\\+#]*[\\w\\-\\@?^=%&/~\\+#])?"; //截取字符串网址 正则表达式
-                Pattern pattern= Pattern.compile(zzbds);   //pattern 正则表达式类
+                String zzbds = "(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&:/~\\+#]*[\\w\\-\\@?^=%&/~\\+#])?"; //截取字符串网址 正则表达式
+                Pattern pattern = Pattern.compile(zzbds);   //pattern 正则表达式类
                 Matcher matcher = pattern.matcher(contr.toString());
-                while (matcher.find())
-                {
-                    String data =matcher.group();
-                    Log.e("ttt",data);
+                while (matcher.find()) {
+                    String data = matcher.group();
+                    Log.e("ttt", data);
                     setImgurl(data);
                 }
             }
@@ -155,9 +156,10 @@ public class MainActivity extends BaseActivity {
         });
 
     }
+
     //公告栏文字 okhttp 获取
-    public void getAsync1(){
-        mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
+    public void Responsion() {
+        /*mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回调
                runOnUiThread(new Runnable() { //线程
@@ -194,12 +196,46 @@ public class MainActivity extends BaseActivity {
             public void onFailure(Exception e) {
             }
         });
+*/
+        String a = "https://api.github.com/repos/square/retrofit/contributors";
+        String b ="http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6";
+        String c ="https://naiop.github.io/test/updateApp.json";
+
+        OkGo.<String>get(b)                            // 请求方式和请求url
+                .tag(this)                       // 请求的 tag, 主要用于取消对应的请求
+                .cacheKey("cacheKey")            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
+                .cacheMode(CacheMode.NO_CACHE)    // 缓存模式，详细请看缓存介绍
+                //  .cacheTime(3000)//缓存时间
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        ProgressDialogUtil.showProgressDialog(activity);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        ToastUtil.showLong(context,response.body());
+
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                    }
+
+
+
+                    @Override
+                    public void onFinish() {
+                        ProgressDialogUtil.cancelProgressDialog(activity);
+
+                    }
+
+                });
+
+
+
 
     }
-
-
-
-
-
-
 }

@@ -1,19 +1,18 @@
 package com.example.demo.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import com.example.demo.BaseActivityTwo;
+import com.example.demo.base.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.sdk.TbsReaderView;
 import java.io.File;
 
-public class VideoActivity extends BaseActivityTwo {
+public class OpenFile extends BaseActivityTwo {
     private X5WebView x5webView;
     private RelativeLayout rlRoot;
     private TbsReaderView tbsReaderView;
@@ -22,7 +21,7 @@ public class VideoActivity extends BaseActivityTwo {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_openfile);
 
         x5webView = findViewById(R.id.x5_webview_video);
         rlRoot = findViewById(R.id.rl_root);

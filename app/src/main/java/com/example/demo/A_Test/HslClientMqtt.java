@@ -1,4 +1,4 @@
-package com.example.demo.aatest;
+package com.example.demo.A_Test;
 
 import HslCommunication.Core.Types.ActionOperateExTwo;
 import HslCommunication.Core.Types.OperateResult;
@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.demo.BaseActivityTwo;
+import com.example.demo.base.BaseActivityTwo;
 import com.example.demo.R;
 import com.example.demo.model.spInfo;
 import com.example.demo.utils.SPDataUtils;

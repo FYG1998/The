@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.base;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.demo.R;
 import com.example.demo.model.PermissionListener;
 
 import java.util.ArrayList;
