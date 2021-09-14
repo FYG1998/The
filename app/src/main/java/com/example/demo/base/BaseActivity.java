@@ -30,10 +30,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-//Activity与AppCompatActivity
+//AppCompatActivity
 public class BaseActivity extends AppCompatActivity {
 
     public static Context mContext;
@@ -49,7 +52,35 @@ public class BaseActivity extends AppCompatActivity {
         setTranslucent(this);
         setAndroidNativeLightStatusBar(this,true);
 
+        startTimer(); //定时任务
+
+
     }
+    ////////////////////////////////////////////////////////////////////////////
+    private Timer mTimer; // 计时器，每1秒执行一次任务
+    private  MyTimerTask mTimerTask; // 计时任务，判断是否未操作时间到达ns
+    private class MyTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            if (true) {
+
+                //发出用户改变的消息
+
+                //清空数据
+
+            }
+        }
+    }
+    private void startTimer() {
+        if(mTimer==null) {
+            mTimer = new Timer();
+            mTimerTask = new MyTimerTask();
+            // 初始化上次操作时间为登录成功的时间
+            mTimer.schedule(mTimerTask, 0, 1000);
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////
     /** 获取主题色 */

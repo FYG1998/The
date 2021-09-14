@@ -11,22 +11,31 @@ import android.widget.ImageView;
 
 import com.example.demo.base.BaseActivity;
 import com.example.demo.base.CoreFragment;
+import com.example.demo.model.Entity;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.Config;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mOKHttp;
 import com.example.demo.model.spInfo;
+import com.example.demo.utils.GsonUtil;
+import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.SPDataUtils;
+import com.example.demo.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.FileCallback;
+import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.base.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import androidx.core.content.res.ResourcesCompat;
@@ -86,8 +95,8 @@ public class MainActivity extends BaseActivity {
     private void initData() {
         Guidechart(); // 获取导播图网址
         Responsion();
-        downLoadDatabase();
         msleep();
+
     }
 
     // 使程序休眠几秒后跳转
@@ -155,7 +164,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    //公告栏文字 okhttp 获取
+    //公告栏文字
     public void Responsion() {
         mOKHttp.mConfig(URLinfo.NoticeUrl).getRequest(new mCallback() {
             @Override
@@ -194,49 +203,6 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        String a = "https://api.github.com/repos/square/retrofit/contributors";
-        String b = "http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6";
-        String c = "https://naiop.github.io/test/updateApp.json";
-
-        /*OkGo.<String>get(Config.SongName("赵雷"))     // 请求方式和请求url
-                .tag(this)                       // 请求的 tag, 主要用于取消对应的请求
-                .cacheKey("cacheKey")            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
-                .cacheMode(CacheMode.NO_CACHE)    // 缓存模式，详细请看缓存介绍
-                //  .cacheTime(3000)//缓存时间
-                .execute(new StringCallback() {
-
-                    @Override
-                    public void onStart(Request<String, ? extends Request> request) {
-                        ProgressDialogUtil.showProgressDialog(activity);
-                    }
-
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        ToastUtil.showLong(context,response.body());
-
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                    }
-
-
-
-                    @Override
-                    public void onFinish() {
-                        ProgressDialogUtil.cancelProgressDialog(activity);
-
-                    }
-
-                });*/
-
-
-
-
-
-
-
 
     }
 
@@ -263,6 +229,8 @@ public class MainActivity extends BaseActivity {
                 });
 
     }
+
+
 
 
 }

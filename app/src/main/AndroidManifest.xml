@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.CodeActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>
+        <activity android:name=".activity.StationActivity"></activity>
+        <activity
+            android:name=".activity.EditTextActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
+        <activity
+            android:name=".activity.CodeActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
         <activity
             android:name=".activity.LoginActivity"
             android:label="Activity Dialog"
@@ -44,19 +49,14 @@
         <activity
             android:name=".activity.OpenFile"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:resizeableActivity="true" />
-
-        <!--适配小米（xiaomi）刘海屏-->
-        <meta-data
-            android:name="notch.config"
-            android:value="portrait|landscape" />
-        <!-- 清单文件AndroidManifest.xml中配置SDK中的视频播放Activity -->
+            android:resizeableActivity="true" /> <!-- 清单文件AndroidManifest.xml中配置SDK中的视频播放Activity -->
         <activity
             android:name="com.tencent.smtt.sdk.VideoActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/tbs_theme">
             <intent-filter>
                 <action android:name="com.tencent.smtt.tbs.video.PLAY" />
 
@@ -90,13 +90,13 @@
             android:enabled="true"
             android:exported="true" />
         <!--
-在AndroidManifest.xml中增加内核首次加载时优化Service声明。
+          在AndroidManifest.xml中增加内核首次加载时优化Service声明。
         该Service仅在TBS内核首次Dex加载时触发并执行dex2oat任务，任务完成后自动结束。
         -->
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
-            android:process=":dexopt"></service>
+            android:process=":dexopt" />
     </application>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -107,8 +107,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />

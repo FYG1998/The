@@ -2,13 +2,15 @@
 <resources>
 
     <!--公共color-->
-    <color name="black">#FF000000</color>
+    <color name="black">#0C0C0C</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorPrimary">#333244</color>
-    <color name="colorPrimaryDark">#292836</color>
+  <!--  <color name="colorPrimary">#333244</color>
+    <color name="colorPrimaryDark">#00574B</color>
+      <color name="colorAccent">#03A9F4</color>-->
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
 
-    <!--TabLayout 顶部-->
-    <color name="colorAccent">#03A9F4</color>
 
     <!--   About page color    -->
     <color name="text_color">#292836</color>
@@ -29,7 +31,8 @@
 
 
     <color name="spinner_bg">#333244</color>
-
+    <color name="colorLabel">#C8555353</color>
+    <color name="colorDec">#FF5722</color>
 
     <!--
         <color name="teal_200">#FF03DAC5</color>

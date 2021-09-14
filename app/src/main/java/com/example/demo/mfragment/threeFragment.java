@@ -41,10 +41,12 @@ import android.widget.Toast;
 import com.example.demo.R;
 import com.example.demo.adapter.MvListBaseAdapter;
 import com.example.demo.base.BaseActivity;
+import com.example.demo.model.GlobalData;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mConfig;
 import com.example.demo.model.mOKHttp;
+import com.example.demo.utils.AlertDialogUtil;
 import com.example.demo.utils.ProgressDialogUtil;
 import com.example.demo.utils.ToastUtil;
 import com.example.demo.utils.playUrl;
@@ -225,6 +227,7 @@ public class threeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 editText.setText("");
+
             }
         });
 

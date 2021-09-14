@@ -45,6 +45,8 @@ public class APPAplication extends Application {
 
         iiniTbs();//全局初始画tbs
 
+        CrashHandler.getInstance().init(appContext);//全局异常捕获
+
         initOkhttp();//全局初始化网络架构
 
 

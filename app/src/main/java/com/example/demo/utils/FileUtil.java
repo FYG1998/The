@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * 文件操作帮助类
- * Created by gpk on 2019/6/19.
+ * Created
  */
 public class FileUtil {
     private FileUtil() {

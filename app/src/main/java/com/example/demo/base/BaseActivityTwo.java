@@ -1,6 +1,7 @@
 package com.example.demo.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,6 +53,11 @@ public class BaseActivityTwo extends AppCompatActivity {
     //封装一个Toast类//继承BaseActivity 直接调用 showTost(string)
     public void showToast(String msg){
         Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
+    }
+    //封装一个Intent
+    public void mIntent(Class cls){
+        Intent intent=new Intent(mContext,cls);
+        startActivity(intent);
     }
 
     private void initToolbar() {

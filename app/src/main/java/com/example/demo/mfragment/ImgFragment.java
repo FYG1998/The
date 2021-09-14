@@ -1,19 +1,25 @@
 package com.example.demo.mfragment;
 
+import android.app.Activity;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.demo.R;
 import com.example.demo.adapter.RecyclerViewAdapter;
+import com.example.demo.model.Entity;
 import com.example.demo.model.ImgModel;
-
+import com.example.demo.utils.GsonUtil;
+import com.example.demo.utils.ProgressDialogUtil;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.base.Request;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +32,7 @@ import java.util.List;
 
 public class ImgFragment extends Fragment {
 
+    private Activity activity;
     private RecyclerView recyclerView;
     private List<ImgModel> ImgList = new ArrayList<>();
     private int index;
@@ -47,6 +54,7 @@ public class ImgFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_img, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_recyclerview);
+        activity=getActivity();
         //测试
         initFruits();
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
@@ -56,65 +64,59 @@ public class ImgFragment extends Fragment {
 
         Log.e("调试", "imgFragment --imglist 200 4");
         //imglist("200","4");
+
+        Testget();
         return  view;
     }
 
 
 
 
-   /*  图片地址过期 String str = "https://gank.io/api/data/福利/" + count + "/" + "/" + page;
-   public  void imglist(int count,int page){
+    private void Testget(){
+        String a = "https://api.github.com/repos/square/retrofit/contributors";
+        String b = "http://msearchcdn.kugou.com/new/app/i/search.php?cmd=302&keyword=%E5%91%A8%E6%9D%B0%E4%BC%A6";
+        String c = "https://naiop.github.io/test/updateApp.json";
+        //Config.SongName("赵雷")
 
-        final String getimgurl= "http://gank.io/api/data/福利/" + count + "/" + "/" + page;
+        OkGo.<String>get("http://bz.eleuu.com/api.php?cid=36&start=30&count=30")     // 请求方式和请求url
+                .tag(this)                       // 请求的 tag, 主要用于取消对应的请求
+                .cacheKey("cacheKey")            // 设置当前请求的缓存key,建议每个不同功能的请求设置一个
+                .cacheMode(CacheMode.NO_CACHE)    // 缓存模式，详细请看缓存介绍
+                //  .cacheTime(3000)//缓存时间
+                .execute(new StringCallback() {
 
-        mOKHttp.mConfig(getimgurl).getRequest(new mCallback() {
-            @Override
-            public void onSuccess(final String res) {
-                getActivity().runOnUiThread(new Runnable() {
                     @Override
-                    public void run() {
+                    public void onStart(Request<String, ? extends Request> request) {
+                        ProgressDialogUtil.showProgressDialog(activity);
+                    }
 
-                        String jsondta = res;
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        String json = response.body().toString();
+                        Entity lot = GsonUtil.fromJson(json, Entity.class);
+                        String a =lot.data.get(0).getUrl();
+                        Log.d("teaaaast",a);
 
-                        Log.e("调试", "imgFragment --获取img"+res);
 
-                        if(jsondta!=null){
-                            try {
-                                JSONObject json = new JSONObject(jsondta);
-                                JSONArray json_list = json.getJSONArray("results");
-
-                                for (int i = 0; i < json_list.length(); i++) {
-
-                                    Map<String ,Object> map=new HashMap<String, Object>();
-                                    JSONObject json_listobj = json_list.getJSONObject(i);
-                                    String json_img_url = json_listobj.getString("url");
-
-                                    ImgList.add(new ImgModel(json_img_url) );
-                                }
-
-                                GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
-                                recyclerView.setLayoutManager(layoutManager);
-                                RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),ImgList);
-                                recyclerView.setAdapter(adapter);
-
-                            }
-                            catch (JSONException e) { e.printStackTrace(); }
-
-                        }
 
                     }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                    }
+
+
+
+                    @Override
+                    public void onFinish() {
+                        ProgressDialogUtil.cancelProgressDialog(activity);
+
+                    }
+
                 });
-            }
 
-            @Override
-            public void onFailure(Exception e) {
-
-                Log.e("调试", "imgFragment --okhttp 失败");
-
-            }
-        });
-
-    }*/
+    }
 
 
     /**
@@ -122,7 +124,7 @@ public class ImgFragment extends Fragment {
      */
     private void initFruits() {
 
-        ImgModel apple = new ImgModel ("http://ww4.sinaimg.cn/large/610dc034jw1f6ipaai7wgj20dw0kugp4.jpg");
+        ImgModel apple = new ImgModel ("http://browser9.qhimg.com//bdr//__85//t010824ab8b5cdfa138.jpg");
         ImgList.add(apple);
         ImgModel banana = new ImgModel("http://ww3.sinaimg.cn/large/610dc034jw1f6gcxc1t7vj20hs0hsgo1.jpg");
         ImgList.add(banana);
@@ -138,10 +140,7 @@ public class ImgFragment extends Fragment {
         ImgList.add(pineapple);
         ImgModel strawberry = new ImgModel("http://ww3.sinaimg.cn/large/c85e4a5cjw1f671i8gt1rj20vy0vydsz.jpg");
         ImgList.add(strawberry);
-        ImgModel cherry = new ImgModel("http://ww2.sinaimg.cn/large/610dc034jw1f65f0oqodoj20qo0hntc9.jpg");
-        ImgList.add(cherry);
-        ImgModel mango = new ImgModel("http://ww2.sinaimg.cn/large/c85e4a5cgw1f62hzfvzwwj20hs0qogpo.jpg");
-        ImgList.add(mango);
+
 
 
     }

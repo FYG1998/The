@@ -5,9 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionBarStyle">@style/actionbar_def_style</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
         <item name="android:windowIsTranslucent">true</item>
     </style>
     <style name="actionbar_def_style" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -19,6 +19,13 @@
 
     </style>
 
+    <!-- theme. 这个主题适配tbs com.tencent.smtt.sdk.VideoActivity 这个 -->
+    <style name="tbs_theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 
     <!-- dialog bg 背景  样式 。。。-->

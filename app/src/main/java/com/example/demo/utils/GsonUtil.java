@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 
 
 /**
- * Created by gpk on 2019/6/19.
+ * Created
  */
 public class GsonUtil {
 

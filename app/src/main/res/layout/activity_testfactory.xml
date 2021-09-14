@@ -6,13 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.TestFactory">
+    tools:context=".activity.TestFactory"
+    android:background="#FFFFFF">
 
-    <View
-        android:id="@+id/img_head"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:background="@color/white" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -46,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/style_fill_blue"
+            android:background="@drawable/btn_bg"
             android:text="hslmqtt_测试" />
     </LinearLayout>
 
@@ -84,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/style_fill_blue"
+            android:background="@drawable/btn_bg"
             android:text="hslmqtt_adapter" />
     </LinearLayout>
 
@@ -93,5 +89,37 @@
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:background="#03A9F4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="工厂站别管控" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:text="工厂站别管控，搜集数据，进站出站" />
+
+        <Button
+            android:id="@+id/station"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:text="station_adapter" />
+    </LinearLayout>
 
 </LinearLayout>

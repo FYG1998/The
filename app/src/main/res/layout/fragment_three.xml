@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mfragment.threeFragment"
+    android:orientation="vertical">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <View
@@ -16,10 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
     <LinearLayout
         android:id="@+id/l"
         android:layout_width="match_parent"
@@ -28,8 +31,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-       >
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -111,8 +113,6 @@
 
     </LinearLayout>
 
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -172,11 +172,10 @@
         android:background="@drawable/style_biankung_white"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-
-    </ListView>
-
+        android:layout_marginLeft="10dp"/>
 
 
    </LinearLayout>
-</LinearLayout>
+
+
+</RelativeLayout>

@@ -9,7 +9,7 @@ import com.lzy.okgo.request.base.Request;
 
 /**
  * OkGo相关
- * Created by gpk on 2019/6/19.
+ * Created
  */
 public abstract class StringDialogCallback extends StringCallback {
 

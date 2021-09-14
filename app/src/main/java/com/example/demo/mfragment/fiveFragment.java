@@ -20,6 +20,7 @@ import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
 import com.example.demo.activity.Browser;
 import com.example.demo.activity.CodeActivity;
+import com.example.demo.activity.EditTextActivity;
 import com.example.demo.activity.LoginActivity;
 import com.example.demo.activity.MainTbs;
 import com.example.demo.activity.SettingActivity;
@@ -150,8 +151,13 @@ public class fiveFragment extends Fragment {
         factorymodel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TestFactory.class);
+
+                Intent intent = new Intent(getActivity(), EditTextActivity.class);
+                intent.putExtra("title", "测试密码");
                 startActivity(intent);
+
+
+
             }
         });
 
