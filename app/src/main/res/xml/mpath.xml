@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-	<!-- external-path 为 Environment.getExternalStorageDirectory() -->
+	 external-path 为 Environment.getExternalStorageDirectory()
 	<!-- Download 是Environment.DIRECTORY_DOWNLOADS 的目录名称 -->
 	<!-- downloads是uri中映射Download的名称 -->
 
 	<root-path name="root" path="A_Test" />
 	<external-path name="external_storage_root" path="A_Test" />
 	<external-path name="external_storage_download" path="A_Test" />
+
+
+
+
+
+	<!--物理路径相当于Context.getFilesDir() + /path/-->
+	<files-path name="name" path="path" />
+	<!--物理路径相当于Context.getCacheDir() + /path/-->
+	<cache-path name="name" path="path" />
+	<!-- 物理路径相当于Environment.getExternalStorageDirectory() + /path/-->
+	<external-path name="name" path="path" />
+	<!-- 物理路径相当于Context.getExternalFilesDir(String) + /path/-->
+	<external-files-path name="name" path="path" />
+	<!-- 物理路径相当于Context.getExternalCacheDir() + /path/-->
+	<external-cache-path name="name" path="path" />
 </paths>

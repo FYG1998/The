@@ -16,7 +16,7 @@
             android:id="@+id/ll_before_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:background="#fff"
             android:paddingTop="3dp"
             >

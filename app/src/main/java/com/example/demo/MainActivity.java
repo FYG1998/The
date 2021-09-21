@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
             public boolean onLongClick(View v) {
                 //长按保存图片
                 try {
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HH:mm:ss");// yyyy年MM月dd日 HH:mm:ss
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");// yyyy年MM月dd日 HH:mm:ss
                     Date date = new Date(System.currentTimeMillis());
 
                     File file = new File(Environment.getExternalStorageDirectory().getPath() + "/A_Test/" + simpleDateFormat.format(date) + ".jpg");

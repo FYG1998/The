@@ -27,6 +27,16 @@
           android:layout_marginLeft="20dp"
           android:layout_marginRight="20dp" />
 
+      <EditText
+          android:id="@+id/et_url"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="输入url"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:singleLine="true"
+          android:textColorHint="#FFD6D6D6"
+          android:textSize="15sp"/>
       <ImageView
           android:id="@+id/img"
           android:layout_width="match_parent"

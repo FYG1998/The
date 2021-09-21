@@ -1,5 +1,6 @@
 package com.example.demo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -34,7 +35,12 @@ public class OpenFile extends BaseActivityTwo {
             }
         });
 
-       url = "/storage/emulated/0/A_Test/test.pdf";
+        final Intent intent = getIntent();
+        if (intent != null) {
+            url = intent.getStringExtra("path");
+        }
+
+      // url = "/storage/emulated/0/A_Test/test.pdf";
 
         rlRoot.addView(tbsReaderView, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));//装载TbsReaderView的视图
         openFile();

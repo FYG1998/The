@@ -11,7 +11,7 @@ import okhttp3.Response;
 /**
  * OkGo相关
  * 默认将返回的数据解析成需要的Bean,可以是 BaseBean，String，List，Map
- * Created by gpk on 2019/6/19.
+ * Created
  */
 public abstract class JsonCallback<T> extends AbsCallback<T> {
 

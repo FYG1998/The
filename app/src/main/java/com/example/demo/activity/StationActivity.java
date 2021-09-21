@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StationActivity extends BaseActivityTwo {
-
     Context context;
     private static final String TAG = "MainActivity";
     private static final String[] LOCATION_AND_CONTACTS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CONTACTS};
@@ -31,7 +30,6 @@ public class StationActivity extends BaseActivityTwo {
     RecyclerView rvBeforeInfo, rvInfo;
     List<ItemView> beforeInfoLst, infoLst;
     public ItemAdapter beforeAdapter, infoAdapter ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +43,7 @@ public class StationActivity extends BaseActivityTwo {
 
         rvBeforeInfo = findViewById(R.id.beforeinfo_recyclerview);
         rvInfo = findViewById(R.id.info_recyclerview);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvBeforeInfo.setLayoutManager(layoutManager);
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
@@ -66,8 +65,7 @@ public class StationActivity extends BaseActivityTwo {
 
     }
     /**
-     * 空的工序数据布局UI
-     *
+     * 空的数据布局UI
      * @return
      */
     private List<ItemView> getItemViewEmptyData() {
@@ -85,7 +83,7 @@ public class StationActivity extends BaseActivityTwo {
                 new ItemInfo("")
         ));
         temps.add(new ItemView(
-                new ItemInfo("工艺制程：", R.color.colorLabel),
+                new ItemInfo("机种名称：", R.color.colorLabel),
                 new ItemInfo(""),
                 new ItemInfo("数量：", R.color.colorLabel),
                 new ItemInfo("")
@@ -115,15 +113,9 @@ public class StationActivity extends BaseActivityTwo {
                 new ItemInfo("")
         ));
         temps.add(new ItemView(
-                new ItemInfo("工步参数", R.color.colorDec),
+                new ItemInfo("其它信息：", R.color.colorDec),
                 new ItemInfo(""),
-                new ItemInfo("工步物料", R.color.colorDec),
-                new ItemInfo("")
-        ));
-        temps.add(new ItemView(
-                new ItemInfo("其它信息", R.color.colorDec),
-                new ItemInfo(""),
-                new ItemInfo("Q-time信息", R.color.colorDec),
+                new ItemInfo("备注：", R.color.colorDec),
                 new ItemInfo("")
         ));
         return temps;

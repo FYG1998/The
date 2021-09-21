@@ -29,6 +29,7 @@ import com.example.demo.activity.OpenFile;
 import com.example.demo.model.GlobalData;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.bitmap;
+import com.example.demo.utils.mRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.youth.banner.Banner;
@@ -57,6 +58,7 @@ public class oneFragment extends Fragment {
     private FloatingActionButton fab;
     private List list;
     private Banner banner;
+    private EditText edit_url;
 
     private String api ="https://vip.bljiex.com/?v=";
     private String albummid ="http://p7.qhimg.com/bdr/__85/t01f6858f53ad68e60a.jpg";
@@ -79,6 +81,7 @@ public class oneFragment extends Fragment {
         list.add("https://naiop.github.io/images/bg2.jpg");
         list.add("https://naiop.github.io/images/bg3.jpg");
 
+        edit_url = view.findViewById(R.id.et_url);
         imageView=view.findViewById(R.id.img);
         fab = view.findViewById(R.id.fab);
         banner = (Banner) view.findViewById(R.id.banner);
@@ -130,15 +133,18 @@ public class oneFragment extends Fragment {
             @SuppressLint("WrongConstant")
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "继续加载图片吗？", Snackbar.LENGTH_LONG)
                         .setAction("Action", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(getContext(), "What is Action", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "确定", Toast.LENGTH_SHORT).show();
+                                btimg();
+                                String _url ="https://naiop.github.io/test/updateApp.json";
+                                mRequest.loadData(context,edit_url.getText().toString().isEmpty() ? _url : edit_url.getText().toString());
                             }
                         }).show();
-                GlobalData.getInstance().showLoginWithToast(context);
-                btimg();
+
+
             }
         });
 

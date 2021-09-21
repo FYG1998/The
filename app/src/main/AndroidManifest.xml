@@ -74,17 +74,17 @@
         <activity
             android:name=".base.CoreFragment"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-
+        <!-- ......>>>>>>>>>>>>>>>>>>> -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.demo.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/mpath" />
-        </provider> <!-- ......>>>>>>>>>>>>>>>>>>> -->
-        <!-- ................xml  mpath.储存问题................... -->
+        </provider>
+        <!-- ................xml  mpath.储存问题.. ................. -->
         <service
             android:name=".LoadX5Service"
             android:enabled="true"
