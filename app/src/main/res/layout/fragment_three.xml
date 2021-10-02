@@ -67,6 +67,7 @@
                 android:textColorHint="#FFD6D6D6"
                 android:textSize="15sp" />
 
+
             <LinearLayout
                 android:id="@+id/a"
                 android:layout_width="30dp"

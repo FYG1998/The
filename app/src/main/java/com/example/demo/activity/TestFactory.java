@@ -12,7 +12,7 @@ import com.example.demo.base.BaseActivityTwo;
 
 public class TestFactory extends BaseActivityTwo implements View.OnClickListener {
     private Context context;
-    private Button hsl_hslmqtt,hslmqtt_adapter,station_adapter;
+    private Button hsl_hslmqtt,hslmqtt_adapter,station_adapter,chart_btn   ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,12 @@ public class TestFactory extends BaseActivityTwo implements View.OnClickListener
         hsl_hslmqtt = findViewById(R.id.hslmqtt);
         hslmqtt_adapter = findViewById(R.id.hslmqtt_adapter);
         station_adapter = findViewById(R.id.station);
+        chart_btn = findViewById(R.id.chart_btn);
 
         hsl_hslmqtt.setOnClickListener(this);
         hslmqtt_adapter.setOnClickListener(this);
         station_adapter.setOnClickListener(this);
+        chart_btn.setOnClickListener(this);
     }
 
     private void initData() {
@@ -55,6 +57,9 @@ public class TestFactory extends BaseActivityTwo implements View.OnClickListener
                 break;
             case R.id.station:
                 mIntent(StationActivity.class);
+                break;
+            case R.id.chart_btn:
+                mIntent(ActivityChart.class);
                 break;
 
         }

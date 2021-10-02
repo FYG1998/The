@@ -1,6 +1,7 @@
 package com.example.demo.mfragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -139,7 +140,8 @@ public class oneFragment extends Fragment {
                             public void onClick(View v) {
                                 Toast.makeText(getContext(), "确定", Toast.LENGTH_SHORT).show();
                                 btimg();
-                                String _url ="https://naiop.github.io/test/updateApp.json";
+                                String _url = "https://vip.bljiex.com/?v=https://v.qq.com/x/cover/mzc00200lxzhhqz/d0040ofabxk.html";
+                                //String _url ="http://c.y.qq.com/rsc/fcgi-bin/fcg_user_created_diss?hostuin=1596782257&size=1000&format=json";
                                 mRequest.loadData(context,edit_url.getText().toString().isEmpty() ? _url : edit_url.getText().toString());
                             }
                         }).show();

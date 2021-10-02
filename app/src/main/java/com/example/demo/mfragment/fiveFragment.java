@@ -16,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.demo.A_Test.TestActivity;
 import com.example.demo.R;
 import com.example.demo.activity.AboutActivity;
+import com.example.demo.activity.ActivityChart;
 import com.example.demo.activity.Browser;
 import com.example.demo.activity.CodeActivity;
 import com.example.demo.activity.EditTextActivity;

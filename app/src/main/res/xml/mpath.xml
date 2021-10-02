@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-	 external-path 为 Environment.getExternalStorageDirectory()
-	<!-- Download 是Environment.DIRECTORY_DOWNLOADS 的目录名称 -->
-	<!-- downloads是uri中映射Download的名称 -->
+	<!-- external-path 为 Environment.getExternalStorageDirectory()
+	&lt;!&ndash; Download 是Environment.DIRECTORY_DOWNLOADS 的目录名称 &ndash;&gt;
+	&lt;!&ndash; downloads是uri中映射Download的名称 &ndash;&gt;
 
 	<root-path name="root" path="A_Test" />
 	<external-path name="external_storage_root" path="A_Test" />
-	<external-path name="external_storage_download" path="A_Test" />
+	<external-path name="external_storage_download" path="A_Test" />-->
 
 
 

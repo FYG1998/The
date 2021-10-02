@@ -34,6 +34,8 @@ import com.example.demo.R;
 import com.example.demo.tencent_tbs.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -154,7 +156,6 @@ public class Browser extends Activity {
                 FrameLayout.LayoutParams.FILL_PARENT));
 
         initProgressBar();
-
 
 
         //该界面打开更多链接
@@ -452,7 +453,7 @@ public class Browser extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         TbsLog.d(TAG, "onActivityResult, requestCode:" + requestCode + ",resultCode:" + resultCode);
-        Log.d("调试", "onActivityResult, requestCode:" + requestCode + ",resultCode:" + resultCode);
+        Log.d("调试onActivityResult", "onActivityResult, requestCode:" + requestCode + ",resultCode:" + resultCode);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 0:
@@ -475,6 +476,10 @@ public class Browser extends Activity {
         }
 
     }
+
+
+
+
 
     @Override
     protected void onNewIntent(Intent intent) {

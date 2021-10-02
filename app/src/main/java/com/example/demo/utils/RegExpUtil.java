@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by gpk on 2019/7/18.
+ * Created by
  */
 public class RegExpUtil {
     public static boolean checkEmail(String str){

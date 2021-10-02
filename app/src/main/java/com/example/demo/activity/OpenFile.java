@@ -88,4 +88,7 @@ public class OpenFile extends BaseActivityTwo {
         super.onDestroy();
         tbsReaderView.onStop();
     }
+
+
+
 }

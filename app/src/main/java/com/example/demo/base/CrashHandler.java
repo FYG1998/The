@@ -220,7 +220,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     public static String getGlobalpath() {
         return Environment.getExternalStorageDirectory().getAbsolutePath()
-                + File.separator + "crash" + File.separator;
+                + File.separator + "A_Test/crash" + File.separator;
     }
 
     public static void setTag(String tag) {
