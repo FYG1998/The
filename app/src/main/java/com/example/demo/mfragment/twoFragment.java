@@ -16,7 +16,7 @@ public class twoFragment extends Fragment {
 
 
    // String music = "http://yy.eleuu.com/";
-    String music = "https://naiop.github.io/vue/";
+    String music = "https://naiop.github.io/threejs-template-simple/";
     private X5WebView mx5webViewmusic;
 
     @Override

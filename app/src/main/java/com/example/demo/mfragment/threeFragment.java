@@ -41,6 +41,7 @@ import android.widget.Toast;
 import com.example.demo.R;
 import com.example.demo.adapter.MvListBaseAdapter;
 import com.example.demo.base.BaseActivity;
+import com.example.demo.model.Config;
 import com.example.demo.model.GlobalData;
 import com.example.demo.model.URLinfo;
 import com.example.demo.model.mCallback;
@@ -501,8 +502,8 @@ public class threeFragment extends Fragment {
     //获取mv list的方法
     public void mtv_List2(String t) {
 
-        final String misuelist = URLinfo.musiclisturl1 + t + URLinfo.musiclisturl2;
-
+        //final String misuelist = URLinfo.musiclisturl1 + t + URLinfo.musiclisturl2;
+        final String misuelist = Config.MinusUrl(t);
         mOKHttp.mConfig(misuelist).getRequest(new mCallback() {
             @Override
             public void onSuccess(final String res) {//成功的okhttp回调
@@ -516,16 +517,16 @@ public class threeFragment extends Fragment {
 
                         if (jsondta != null) {
                             try {
+                                JSONObject item1 = new JSONObject(jsondta);
+                                JSONObject item2 = item1.getJSONObject("req");
+                                JSONObject item3 = item2.getJSONObject("data");
+                                JSONObject item4 = item3.getJSONObject("body");
+                                JSONArray item5 = item4.getJSONArray("item_song");//获取到了list  ;[]集合json
 
-                                JSONObject json = new JSONObject(jsondta);
-                                JSONObject json_data = json.getJSONObject("data");
-                                JSONObject json_song = json_data.getJSONObject("song");
-                                JSONArray json_list = json_song.getJSONArray("list");//获取到了list （60条记录） ;[]集合json
-
-                                for (int i = 0; i < json_list.length(); i++) {
+                                for (int i = 0; i < item5.length(); i++) {
                                     Map<String, Object> map = new HashMap<String, Object>();
 
-                                    JSONObject json_listobj = json_list.getJSONObject(i);  //把集合[]json 转换 数组 {}
+                                    JSONObject json_listobj = item5.getJSONObject(i);  //把集合[]json 转换 数组 {}
                                     String json_title = json_listobj.getString("title"); //获取歌曲 title
                                     String json_mid = json_listobj.getString("mid"); //获取歌曲 mid
 

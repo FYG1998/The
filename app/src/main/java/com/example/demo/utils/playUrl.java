@@ -2,6 +2,7 @@ package com.example.demo.utils;
 
 import android.util.Log;
 
+import com.example.demo.model.Config;
 import com.example.demo.model.mCallback;
 import com.example.demo.model.mConfig;
 import com.example.demo.model.mOKHttp;
@@ -54,7 +55,7 @@ public class playUrl {
 
                           if(cn.length() > 0)
                           {
-                              map.put("url","http://223.111.252.17/mv.music.tc.qq.com/ADzzN8bY-jpncnh7YymlcSOmZ2yCF5mkAKF8F0TVZPdA/");
+                              map.put("url","http://58.216.6.152/mv.music.tc.qq.com/AZzbIh-YDmNm0c-IpyoJmqCNexbcifz1HoWlq40oUEsM/");
                               map.put("cn",cn);
                               map.put("vkey",vkey);
 
@@ -81,4 +82,5 @@ public class playUrl {
 
 
     }
+
 }
